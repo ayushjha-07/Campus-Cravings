@@ -1,0 +1,77 @@
+// Campus Cravings - Special Offers & Promo Deals for CGC University, Mohali
+// Note: All promotions and coupon codes are clearly labeled demo offers for demonstration purposes.
+
+export const SPECIAL_OFFERS = [
+  {
+    id: 'offer-1',
+    code: 'CGCFIRST20',
+    title: 'Flat 20% OFF',
+    subtitle: 'On your first campus food order',
+    discount: '20% OFF',
+    minOrderText: 'Min order ₹99',
+    maxDiscountText: 'Max savings ₹50',
+    badge: 'NEW STUDENTS',
+    outlet: 'All 14 Campus Outlets',
+    bgGradient: 'from-[#0D3828] via-[#14533C] to-[#0A291E]',
+    accentColor: '#EAA044',
+    tagColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40',
+    icon: 'Sparkles',
+    validity: 'Valid for current academic term',
+    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80',
+    isDemo: true
+  },
+  {
+    id: 'offer-2',
+    code: 'BREAKMEAL',
+    title: '₹40 Instant Cashback',
+    subtitle: 'On lunch combo platters & personal pizzas',
+    discount: '₹40 OFF',
+    minOrderText: 'Min order ₹199',
+    maxDiscountText: 'Flat ₹40 discount',
+    badge: 'LUNCH RUSH',
+    outlet: 'Dominos & Food Court',
+    bgGradient: 'from-[#C2410C] via-[#EA580C] to-[#9A3412]',
+    accentColor: '#FDE047',
+    tagColor: 'bg-amber-500/20 text-amber-200 border-amber-400/40',
+    icon: 'Flame',
+    validity: '12:00 PM - 3:00 PM Daily',
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&auto=format&fit=crop&q=80',
+    isDemo: true
+  },
+  {
+    id: 'offer-3',
+    code: 'CHAI10',
+    title: '₹10 Hot Chai Perk',
+    subtitle: 'With any puff, samosa, or sandwich purchase',
+    discount: '₹10 OFF',
+    minOrderText: 'With any snack',
+    maxDiscountText: 'Valid on beverages',
+    badge: 'TEA BREAK',
+    outlet: 'Kulhad & Nescafe',
+    bgGradient: 'from-[#0F766E] via-[#115E59] to-[#042F2E]',
+    accentColor: '#5EEAD4',
+    tagColor: 'bg-teal-500/20 text-teal-200 border-teal-400/40',
+    icon: 'Coffee',
+    validity: 'All Campus Hours',
+    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&auto=format&fit=crop&q=80',
+    isDemo: true
+  },
+  {
+    id: 'offer-4',
+    code: 'HOSTEL15',
+    title: 'Flat 15% OFF',
+    subtitle: 'Late evening burger, shake & brownie cravings',
+    discount: '15% OFF',
+    minOrderText: 'Min order ₹149',
+    maxDiscountText: 'Max savings ₹45',
+    badge: 'HOSTEL NIGHTS',
+    outlet: 'X Burgers & Thick let to',
+    bgGradient: 'from-[#1E293B] via-[#0F172A] to-[#020617]',
+    accentColor: '#F97316',
+    tagColor: 'bg-orange-500/20 text-orange-300 border-orange-400/40',
+    icon: 'Moon',
+    validity: '6:00 PM - 9:00 PM Daily',
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80',
+    isDemo: true
+  }
+];
