@@ -6,8 +6,12 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
+    "start": "vite preview --port 10000 --host",
     "lint": "oxlint",
     "preview": "vite preview --host"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   },
   "dependencies": {
     "lucide-react": "^1.57.0",

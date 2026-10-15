@@ -3,8 +3,11 @@ services:
     name: campus-cravings
     repo: https://github.com/ayushjha-07/Campus-Cravings.git
     branch: main
-    buildCommand: npm ci && npm run build
+    buildCommand: npm install && npm run build
     staticPublishPath: dist
+    envVars:
+      - key: NODE_VERSION
+        value: 22
     routes:
       - type: rewrite
         source: /*
