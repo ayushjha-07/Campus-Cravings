@@ -31,7 +31,7 @@ import {
 export default function StaffDashboardPage() {
   const { outletId = 'kulhad' } = useParams();
   const { orders, updateOrderStatus } = useCart();
-  const currentOutlet = OUTLETS.find(o => o.id === outletId) || OUTLETS[0];
+  const currentOutlet = OUTLETS.find(o => o.id === outletId || o.aliasId === outletId || (Array.isArray(o.aliases) && o.aliases.includes(outletId))) || OUTLETS[0];
 
   // Outlet-filtered orders
   const outletOrders = getOutletOrders(orders, currentOutlet.id);

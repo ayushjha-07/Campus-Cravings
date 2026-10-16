@@ -16,6 +16,8 @@ import { X_BURGERS_MENU } from './xBurgersMenu.js';
 import { KULHAD_MENU } from './kulhadMenu.js';
 import { YUM_EXPERTS_MENU } from './yumExpertsMenu.js';
 import { SIP_N_BITES_MENU } from './sipNBitesMenu.js';
+import { FOOD_COURT_MENU } from './foodCourtMenu.js';
+import { TUCKSHOP_MENU } from './tuckshopMenu.js';
 
 export const OUTLETS = [
   {
@@ -102,71 +104,23 @@ export const OUTLETS = [
   },
   {
     id: 'tuckshop',
+    aliases: ['tuckshop', 'tuck-shop', 'tuckshop-stationery', 'cgc-tuckshop'],
     name: 'Tuckshop',
-    shortCategory: 'Snacks',
-    tagline: 'Pocket-Friendly Masala Fries, Patties & Quick Nibbles',
-    location: 'Engineering Block 3 Ground Corridor',
-    rating: 4.3,
-    reviewsCount: 410,
-    prepTime: '4-8 mins',
+    shortCategory: 'Stationery & Essentials',
+    tagline: 'Stationery, Printing & Xerox, Computer Accessories, Gifts & Daily Essentials',
+    location: 'Engineering Block 3 Ground Corridor, CGC Mohali',
+    rating: 4.8,
+    reviewsCount: 510,
+    prepTime: '2-5 mins',
     priceForTwo: '₹80',
-    cuisine: ['Quick Bites', 'Samosas', 'Patties', 'Fries'],
+    cuisine: ['Printing & Xerox', 'Stationery', 'Notebooks', 'Computer Accessories', 'Gifts', 'Daily Essentials'],
     isVegOnly: true,
     isOpen: true,
-    timing: '8:30 AM - 6:00 PM (Demo Hours)',
-    image: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=800&auto=format&fit=crop&q=80',
+    timing: '8:30 AM - 7:30 PM',
+    image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=800&auto=format&fit=crop&q=80',
     logoType: 'tuckshop',
-    brandColor: '#D00000',
-    menu: [
-      {
-        id: 'ts-fries',
-        name: 'Masala Fries',
-        category: 'Snacks',
-        price: 89,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Crisp golden french fries seasoned with special campus chatpata masala.',
-        image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'ts-1',
-        name: 'Warm Aloo Samosa (2 pcs)',
-        category: 'Snacks',
-        price: 30,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.5,
-        description: 'Crispy golden pastry crust packed with spiced mashed potatoes, served with tamarind chutney.',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'ts-2',
-        name: 'Cheese Paneer Puff Patty',
-        category: 'Snacks',
-        price: 35,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.3,
-        description: 'Flaky baked puff pastry stuffed with spicy paneer bhurji.',
-        image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'ts-3',
-        name: 'Adrak Masala Chai',
-        category: 'Beverages',
-        price: 20,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.6,
-        description: 'Strong hot freshly prepared ginger tea with mint leaves.',
-        image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    brandColor: '#1E3A8A',
+    menu: TUCKSHOP_MENU
   },
   {
     id: 'dominos',
@@ -275,71 +229,23 @@ export const OUTLETS = [
   },
   {
     id: 'food-court',
+    aliases: ['food-court', 'foodcourt', 'cgc-food-court'],
     name: 'Food Court',
-    shortCategory: 'Food Court',
-    tagline: 'Multi-Cuisine Hub: Wok Noodles, Fried Rice & Biryani',
-    location: 'Main Academic Block Central Food Court',
-    rating: 4.5,
-    reviewsCount: 950,
-    prepTime: '10-15 mins',
-    priceForTwo: '₹220',
-    cuisine: ['Chinese', 'Biryani', 'Meals', 'North Indian'],
+    shortCategory: 'Multi-Cuisine Food Court',
+    tagline: 'Multi-Cuisine Campus Food Court — Breakfast, Pizzas, Burgers, Thalis, Momos & Chinese',
+    location: 'Main Academic Block Central Food Court, CGC Mohali',
+    rating: 4.8,
+    reviewsCount: 980,
+    prepTime: '8-14 mins',
+    priceForTwo: '₹180',
+    cuisine: ['Breakfast', 'Sandwiches', 'Burgers', 'Pizzas', 'Pasta', 'Noodles', 'Thalis', 'Momos', 'Chinese', 'Beverages', 'Desserts'],
     isVegOnly: false,
     isOpen: true,
-    timing: '9:00 AM - 9:00 PM (Demo Hours)',
+    timing: '8:00 AM - 9:30 PM',
     image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&auto=format&fit=crop&q=80',
     logoType: 'foodcourt',
     brandColor: '#1B4D36',
-    menu: [
-      {
-        id: 'fc-1',
-        name: 'Chilli Paneer with Veg Fried Rice Combo',
-        category: 'Chinese',
-        price: 130,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'Wok-tossed paneer cubes in spicy soy chilli sauce served with aromatic stir-fried jasmine rice.',
-        image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'fc-2',
-        name: 'Desi Hakka Noodles Bowl',
-        category: 'Chinese',
-        price: 90,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.6,
-        description: 'Thin eggless noodles stir-fried on high flame with shredded cabbage, bell pepper, and garlic sauce.',
-        image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'fc-3',
-        name: 'Crispy Masala Dosa with Sambar & Chutney',
-        category: 'South Indian',
-        price: 85,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'Crispy golden fermented crepe stuffed with tempered mustard-curry leaf potato masala, served with piping hot sambar.',
-        image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'fc-4',
-        name: 'Steamed Idli Sambar (2 pcs)',
-        category: 'South Indian',
-        price: 55,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Pillow-soft steamed rice and lentil cakes served with home-style vegetable sambar and fresh coconut dip.',
-        image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    menu: FOOD_COURT_MENU
   },
   {
     id: 'sip-n-bites',
@@ -460,7 +366,7 @@ export const OUTLETS = [
 
 // Helper function to extract all popular food items matching reference image order first
 export const getAllPopularItems = () => {
-  const priorityIds = ['dm-pz-1', 'dm-1', 'xb-vb-1', 'rnr-er-1', 'tnt-vb-1', 'kh-ch-1', 'ye-mc-1', 'snb-sh-2', 'nc-cc-1', 'nc-1', 'ts-fries', 'tlt-ch-5', 'tlt-brownie', 'cp-sw-4', 'ab-snk-9', 'ed-bg-1'];
+  const priorityIds = ['dm-pz-1', 'dm-1', 'xb-vb-1', 'rnr-er-1', 'tnt-vb-1', 'kh-ch-1', 'ye-mc-1', 'snb-sh-2', 'nc-cc-1', 'nc-1', 'fc-pz-1', 'fc-rm-1', 'fc-bf-7', 'ts-px-1', 'ts-se-5', 'tlt-ch-5', 'tlt-brownie', 'cp-sw-4', 'ab-snk-9', 'ed-bg-1'];
   const allItems = [];
 
   OUTLETS.forEach(outlet => {

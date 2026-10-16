@@ -9,13 +9,8 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
   const navigate = useNavigate();
-  let activeOutlets = OUTLETS;
-  try {
-    const menuCtx = useMenu();
-    if (menuCtx?.outlets?.length > 0) activeOutlets = menuCtx.outlets;
-  } catch (e) {
-    // Outside MenuProvider fallback
-  }
+  const { outlets } = useMenu();
+  const activeOutlets = outlets?.length > 0 ? outlets : OUTLETS;
 
   // Filter outlets and food items
   const matchedOutlets = query.trim()

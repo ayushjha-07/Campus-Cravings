@@ -31,7 +31,7 @@ export default function StaffMenuPage() {
     resetOutletMenu 
   } = useMenu();
 
-  const currentOutlet = OUTLETS.find(o => o.id === outletId) || OUTLETS[0];
+  const currentOutlet = OUTLETS.find(o => o.id === outletId || o.aliasId === outletId || (Array.isArray(o.aliases) && o.aliases.includes(outletId))) || OUTLETS[0];
   const menuItems = getOutletMenu(currentOutlet.id);
 
   const [searchQuery, setSearchQuery] = useState('');

@@ -38,6 +38,28 @@ export default function OutletMenuPage() {
   // Find outlet with live menu
   const outlet = getOutlet ? getOutlet(id) : OUTLETS.find(o => o.id === id);
 
+  // Categories dynamically extracted from this outlet's menu
+  const outletCategories = useMemo(() => {
+    if (!outlet) return ['all'];
+    const cats = new Set((outlet.menu || []).map(item => item.category));
+    return ['all', ...Array.from(cats)];
+  }, [outlet]);
+
+  // Filtered menu items
+  const filteredMenu = useMemo(() => {
+    if (!outlet) return [];
+    return (outlet.menu || []).filter(item => {
+      const matchesCategory = selectedCategory === 'all' || item.category.toLowerCase() === selectedCategory.toLowerCase();
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch = !q || (
+        item.name.toLowerCase().includes(q) ||
+        item.description.toLowerCase().includes(q) ||
+        item.category.toLowerCase().includes(q)
+      );
+      return matchesCategory && matchesSearch;
+    });
+  }, [outlet, selectedCategory, searchQuery]);
+
   if (!outlet) {
     return (
       <div className="min-h-[75vh] flex flex-col items-center justify-center px-4 py-16 text-center max-w-md mx-auto">
@@ -57,26 +79,6 @@ export default function OutletMenuPage() {
       </div>
     );
   }
-
-  // Categories dynamically extracted from this outlet's menu
-  const outletCategories = useMemo(() => {
-    const cats = new Set((outlet.menu || []).map(item => item.category));
-    return ['all', ...Array.from(cats)];
-  }, [outlet]);
-
-  // Filtered menu items
-  const filteredMenu = useMemo(() => {
-    return (outlet.menu || []).filter(item => {
-      const matchesCategory = selectedCategory === 'all' || item.category.toLowerCase() === selectedCategory.toLowerCase();
-      const q = searchQuery.toLowerCase().trim();
-      const matchesSearch = !q || (
-        item.name.toLowerCase().includes(q) ||
-        item.description.toLowerCase().includes(q) ||
-        item.category.toLowerCase().includes(q)
-      );
-      return matchesCategory && matchesSearch;
-    });
-  }, [outlet, selectedCategory, searchQuery]);
 
   return (
     <div className="min-h-screen bg-[#FBF8F2] pb-24">
@@ -261,6 +263,10 @@ export default function OutletMenuPage() {
                     <><strong>Official Yum Experts Menu:</strong> Full verified mocktails, smoothies, fresh juices, chaats, burgers, wraps, pasta, Chinese wok dishes, rice bowls & combos from the vendor menu board.</>
                   ) : outlet.id === 'sip-n-bites' ? (
                     <><strong>Official Sip N Bites Menu:</strong> Full verified thick shakes, ice cream shakes, biscuit shakes, fresh juices, burgers, momos, pastas, noodles, rolls & combos from the original menu boards.</>
+                  ) : outlet.id === 'food-court' ? (
+                    <><strong>Official Food Court Menu:</strong> Full verified breakfast, sandwiches, burgers, pizzas, pastas, noodles, thalis, snacks, momos, Chinese & beverages from the central food court board.</>
+                  ) : outlet.id === 'tuckshop' ? (
+                    <><strong>Official Tuckshop Catalogue:</strong> Full verified stationery, printing & xerox services, computer accessories, gifts & daily essentials from the campus shop board.</>
                   ) : (
                     <><strong>Sample Outlet Menu:</strong> Representative items & prices for development. Real menus will be loaded per outlet.</>
                   )}

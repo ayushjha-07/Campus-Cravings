@@ -32,7 +32,7 @@ import {
 export default function StaffOrdersPage() {
   const { outletId = 'kulhad' } = useParams();
   const { orders, updateOrderStatus, cancelOrder } = useCart();
-  const currentOutlet = OUTLETS.find(o => o.id === outletId) || OUTLETS[0];
+  const currentOutlet = OUTLETS.find(o => o.id === outletId || o.aliasId === outletId || (Array.isArray(o.aliases) && o.aliases.includes(outletId))) || OUTLETS[0];
 
   const [activeTab, setActiveTab] = useState('all'); // 'all', 'new', 'confirmed', 'preparing', 'ready', 'completed', 'cancelled'
   const [searchQuery, setSearchQuery] = useState('');

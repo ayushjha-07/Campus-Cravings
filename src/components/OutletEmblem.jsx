@@ -50,9 +50,9 @@ export default function OutletEmblem({ outlet }) {
 
     case 'tuckshop':
       return (
-        <div className="w-16 h-16 rounded-2xl bg-[#D00000] flex flex-col items-center justify-center text-white shadow-sm p-1">
-          <div className="text-lg">🍟</div>
-          <span className="text-[10px] font-extrabold tracking-tight">Tuckshop</span>
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#1E3A8A] to-[#2563EB] flex flex-col items-center justify-center text-white shadow-sm p-1 text-center">
+          <div className="text-lg">📚</div>
+          <span className="text-[9px] font-black tracking-tight mt-0.5">Tuck Shop</span>
         </div>
       );
 
@@ -101,9 +101,9 @@ export default function OutletEmblem({ outlet }) {
 
     case 'food-court':
       return (
-        <div className="w-16 h-16 rounded-2xl bg-[#1B4D36] flex flex-col items-center justify-center text-white shadow-sm p-1">
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#1B4D36] to-[#2D6A4F] flex flex-col items-center justify-center text-white shadow-sm p-1 text-center">
           <Store className="w-5 h-5 text-emerald-200 mb-0.5" />
-          <span className="text-[9px] font-bold text-center leading-none mt-0.5">Food Court</span>
+          <span className="text-[9px] font-black text-center leading-none mt-0.5">Food Court</span>
         </div>
       );
 
