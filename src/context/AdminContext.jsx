@@ -22,7 +22,7 @@ const ADMIN_STORAGE_KEYS = {
   SETTINGS: 'campus_cravings_admin_settings'
 };
 
-// Initial Seed Staff Members (covering all 14 CGC outlets + university admins)
+// Initial Seed Staff Members (covering CGC outlets + university admins)
 const INITIAL_STAFF = [
   {
     id: 'staff-01',

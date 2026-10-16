@@ -1,11 +1,12 @@
 // Campus Cravings - Outlets & Sample Food Data for CGC University, Mohali
 // Note: All menu items, prices, and operating hours are clearly labeled demo sample data for demonstration purposes.
 // Real official vendor menus and prices will be substituted one outlet at a time.
+import { DOCKYARD_LE_BISTRO_MENU, DOCKYARD_OFFERS } from './dockyardMenu.js';
 
 export const OUTLETS = [
   {
     id: 'applebeez',
-    name: 'Applebeez',
+    name: 'Apple Beez',
     shortCategory: 'Cafe',
     tagline: 'Gourmet Wraps, Grilled Sandwiches & Shakes',
     location: 'Block 2 Food Court, CGC Mohali',
@@ -85,7 +86,7 @@ export const OUTLETS = [
   },
   {
     id: 'topn-n-town-for-hunger',
-    name: 'Topn n Town for Hunger',
+    name: "Top N' Town for Hunger",
     shortCategory: 'Food',
     tagline: 'Sundaes, Thick Shakes, Waffles & Quick Bites',
     location: 'Student Plaza, Near Central Fountain',
@@ -153,7 +154,7 @@ export const OUTLETS = [
   },
   {
     id: 'easy-day',
-    name: 'Easy Day',
+    name: 'Easy Day SuperMart',
     shortCategory: 'Store',
     tagline: 'Packaged Snacks, Chilled Drinks & Grab-and-Go',
     location: 'Near Boys Hostel Block 4',
@@ -345,7 +346,7 @@ export const OUTLETS = [
   },
   {
     id: 'dominos',
-    name: 'Dominos',
+    name: "Domino's",
     shortCategory: 'Pizza',
     tagline: 'Cheesy Pizzas, Garlic Bread & Choco Lava Cakes',
     location: 'Food Court 1st Floor, CGC Mohali',
@@ -481,7 +482,7 @@ export const OUTLETS = [
   },
   {
     id: 'canteen',
-    name: 'Canteen',
+    name: 'College Canteen',
     shortCategory: 'Meals',
     tagline: 'Nutritious Campus Thalis, Rajma Chawal & Stuffed Parathas',
     location: 'Main University Central Canteen Hall',
@@ -537,7 +538,7 @@ export const OUTLETS = [
   },
   {
     id: 'buddys-bistro',
-    name: 'Buddys Bistro',
+    name: "Buddy's Bistro",
     shortCategory: 'Bistro',
     tagline: 'Continental Pastas, Crispy Nachos & Refreshing Coolers',
     location: 'Management Block Food Street',
@@ -705,7 +706,7 @@ export const OUTLETS = [
   },
   {
     id: 'sip-n-bites',
-    name: 'Sip n Bites',
+    name: 'Sip N Bites',
     shortCategory: 'Beverages',
     tagline: 'Fresh Squeezed Juices, Protein Bowls & Paninis',
     location: 'Sports Complex & Gymnasium Promenade',
@@ -773,7 +774,7 @@ export const OUTLETS = [
   },
   {
     id: 'x-burgers',
-    name: 'X Burgers',
+    name: 'X Burgers Café',
     shortCategory: 'Burgers',
     tagline: 'Smash Burgers, Loaded Fries & Crunchy Nuggets',
     location: 'Student Center Ground Floor',
@@ -829,7 +830,7 @@ export const OUTLETS = [
   },
   {
     id: 'thick-let-to',
-    name: 'Thick let to',
+    name: 'Thick & Letto',
     shortCategory: 'Desserts',
     tagline: 'Ultra-Thick Gourmet Shakes & Overloaded Sundaes',
     location: 'Girls Hostel Commercial Complex',
@@ -882,6 +883,36 @@ export const OUTLETS = [
         isPopular: false
       }
     ]
+  },
+  {
+    id: 'rock-n-roll',
+    name: 'Rock N Roll',
+    shortCategory: 'Fast Food',
+    tagline: 'Kathi Rolls, Gourmet Wraps & Quick Bites',
+    cuisine: ['Fast Food', 'Rolls', 'Wraps'],
+    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=800&auto=format&fit=crop&q=80',
+    menu: []
+  },
+  {
+    id: 'yum-experts',
+    aliasId: 'yum-express',
+    name: 'Yum Experts',
+    shortCategory: 'Fast Food',
+    tagline: 'Express Fast Food, Snacks & Quick Refreshments',
+    cuisine: ['Fast Food', 'Snacks', 'Quick Bites'],
+    image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800&auto=format&fit=crop&q=80',
+    menu: []
+  },
+  {
+    id: 'dockyard-le-bistro',
+    name: 'Dockyard Le Bistro',
+    shortCategory: 'Bistro',
+    tagline: 'Amritsari Kulchas, Handcrafted Pizzas, Burgers, Shakes & Desi Chinese',
+    cuisine: ['Amritsari Kulcha', 'Pizza', 'Burgers', 'Shakes', 'Pasta', 'Chinese', 'North Indian'],
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80',
+    brandColor: '#1E293B',
+    offers: DOCKYARD_OFFERS,
+    menu: DOCKYARD_LE_BISTRO_MENU
   }
 ];
 

@@ -105,7 +105,7 @@ export default function AdminOverviewPage() {
                 Welcome, {adminUser.name}
               </h1>
               <p className="text-emerald-100/90 text-xs sm:text-sm max-w-2xl leading-relaxed">
-                Centralized oversight for all 14 campus food outlets, live kitchen orders, student registrations, and cafeteria operations across CGC Mohali.
+                Centralized oversight for all 17 campus food outlets, live kitchen orders, student registrations, and cafeteria operations across CGC Mohali.
               </p>
             </div>
 

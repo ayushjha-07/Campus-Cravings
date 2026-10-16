@@ -134,7 +134,7 @@ export default function AdminMenuPage() {
               </span>
             </div>
             <p className="text-stone-500 text-xs sm:text-sm mt-0.5">
-              Live dish prices, categories, and inventory stock across all 14 CGC University food outlets
+              Live dish prices, categories, and inventory stock across all 17 CGC University food outlets
             </p>
           </div>
 
@@ -170,7 +170,7 @@ export default function AdminMenuPage() {
                 onChange={(e) => setSelectedOutletId(e.target.value)}
                 className="w-full md:w-auto px-3.5 py-2 rounded-xl border border-stone-200 text-xs font-bold text-stone-700 bg-stone-50 cursor-pointer focus:outline-hidden"
               >
-                <option value="ALL">All 14 Campus Outlets</option>
+                <option value="ALL">All 17 Campus Outlets</option>
                 {outlets.map(o => (
                   <option key={o.id} value={o.id}>{o.name}</option>
                 ))}
@@ -323,7 +323,7 @@ export default function AdminMenuPage() {
             </div>
             <h3 className="text-base font-bold text-stone-900">No Dishes Found</h3>
             <p className="text-xs text-stone-500 max-w-sm mx-auto">
-              No food items match your search or filter combination. Try selecting "All 14 Campus Outlets" or clearing dietary filters.
+              No food items match your search or filter combination. Try selecting "All 17 Campus Outlets" or clearing dietary filters.
             </p>
           </div>
         )}

@@ -2,19 +2,28 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Search, X, Store, Utensils, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { OUTLETS, getAllFoodItems } from '../data/outlets';
+import { useMenu } from '../context/MenuContext';
 
 export default function SearchBar({ placeholder = "Search for food (pizza, shakes, maggi) or outlets (Dominos, Kulhad)...", onSelect }) {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
   const navigate = useNavigate();
+  let activeOutlets = OUTLETS;
+  try {
+    const menuCtx = useMenu();
+    if (menuCtx?.outlets?.length > 0) activeOutlets = menuCtx.outlets;
+  } catch (e) {
+    // Outside MenuProvider fallback
+  }
 
   // Filter outlets and food items
   const matchedOutlets = query.trim()
-    ? OUTLETS.filter(o =>
+    ? activeOutlets.filter(o =>
         o.name.toLowerCase().includes(query.toLowerCase()) ||
-        o.cuisine.some(c => c.toLowerCase().includes(query.toLowerCase())) ||
-        o.location.toLowerCase().includes(query.toLowerCase())
+        o.shortCategory?.toLowerCase().includes(query.toLowerCase()) ||
+        o.cuisine?.some(c => c.toLowerCase().includes(query.toLowerCase())) ||
+        o.location?.toLowerCase().includes(query.toLowerCase())
       ).slice(0, 4)
     : [];
 
@@ -110,7 +119,12 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                               {outlet.name}
                             </div>
                             <div className="text-xs text-stone-500">
-                              {outlet.location} • <span className="text-emerald-700 font-medium">★ {outlet.rating}</span>
+                              {outlet.location ? `${outlet.location} • ` : ''}
+                              {outlet.rating ? (
+                                <span className="text-emerald-700 font-medium">★ {outlet.rating}</span>
+                              ) : (
+                                <span className="text-emerald-700 font-medium">{outlet.shortCategory || 'Campus Outlet'}</span>
+                              )}
                             </div>
                           </div>
                         </div>

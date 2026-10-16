@@ -15,6 +15,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 // Student Pages
 import HomePage from './pages/HomePage';
+import OutletsPage from './pages/OutletsPage';
 import OutletMenuPage from './pages/OutletMenuPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
@@ -72,7 +73,7 @@ function AppContent() {
           {/* Student Routes */}
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<HomePage />} />
-          <Route path="/outlets" element={<HomePage />} />
+          <Route path="/outlets" element={<OutletsPage />} />
           <Route path="/about" element={<HomePage />} />
           <Route path="/outlet/:id" element={<OutletMenuPage />} />
           <Route path="/cart" element={<CartPage />} />

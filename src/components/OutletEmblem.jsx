@@ -131,6 +131,17 @@ export default function OutletEmblem({ outlet }) {
         </div>
       );
 
+    case 'dockyard-le-bistro':
+      return (
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#1E293B] to-[#334155] flex flex-col items-center justify-center text-white shadow-sm p-1 text-center">
+          <UtensilsCrossed className="w-5 h-5 text-amber-300 mb-0.5" />
+          <span className="text-[8px] font-black uppercase leading-tight tracking-tighter">
+            Dockyard
+          </span>
+          <span className="text-[7px] font-bold text-amber-200 leading-none">Le Bistro</span>
+        </div>
+      );
+
     default:
       return (
         <div className="w-16 h-16 rounded-2xl bg-[#1B4D36] flex flex-col items-center justify-center text-white shadow-sm p-1">

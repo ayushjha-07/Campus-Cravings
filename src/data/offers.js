@@ -11,7 +11,7 @@ export const SPECIAL_OFFERS = [
     minOrderText: 'Min order ₹99',
     maxDiscountText: 'Max savings ₹50',
     badge: 'NEW STUDENTS',
-    outlet: 'All 14 Campus Outlets',
+    outlet: 'All 17 Campus Outlets',
     bgGradient: 'from-[#0D3828] via-[#14533C] to-[#0A291E]',
     accentColor: '#EAA044',
     tagColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40',

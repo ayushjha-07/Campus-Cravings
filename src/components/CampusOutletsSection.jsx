@@ -10,8 +10,8 @@ export default function CampusOutletsSection({ filteredOutlets }) {
   const allOutlets = filteredOutlets || outlets || OUTLETS;
   const [showAll, setShowAll] = useState(false);
 
-  // By default display first 5-8 outlets matching reference, or all 14 when toggled
-  const displayedOutlets = showAll ? allOutlets : allOutlets.slice(0, 5);
+  // Render all active campus outlets so no outlets are truncated or hidden
+  const displayedOutlets = allOutlets;
 
   return (
     <section id="outlets" className="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,27 +23,26 @@ export default function CampusOutletsSection({ filteredOutlets }) {
             <span>Campus Dining Hub</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black text-stone-900 dark:text-[#F5F7F4] tracking-tight">
-            Popular Outlets
+            Campus Food Outlets
           </h2>
           <p className="text-stone-500 dark:text-[#B8C5BB] text-xs sm:text-sm mt-1">
-            Explore top food outlets at CGC University, Mohali ({allOutlets.length} active campus spots)
+            Explore all {allOutlets.length} active campus food outlets at CGC University, Mohali
           </p>
         </div>
 
-        {/* View All Outlets Button */}
+        {/* Dedicated All Outlets Page Link */}
         <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => setShowAll(!showAll)}
+          <Link
+            to="/outlets"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-stone-100 hover:bg-stone-200 dark:bg-[#222E26] dark:hover:bg-[#2A382F] text-stone-800 dark:text-stone-200 text-xs sm:text-sm font-bold transition-all cursor-pointer border border-stone-200/80 dark:border-[#2A382F]"
           >
-            <span>{showAll ? 'Show Top Outlets' : 'View All Outlets'}</span>
+            <span>View All {allOutlets.length} Outlets</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#E76F51]" />
-          </button>
+          </Link>
         </div>
       </div>
 
-      {/* Mobile Horizontal Scrolling Carousel */}
+      {/* Mobile Horizontal Scrolling Carousel (All 17 Outlets swipeable) */}
       <div className="flex sm:hidden overflow-x-auto gap-3.5 pb-3 -mx-4 px-4 scrollbar-none no-scrollbar snap-x snap-mandatory">
         {displayedOutlets.map((outlet) => (
           <div key={outlet.id} className="min-w-[240px] max-w-[260px] snap-start shrink-0">
@@ -52,26 +51,23 @@ export default function CampusOutletsSection({ filteredOutlets }) {
         ))}
       </div>
 
-      {/* Desktop / Tablet Responsive Grid */}
-      <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+      {/* Desktop / Tablet Responsive Grid (Showing all 17 outlets) */}
+      <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
         {displayedOutlets.map((outlet) => (
           <OutletCard key={outlet.id} outlet={outlet} />
         ))}
       </div>
 
-      {/* When only 5 are shown, a subtle toggle reminder at bottom */}
-      {!showAll && allOutlets.length > 5 && (
-        <div className="mt-8 text-center">
-          <button
-            type="button"
-            onClick={() => setShowAll(true)}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-[#19231D] hover:bg-stone-50 dark:hover:bg-[#222E26] text-[#0D3828] dark:text-[#52D8A4] font-bold text-xs sm:text-sm border border-stone-200 dark:border-[#2A382F] shadow-sm transition-all cursor-pointer hover:shadow-md"
-          >
-            <span>View All {allOutlets.length} CGC Outlets</span>
-            <ArrowRight className="w-4 h-4 text-[#E76F51]" />
-          </button>
-        </div>
-      )}
+      {/* Explore Outlets Dedicated Page Banner */}
+      <div className="mt-8 text-center">
+        <Link
+          to="/outlets"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-[#19231D] hover:bg-stone-50 dark:hover:bg-[#222E26] text-[#0D3828] dark:text-[#52D8A4] font-bold text-xs sm:text-sm border border-stone-200 dark:border-[#2A382F] shadow-sm transition-all cursor-pointer hover:shadow-md"
+        >
+          <span>Explore All {allOutlets.length} Outlets with Filters & Search</span>
+          <ArrowRight className="w-4 h-4 text-[#E76F51]" />
+        </Link>
+      </div>
     </section>
   );
 }

@@ -110,12 +110,16 @@ export default function Navbar({ onSearchSubmit }) {
               )}
             </Link>
 
-            <a
-              href="/#outlets"
-              className="text-sm font-semibold text-stone-700 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white transition-colors py-2"
+            <Link
+              to="/outlets"
+              className={`text-sm font-semibold transition-colors py-2 ${
+                location.pathname === '/outlets'
+                  ? 'text-[#E76F51] font-bold'
+                  : 'text-stone-700 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white'
+              }`}
             >
               Food Outlets
-            </a>
+            </Link>
 
             <a
               href="/#offers"
@@ -325,13 +329,14 @@ export default function Navbar({ onSearchSubmit }) {
               <span>Home</span>
             </Link>
 
-            <a
-              href="/#outlets"
+            <Link
+              to="/outlets"
               onClick={() => setMobileMenuOpen(false)}
               className="p-3 rounded-xl bg-stone-50 dark:bg-[#222E26] text-stone-800 dark:text-stone-200 text-sm font-semibold flex items-center gap-2"
             >
+              <Store className="w-4 h-4 text-[#0D3828] dark:text-[#52D8A4]" />
               <span>Food Outlets</span>
-            </a>
+            </Link>
 
             <a
               href="/#offers"

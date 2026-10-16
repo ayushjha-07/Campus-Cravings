@@ -53,7 +53,7 @@ export default function SearchModal({ isOpen, onClose }) {
         <SearchBar onSelect={onClose} />
 
         <div className="pt-2 text-center text-xs text-stone-400">
-          Search all 14 CGC Mohali food outlets and student cafeteria dishes
+          Search all 17 CGC Mohali food outlets and student cafeteria dishes
         </div>
       </div>
     </div>

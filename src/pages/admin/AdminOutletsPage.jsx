@@ -100,7 +100,7 @@ export default function AdminOutletsPage() {
               </span>
             </div>
             <p className="text-stone-500 text-xs sm:text-sm mt-0.5">
-              Manage all 14 official CGC University cafeterias, timings, staff assignments, and availability
+              Manage all 17 official CGC University cafeterias, timings, staff assignments, and availability
             </p>
           </div>
 

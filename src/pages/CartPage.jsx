@@ -330,7 +330,7 @@ export default function CartPage() {
                 to="/#outlets"
                 className="text-xs font-bold text-[#0D3828] hover:underline flex items-center gap-1"
               >
-                <span>+ Browse All 14 Campus Outlets</span>
+                <span>+ Browse All 17 Campus Outlets</span>
               </Link>
             </div>
           </div>

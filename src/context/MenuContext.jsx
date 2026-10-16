@@ -17,14 +17,30 @@ const STORAGE_KEYS = {
 };
 
 export const MenuProvider = ({ children }) => {
-  // Store dynamic outlets list (allowing admin to toggle isOpen, edit details, add outlets)
+  // Store dynamic outlets list (ensuring all 17 official outlets are always present and up-to-date)
   const [outlets, setOutlets] = useState(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.OUTLETS);
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
+          const savedMap = new Map();
+          parsed.forEach(o => {
+            if (o.id) savedMap.set(o.id, o);
+            if (o.aliasId) savedMap.set(o.aliasId, o);
+          });
+          if (savedMap.has('yum-express') && !savedMap.has('yum-experts')) {
+            savedMap.set('yum-experts', savedMap.get('yum-express'));
+          }
+          // Reconcile with canonical OUTLETS definition so all 17 are always present with latest names/data
+          return OUTLETS.map(def => {
+            const s = savedMap.get(def.id) || (def.aliasId && savedMap.get(def.aliasId));
+            if (!s) return def;
+            return {
+              ...def,
+              isOpen: s.isOpen !== undefined ? s.isOpen : def.isOpen
+            };
+          });
         }
       }
     } catch (e) {
@@ -40,7 +56,17 @@ export const MenuProvider = ({ children }) => {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed && typeof parsed === 'object') {
-          return parsed;
+          // Merge in any missing or outdated outlet menus
+          const merged = { ...parsed };
+          OUTLETS.forEach(outlet => {
+            const existingMenu = merged[outlet.id] || (outlet.aliasId && merged[outlet.aliasId]);
+            if (!existingMenu || !Array.isArray(existingMenu) || existingMenu.length < (outlet.menu?.length || 0)) {
+              merged[outlet.id] = [...(outlet.menu || [])];
+            } else if (outlet.aliasId && merged[outlet.aliasId] && !merged[outlet.id]) {
+              merged[outlet.id] = merged[outlet.aliasId];
+            }
+          });
+          return merged;
         }
       }
     } catch (e) {
@@ -51,6 +77,9 @@ export const MenuProvider = ({ children }) => {
     const initialMap = {};
     OUTLETS.forEach(outlet => {
       initialMap[outlet.id] = [...(outlet.menu || [])];
+      if (outlet.aliasId) {
+        initialMap[outlet.aliasId] = [...(outlet.menu || [])];
+      }
     });
     return initialMap;
   });
@@ -75,8 +104,9 @@ export const MenuProvider = ({ children }) => {
 
   // Retrieve an outlet with its latest active menu
   const getOutlet = (outletId) => {
-    const baseOutlet = outlets.find(o => o.id === outletId) || OUTLETS.find(o => o.id === outletId) || OUTLETS[0];
-    const liveMenu = outletMenus[baseOutlet.id] || baseOutlet.menu || [];
+    const baseOutlet = outlets.find(o => o.id === outletId || o.aliasId === outletId) || OUTLETS.find(o => o.id === outletId || o.aliasId === outletId);
+    if (!baseOutlet) return null;
+    const liveMenu = outletMenus[baseOutlet.id] || (baseOutlet.aliasId && outletMenus[baseOutlet.aliasId]) || baseOutlet.menu || [];
     return {
       ...baseOutlet,
       menu: liveMenu
@@ -89,8 +119,13 @@ export const MenuProvider = ({ children }) => {
     if (outletMenus[outletId]) {
       return outletMenus[outletId];
     }
-    const baseOutlet = outlets.find(o => o.id === outletId) || OUTLETS.find(o => o.id === outletId);
-    return baseOutlet ? (baseOutlet.menu || []) : [];
+    const baseOutlet = outlets.find(o => o.id === outletId || o.aliasId === outletId) || OUTLETS.find(o => o.id === outletId || o.aliasId === outletId);
+    if (baseOutlet) {
+      if (outletMenus[baseOutlet.id]) return outletMenus[baseOutlet.id];
+      if (baseOutlet.aliasId && outletMenus[baseOutlet.aliasId]) return outletMenus[baseOutlet.aliasId];
+      return baseOutlet.menu || [];
+    }
+    return [];
   };
 
   // --- Outlet Management Methods (Admin & Staff) ---

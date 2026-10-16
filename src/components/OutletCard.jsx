@@ -57,20 +57,22 @@ export default function OutletCard({ outlet }) {
             />
           </button>
 
-          {/* Open / Closed Status Badge matching reference image */}
-          <div className="absolute bottom-2.5 right-2.5 z-10">
-            {isOpen ? (
-              <span className="inline-flex items-center gap-1 bg-emerald-600/90 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-xs backdrop-blur-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                <span>Open</span>
-              </span>
-            ) : (
-              <span className="inline-flex items-center gap-1 bg-rose-600/90 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-xs backdrop-blur-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                <span>Closed</span>
-              </span>
-            )}
-          </div>
+          {/* Open / Closed Status Badge matching reference image (only when known) */}
+          {outlet.isOpen !== undefined && (
+            <div className="absolute bottom-2.5 right-2.5 z-10">
+              {outlet.isOpen ? (
+                <span className="inline-flex items-center gap-1 bg-emerald-600/90 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-xs backdrop-blur-xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                  <span>Open</span>
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1 bg-rose-600/90 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-xs backdrop-blur-xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                  <span>Closed</span>
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Card Body matching reference image */}
@@ -103,12 +105,14 @@ export default function OutletCard({ outlet }) {
           <div className="flex items-center justify-between pt-1 text-[11px] sm:text-xs text-stone-400 dark:text-stone-400 border-t border-stone-100 dark:border-[#2A382F]">
             <div className="flex items-center gap-1">
               <Clock className="w-3.5 h-3.5 text-stone-400" />
-              <span>{outlet.prepTime || '5-10 mins'}</span>
+              <span>{outlet.prepTime || 'Counter Order'}</span>
             </div>
 
             <div className="flex items-center gap-1">
               <MapPin className="w-3.5 h-3.5 text-stone-400" />
-              <span className="truncate max-w-[120px]">{outlet.location.split(',')[0]}</span>
+              <span className="truncate max-w-[120px]">
+                {outlet.location ? outlet.location.split(',')[0] : 'CGC Mohali'}
+              </span>
             </div>
           </div>
 

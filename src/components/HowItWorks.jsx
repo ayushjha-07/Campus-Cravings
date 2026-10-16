@@ -13,7 +13,7 @@ export default function HowItWorks() {
     {
       step: '01',
       title: 'Browse Campus Outlets',
-      desc: 'Explore 14 food spots across CGC Mohali campus and view live counter menus.',
+      desc: 'Explore 17 food spots across CGC Mohali campus and view live counter menus.',
       icon: Store,
       color: 'bg-emerald-50 dark:bg-[#1A3326] text-[#0D3828] dark:text-[#52D8A4] border border-emerald-200/60 dark:border-emerald-700/40'
     },

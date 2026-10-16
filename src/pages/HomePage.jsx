@@ -9,6 +9,7 @@ import FoodCardMobileRow from '../components/FoodCardMobileRow';
 import FoodItemDetailModal from '../components/FoodItemDetailModal';
 import HowItWorks from '../components/HowItWorks';
 import { OUTLETS, getAllPopularItems, getAllFoodItems } from '../data/outlets';
+import { useMenu } from '../context/MenuContext';
 import { 
   ArrowRight, 
   Search, 
@@ -25,6 +26,7 @@ import {
 } from 'lucide-react';
 
 export default function HomePage() {
+  const { outlets } = useMenu();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [activeModalItem, setActiveModalItem] = useState(null);
@@ -47,7 +49,7 @@ export default function HomePage() {
 
   // Filtered outlets based on search and category
   const filteredOutlets = useMemo(() => {
-    let result = OUTLETS;
+    let result = outlets || OUTLETS;
 
     // Apply search query
     if (searchQuery.trim()) {
@@ -55,8 +57,8 @@ export default function HomePage() {
       result = result.filter(o => 
         o.name.toLowerCase().includes(q) ||
         o.shortCategory?.toLowerCase().includes(q) ||
-        o.location.toLowerCase().includes(q) ||
-        o.cuisine.some(c => c.toLowerCase().includes(q))
+        o.location?.toLowerCase().includes(q) ||
+        o.cuisine?.some(c => c.toLowerCase().includes(q))
       );
     }
 
@@ -64,20 +66,24 @@ export default function HomePage() {
     if (selectedCategory !== 'all') {
       const cat = selectedCategory.toLowerCase();
       result = result.filter(o => {
-        const hasMatchingMenuItem = o.menu.some(m => {
+        const hasMatchingMenuItem = (o.menu || []).some(m => {
           const itemCat = m.category.toLowerCase();
-          if (cat === 'fast food') return itemCat === 'fast food' || itemCat === 'burgers' || itemCat === 'pizza';
-          if (cat === 'north indian') return itemCat === 'north indian' || itemCat === 'meals';
-          if (cat === 'beverages') return itemCat === 'beverages' || itemCat === 'coffee';
+          if (cat === 'fast food') return itemCat === 'fast food' || itemCat === 'burgers' || itemCat === 'pizza' || itemCat === 'fries' || itemCat.includes('burger') || itemCat.includes('wrap');
+          if (cat === 'north indian') return itemCat === 'north indian' || itemCat === 'meals' || itemCat === 'main course' || itemCat.includes('kulcha') || itemCat.includes('parantha') || itemCat.includes('tikka');
+          if (cat === 'chinese') return itemCat === 'chinese' || itemCat === 'desi chinese' || itemCat.includes('noodles') || itemCat.includes('momos');
+          if (cat === 'beverages') return itemCat === 'beverages' || itemCat === 'coffee' || itemCat === 'shakes';
+          if (cat === 'snacks') return itemCat === 'snacks' || itemCat.includes('snacks') || itemCat === 'crispy nation' || itemCat.includes('roll') || itemCat === 'fries' || itemCat === 'momos';
           return itemCat === cat;
         });
-        const hasMatchingCuisine = o.cuisine.some(c => c.toLowerCase().includes(cat));
-        return hasMatchingMenuItem || hasMatchingCuisine;
+        const hasMatchingCuisine = 
+          (o.cuisine && o.cuisine.some(c => c.toLowerCase().includes(cat))) ||
+          (o.shortCategory && o.shortCategory.toLowerCase().includes(cat));
+        return Boolean(hasMatchingMenuItem || hasMatchingCuisine);
       });
     }
 
     return result;
-  }, [searchQuery, selectedCategory]);
+  }, [outlets, searchQuery, selectedCategory]);
 
   // Filtered food items based on category and search
   const filteredFoods = useMemo(() => {
@@ -100,13 +106,19 @@ export default function HomePage() {
       items = items.filter(f => {
         const itemCat = f.category.toLowerCase();
         if (cat === 'fast food') {
-          return itemCat === 'fast food' || itemCat === 'burgers' || itemCat === 'pizza';
+          return itemCat === 'fast food' || itemCat === 'burgers' || itemCat === 'pizza' || itemCat === 'fries' || itemCat.includes('burger') || itemCat.includes('wrap');
         }
         if (cat === 'north indian') {
-          return itemCat === 'north indian' || itemCat === 'meals';
+          return itemCat === 'north indian' || itemCat === 'meals' || itemCat === 'main course' || itemCat.includes('kulcha') || itemCat.includes('parantha') || itemCat.includes('tikka');
+        }
+        if (cat === 'chinese') {
+          return itemCat === 'chinese' || itemCat === 'desi chinese' || itemCat.includes('noodles') || itemCat.includes('momos');
         }
         if (cat === 'beverages') {
-          return itemCat === 'beverages' || itemCat === 'coffee';
+          return itemCat === 'beverages' || itemCat === 'coffee' || itemCat === 'shakes';
+        }
+        if (cat === 'snacks') {
+          return itemCat === 'snacks' || itemCat.includes('snacks') || itemCat === 'crispy nation' || itemCat.includes('roll') || itemCat === 'fries' || itemCat === 'momos';
         }
         return itemCat === cat;
       });
