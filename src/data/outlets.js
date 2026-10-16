@@ -7,87 +7,31 @@ import { BUDDYS_BISTRO_MENU } from './buddysMenu.js';
 import { DOMINOS_MENU } from './dominosMenu.js';
 import { THICK_LETTO_MENU } from './thickLettoMenu.js';
 import { CHUTAR_PUTAR_MENU } from './chutarPutarMenu.js';
+import { APPLEBEEZ_MENU } from './applebeezMenu.js';
+import { NESCAFE_MENU } from './nescafeMenu.js';
+import { EASY_DAY_MENU } from './easyDayMenu.js';
 
 export const OUTLETS = [
   {
     id: 'applebeez',
+    aliasId: 'apple-beez',
+    aliases: ['apple-beez', 'applebeez', 'apple-bees'],
     name: 'Apple Beez',
-    shortCategory: 'Cafe',
-    tagline: 'Gourmet Wraps, Grilled Sandwiches & Shakes',
+    shortCategory: 'Cafe & Fast Food',
+    tagline: 'Noodles, Burgers, Pastas, Kathi Rolls, Shakes & Pastries',
     location: 'Block 2 Food Court, CGC Mohali',
-    rating: 4.6,
+    rating: 4.7,
     reviewsCount: 320,
     prepTime: '10-15 mins',
     priceForTwo: '₹200',
-    cuisine: ['Wraps', 'Sandwiches', 'Shakes', 'Continental'],
+    cuisine: ['Fast Food', 'Noodles', 'Burgers', 'Pasta', 'Kathi Rolls', 'Main Course', 'Shakes', 'Desserts'],
     isVegOnly: false,
     isOpen: true,
-    timing: '9:00 AM - 8:30 PM (Demo Hours)',
+    timing: '8:30 AM - 9:30 PM',
     image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80',
     logoType: 'applebeez',
     brandColor: '#E63946',
-    menu: [
-      {
-        id: 'ab-1',
-        name: 'Crispy Paneer Grilled Wrap',
-        category: 'Burgers',
-        price: 110,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Tender spiced paneer chunks rolled in a flaky tortilla with mint mayo, crisp lettuce & crunchy onions.',
-        image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'ab-2',
-        name: 'Smoked Chicken Club Sandwich',
-        category: 'Snacks',
-        price: 130,
-        isVeg: false,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'Triple-decker toasted bread filled with smoked chicken shreds, crisp lettuce & house dressing.',
-        image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'ab-3',
-        name: 'Cheesy Garlic Breadsticks',
-        category: 'Snacks',
-        price: 85,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.5,
-        description: 'Warm oven-baked bread infused with roasted garlic butter and melted mozzarella.',
-        image: 'https://images.unsplash.com/photo-1619881589737-14ee7893cb56?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'ab-4',
-        name: 'KitKat Belgium Shake',
-        category: 'Desserts',
-        price: 110,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.9,
-        description: 'Rich dark chocolate shake blended with crunchy KitKat wafers and whipped cream.',
-        image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'ab-5',
-        name: 'Grilled Veggie Cheese Panini',
-        category: 'Snacks',
-        price: 95,
-        isVeg: true,
-        isAvailable: false, // Demo out of stock item
-        rating: 4.6,
-        description: 'Toasted Italian bread stuffed with roasted zucchini, bell peppers, mozzarella and basil pesto.',
-        image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    menu: APPLEBEEZ_MENU
   },
   {
     id: 'topn-n-town-for-hunger',
@@ -159,59 +103,24 @@ export const OUTLETS = [
   },
   {
     id: 'easy-day',
+    aliasId: 'easy-day-supermart',
+    aliases: ['easyday', 'easy-day-supermart', 'mini-easyday', 'easy-day'],
     name: 'Easy Day SuperMart',
-    shortCategory: 'Store',
-    tagline: 'Packaged Snacks, Chilled Drinks & Grab-and-Go',
-    location: 'Near Boys Hostel Block 4',
-    rating: 4.2,
-    reviewsCount: 190,
-    prepTime: '3-6 mins',
-    priceForTwo: '₹100',
-    cuisine: ['Snacks', 'Beverages', 'Instant Food'],
+    shortCategory: 'SuperMart & Fast Food',
+    tagline: 'Burgers, Pastas, Fries, Shakes, Sandwiches & Crispy Patties',
+    location: 'Near Boys Hostel Block 4, CGC Mohali',
+    rating: 4.6,
+    reviewsCount: 290,
+    prepTime: '6-12 mins',
+    priceForTwo: '₹140',
+    cuisine: ['Burgers', 'Pasta', 'Fries', 'Shakes', 'Sandwiches', 'Patties', 'Beverages'],
     isVegOnly: false,
     isOpen: true,
-    timing: '8:00 AM - 10:00 PM (Demo Hours)',
+    timing: '8:00 AM - 10:00 PM',
     image: 'https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=800&auto=format&fit=crop&q=80',
     logoType: 'easyday',
     brandColor: '#2B9348',
-    menu: [
-      {
-        id: 'ed-1',
-        name: 'Veg Mayo Grilled Sandwich',
-        category: 'Snacks',
-        price: 55,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.2,
-        description: 'Classic toasted white bread with crunchy cucumbers, carrots, and sweet corn mayo.',
-        image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'ed-2',
-        name: 'Cold Coffee Can (250ml)',
-        category: 'Beverages',
-        price: 45,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.4,
-        description: 'Chilled ready-to-drink brewed milk coffee for quick refreshment between lectures.',
-        image: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'ed-3',
-        name: 'Instant Noodles Cup (Masala)',
-        category: 'Snacks',
-        price: 40,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.1,
-        description: 'Steaming hot cup noodles served instant with extra mixed vegetables.',
-        image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    menu: EASY_DAY_MENU
   },
   {
     id: 'kulhad',
@@ -372,71 +281,24 @@ export const OUTLETS = [
   },
   {
     id: 'nescafe',
+    aliasId: 'nescafe-cgc',
+    aliases: ['nescafe', 'nescafe-cgc', 'nescafe-coffee'],
     name: 'Nescafe',
-    shortCategory: 'Coffee',
-    tagline: 'Aromatic Brews, Iced Frappes, Muffins & Maggi',
-    location: 'Library Quadrangle, Central Walkway',
-    rating: 4.6,
+    shortCategory: 'Coffee & Maggi',
+    tagline: 'Signature Brews, Maggi Varieties, Handcrafted Pizzas & Frappes',
+    location: 'Library Quadrangle, Central Walkway, CGC Mohali',
+    rating: 4.8,
     reviewsCount: 620,
     prepTime: '6-10 mins',
-    priceForTwo: '₹160',
-    cuisine: ['Coffee', 'Frappes', 'Muffins', 'Snacks'],
+    priceForTwo: '₹140',
+    cuisine: ['Maggi', 'Pizza', 'Coffee', 'Frappes', 'Sweet Corn', 'Tea', 'Snacks'],
     isVegOnly: true,
     isOpen: true,
-    timing: '8:00 AM - 8:00 PM (Demo Hours)',
+    timing: '8:00 AM - 8:30 PM',
     image: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&auto=format&fit=crop&q=80',
     logoType: 'nescafe',
     brandColor: '#C1121F',
-    menu: [
-      {
-        id: 'nc-1',
-        name: 'Cold Coffee',
-        category: 'Coffee',
-        price: 99,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.9,
-        description: 'Signature thick chilled brewed coffee topped with creamy chocolate dusting.',
-        image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'nc-2',
-        name: 'Creamy Hot Cappuccino',
-        category: 'Coffee',
-        price: 50,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Freshly steamed espresso shot with thick velvety milk foam.',
-        image: 'https://images.unsplash.com/photo-1534778101976-62847782c213?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'nc-3',
-        name: 'Nescafe Special Butter Masala Maggi',
-        category: 'Snacks',
-        price: 55,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'The iconic campus snack prepared with butter, fine herbs, and a savory twist.',
-        image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'nc-4',
-        name: 'Chocochip Walnut Muffin',
-        category: 'Desserts',
-        price: 45,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.4,
-        description: 'Soft oven-baked bakery muffin studded with rich semi-sweet chocolate chips.',
-        image: 'https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    menu: NESCAFE_MENU
   },
   {
     id: 'canteen',
@@ -748,7 +610,7 @@ export const OUTLETS = [
 
 // Helper function to extract all popular food items matching reference image order first
 export const getAllPopularItems = () => {
-  const priorityIds = ['dm-pz-1', 'dm-1', 'xb-burger', 'nc-1', 'ts-fries', 'kh-1', 'tlt-ch-5', 'tlt-brownie', 'cp-sw-4'];
+  const priorityIds = ['dm-pz-1', 'dm-1', 'xb-burger', 'nc-cc-1', 'nc-1', 'ts-fries', 'kh-1', 'tlt-ch-5', 'tlt-brownie', 'cp-sw-4', 'ab-snk-9', 'ed-bg-1'];
   const allItems = [];
 
   OUTLETS.forEach(outlet => {

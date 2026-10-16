@@ -243,6 +243,12 @@ export default function OutletMenuPage() {
                     <><strong>Official Thick & Letto Menu:</strong> Full verified exotic fruit thick shakes, cold coffees, cheesecake shakes & extras from the vendor menu board.</>
                   ) : outlet.id === 'chutar-putar' ? (
                     <><strong>Official Chutar Putar Menu:</strong> Full verified sandwiches, burgers, wraps, momos, fries, chaats, warm chais & shakes from the counter menu board.</>
+                  ) : outlet.id === 'applebeez' ? (
+                    <><strong>Official Apple Beez Menu:</strong> Full verified noodles, fast foods, pastas, bhaturas, burgers, shakes, pastries & main courses from the vendor menu boards.</>
+                  ) : outlet.id === 'nescafe' ? (
+                    <><strong>Official Nescafe Kiosk Menu:</strong> Full verified Maggi varieties, pizzas, sweet corn, coffees, teas, coolers & frappes from the campus kiosk board.</>
+                  ) : outlet.id === 'easy-day' ? (
+                    <><strong>Official Mini Easy Day Menu:</strong> Full verified burgers, pastas, fries, mini meals, shakes, drinks, sandwiches & crispy patties from the store menu board.</>
                   ) : (
                     <><strong>Sample Outlet Menu:</strong> Representative items & prices for development. Real menus will be loaded per outlet.</>
                   )}
