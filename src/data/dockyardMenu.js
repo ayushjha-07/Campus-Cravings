@@ -29,8 +29,8 @@ export const DOCKYARD_OFFERS = [
   {
     id: 'dlb-offer-4',
     title: 'Mega Shake Saver',
-    deal: 'Buy 6 Same Flavour Shakes & get a ₹100 discount per shake',
-    badge: '₹100 Off / Shake',
+    deal: 'Buy 6 Same Flavour Shakes and get ₹10 discount per shake',
+    badge: '₹10 Off / Shake',
     targetCategory: 'Shakes',
     tagColor: 'bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border-indigo-500/30'
   }

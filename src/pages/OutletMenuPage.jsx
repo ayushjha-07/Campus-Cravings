@@ -233,6 +233,10 @@ export default function OutletMenuPage() {
                 <span>
                   {outlet.id === 'dockyard-le-bistro' ? (
                     <><strong>Official Bistro Counter Menu:</strong> Full verified items, prices & categories for Dockyard Le Bistro at CGC Mohali.</>
+                  ) : outlet.id === 'canteen' ? (
+                    <><strong>Official College Canteen Menu:</strong> Full verified items, prices & categories from the central university canteen board.</>
+                  ) : outlet.id === 'buddys-bistro' ? (
+                    <><strong>Official Buddy's Bistro Menu:</strong> Full verified items, prices & portion sizes from the original physical menu boards.</>
                   ) : (
                     <><strong>Sample Outlet Menu:</strong> Representative items & prices for development. Real menus will be loaded per outlet.</>
                   )}
@@ -434,14 +438,30 @@ export default function OutletMenuPage() {
                       {/* Price & Add to Cart Controls */}
                       <div className="p-2.5 sm:p-4 pt-1 flex items-center justify-between border-t border-stone-100 dark:border-[#2A382F]">
                         <div className="flex items-baseline gap-1">
-                          <span className="text-xs sm:text-lg font-black text-stone-900 dark:text-[#F5F7F4]">
-                            ₹{food.price}
-                          </span>
-                          <span className="text-[9px] sm:text-[10px] text-stone-400 font-medium hidden sm:inline">demo</span>
+                          {food.variants && food.variants.length > 0 ? (
+                            <span className="text-xs sm:text-base font-black text-stone-900 dark:text-[#F5F7F4]">
+                              ₹{food.variants[0].price} - ₹{food.variants[food.variants.length - 1].price}
+                            </span>
+                          ) : (
+                            <span className="text-xs sm:text-lg font-black text-stone-900 dark:text-[#F5F7F4]">
+                              ₹{food.price}
+                            </span>
+                          )}
                         </div>
 
                         {isAvailable ? (
-                          quantity === 0 ? (
+                          food.variants && food.variants.length > 0 ? (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveModalItem(food);
+                              }}
+                              className="flex items-center gap-1 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-lg sm:rounded-xl bg-[#0D3828] hover:bg-[#144834] text-white text-[11px] sm:text-xs font-bold transition-all active:scale-95 shadow-2xs cursor-pointer"
+                            >
+                              <span>Options</span>
+                              <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
+                            </button>
+                          ) : quantity === 0 ? (
                             <button
                               onClick={(e) => {
                                 e.stopPropagation();

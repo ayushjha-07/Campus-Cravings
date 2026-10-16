@@ -2,6 +2,8 @@
 // Note: All menu items, prices, and operating hours are clearly labeled demo sample data for demonstration purposes.
 // Real official vendor menus and prices will be substituted one outlet at a time.
 import { DOCKYARD_LE_BISTRO_MENU, DOCKYARD_OFFERS } from './dockyardMenu.js';
+import { CANTEEN_MENU } from './canteenMenu.js';
+import { BUDDYS_BISTRO_MENU } from './buddysMenu.js';
 
 export const OUTLETS = [
   {
@@ -482,115 +484,45 @@ export const OUTLETS = [
   },
   {
     id: 'canteen',
+    aliasId: 'college-canteen',
+    aliases: ['college-canteen', 'canteen'],
     name: 'College Canteen',
-    shortCategory: 'Meals',
-    tagline: 'Nutritious Campus Thalis, Rajma Chawal & Stuffed Parathas',
+    shortCategory: 'Canteen',
+    tagline: 'Campus Thalis, Breakfast, Rolls, Pizzas, Burgers & Chinese',
     location: 'Main University Central Canteen Hall',
-    rating: 4.4,
+    rating: 4.6,
     reviewsCount: 780,
     prepTime: '8-14 mins',
     priceForTwo: '₹140',
-    cuisine: ['North Indian', 'South Indian', 'Meals', 'Thali'],
-    isVegOnly: true,
+    cuisine: ['Breakfast', 'North Indian', 'Pizza', 'Burger', 'Sandwich', 'Rolls', 'Pasta', 'Chinese', 'Beverages', 'Desserts'],
+    isVegOnly: false,
     isOpen: true,
     timing: '8:00 AM - 7:30 PM (Demo Hours)',
     image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
     logoType: 'canteen',
     brandColor: '#2D6A4F',
-    menu: [
-      {
-        id: 'cn-1',
-        name: 'Delhi Style Rajma Chawal Bowl',
-        category: 'North Indian',
-        price: 70,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Slow-cooked spiced red kidney beans served over fragrant steamed basmati rice with pickled onion salad.',
-        image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'cn-2',
-        name: 'Executive Deluxe Thali',
-        category: 'North Indian',
-        price: 110,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.6,
-        description: 'Paneer butter masala, yellow dal tadka, jeera rice, 3 butter rotis, raita, and gulab jamun.',
-        image: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'cn-3',
-        name: 'Stuffed Aloo Pyaaz Paratha Combo',
-        category: 'North Indian',
-        price: 60,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'Two griddled whole wheat flatbreads with spiced potato stuffing, served with fresh curd and pickle.',
-        image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      }
-    ]
+    menu: CANTEEN_MENU
   },
   {
     id: 'buddys-bistro',
+    aliasId: 'buds-bistro',
+    aliases: ['buds-bistro', 'buddys', 'buddy-bistro'],
     name: "Buddy's Bistro",
     shortCategory: 'Bistro',
-    tagline: 'Continental Pastas, Crispy Nachos & Refreshing Coolers',
+    tagline: 'Pizzas, Burgers, Fries, Rolls, Momos, Shakes & Cholle Bhature',
     location: 'Management Block Food Street',
-    rating: 4.6,
+    rating: 4.7,
     reviewsCount: 360,
     prepTime: '12-16 mins',
     priceForTwo: '₹220',
-    cuisine: ['Pasta', 'Burgers', 'Mocktails', 'Continental'],
+    cuisine: ['Pizza', 'Burger', 'Sandwich', 'Fries', 'Noodles', 'Pasta', 'Cholle Bhature', 'Omelette', 'Rolls', 'Momos', 'Chai', 'Shakes'],
     isVegOnly: false,
     isOpen: true,
     timing: '9:30 AM - 8:30 PM (Demo Hours)',
     image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80',
     logoType: 'buddys',
     brandColor: '#F77F00',
-    menu: [
-      {
-        id: 'bb-1',
-        name: 'Creamy Alfredo White Sauce Pasta',
-        category: 'Meals',
-        price: 139,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Penne tossed in garlic herb parmesan butter cream with sautéed mushrooms and bell peppers.',
-        image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281699?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'bb-2',
-        name: 'Crispy Veg Buddy Burger',
-        category: 'Burgers',
-        price: 89,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.5,
-        description: 'Herb potato and pea patty with sliced cheese, lettuce, tomato, and Thousand Island dressing.',
-        image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'bb-3',
-        name: 'Blue Ocean Curacao Sparkler',
-        category: 'Beverages',
-        price: 75,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.6,
-        description: 'Fizzy citrus mocktail with blue curacao syrup, lime juice, and fresh mint sprigs.',
-        image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    menu: BUDDYS_BISTRO_MENU
   },
   {
     id: 'chutar-putar',

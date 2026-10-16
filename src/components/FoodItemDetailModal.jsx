@@ -17,11 +17,17 @@ import { useCart } from '../context/CartContext';
 export default function FoodItemDetailModal({ item, outlet, isOpen, onClose }) {
   const { addToCart, getItemQuantity, isFavorite, toggleFavorite } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const [selectedVariant, setSelectedVariant] = useState(null);
 
-  // Reset quantity when opened or item changes
+  // Reset quantity and selected variant when opened or item changes
   useEffect(() => {
     if (isOpen) {
       setQuantity(1);
+      if (item?.variants && item.variants.length > 0) {
+        setSelectedVariant(item.variants[0]);
+      } else {
+        setSelectedVariant(null);
+      }
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -44,7 +50,9 @@ export default function FoodItemDetailModal({ item, outlet, isOpen, onClose }) {
 
   if (!isOpen || !item) return null;
 
-  const currentCartQty = getItemQuantity(item.id);
+  const activePrice = selectedVariant ? selectedVariant.price : item.price;
+  const activeId = selectedVariant ? `${item.id}-${selectedVariant.name.toLowerCase()}` : item.id;
+  const currentCartQty = getItemQuantity(activeId);
   const favorited = isFavorite ? isFavorite(item.id) : false;
   const isAvailable = item.isAvailable !== false;
 
@@ -53,7 +61,16 @@ export default function FoodItemDetailModal({ item, outlet, isOpen, onClose }) {
 
   const handleAddToCart = () => {
     if (!isAvailable) return;
-    addToCart(item, outlet, quantity);
+    const itemToAdd = selectedVariant
+      ? {
+          ...item,
+          id: activeId,
+          name: `${item.name} (${selectedVariant.name})`,
+          price: selectedVariant.price,
+          selectedVariant: selectedVariant.name
+        }
+      : item;
+    addToCart(itemToAdd, outlet, quantity);
     onClose();
   };
 
@@ -157,17 +174,47 @@ export default function FoodItemDetailModal({ item, outlet, isOpen, onClose }) {
             </div>
 
             <div className="text-right shrink-0">
-              <span className="text-2xl font-black text-[#0D3828]">
-                ₹{item.price}
+              <span className="text-2xl font-black text-[#0D3828] dark:text-[#52D8A4]">
+                ₹{activePrice}
               </span>
-              <span className="block text-[10px] text-stone-400 font-medium">
-                (demo price)
-              </span>
+              {selectedVariant && (
+                <span className="block text-[10px] text-emerald-700 dark:text-emerald-400 font-bold uppercase tracking-wider">
+                  {selectedVariant.name}
+                </span>
+              )}
             </div>
           </div>
 
+          {/* Size / Portion Variants Selector */}
+          {item.variants && item.variants.length > 0 && (
+            <div className="p-3.5 rounded-2xl bg-stone-50 dark:bg-[#222E26] border border-stone-200/80 dark:border-[#2A382F] space-y-2">
+              <div className="text-xs font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wider">
+                Select Size / Portion:
+              </div>
+              <div className="flex items-center gap-2.5 flex-wrap">
+                {item.variants.map((v) => (
+                  <button
+                    key={v.name}
+                    type="button"
+                    onClick={() => setSelectedVariant(v)}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer flex items-center gap-2 ${
+                      selectedVariant?.name === v.name
+                        ? 'bg-[#0D3828] dark:bg-[#14533C] text-white border-[#0D3828] dark:border-[#14533C] shadow-xs'
+                        : 'bg-white dark:bg-[#19231D] text-stone-700 dark:text-stone-200 border-stone-200 dark:border-[#2A382F] hover:bg-stone-100'
+                    }`}
+                  >
+                    <span>{v.name}</span>
+                    <span className={`text-[11px] font-mono ${selectedVariant?.name === v.name ? 'text-emerald-300' : 'text-stone-500 dark:text-stone-400'}`}>
+                      ₹{v.price}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Description */}
-          <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200/80 text-xs sm:text-sm text-stone-600 leading-relaxed">
+          <div className="p-3.5 rounded-2xl bg-stone-50 dark:bg-[#222E26] border border-stone-200/80 dark:border-[#2A382F] text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
             {item.description || 'Prepared fresh with campus hygiene standards. Pick up warm directly at the counter.'}
           </div>
 
