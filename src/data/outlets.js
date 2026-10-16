@@ -4,6 +4,9 @@
 import { DOCKYARD_LE_BISTRO_MENU, DOCKYARD_OFFERS } from './dockyardMenu.js';
 import { CANTEEN_MENU } from './canteenMenu.js';
 import { BUDDYS_BISTRO_MENU } from './buddysMenu.js';
+import { DOMINOS_MENU } from './dominosMenu.js';
+import { THICK_LETTO_MENU } from './thickLettoMenu.js';
+import { CHUTAR_PUTAR_MENU } from './chutarPutarMenu.js';
 
 export const OUTLETS = [
   {
@@ -348,71 +351,24 @@ export const OUTLETS = [
   },
   {
     id: 'dominos',
+    aliasId: 'dominos-pizza',
+    aliases: ['dominos-pizza', 'domino', 'dominos'],
     name: "Domino's",
     shortCategory: 'Pizza',
-    tagline: 'Cheesy Pizzas, Garlic Bread & Choco Lava Cakes',
+    tagline: 'Hand-Tossed Pizzas, Garlic Bread, Chicken Wings, Beverages & Desserts',
     location: 'Food Court 1st Floor, CGC Mohali',
-    rating: 4.7,
+    rating: 4.8,
     reviewsCount: 890,
     prepTime: '15-20 mins',
-    priceForTwo: '₹350',
-    cuisine: ['Pizza', 'Italian', 'Garlic Bread', 'Desserts'],
+    priceForTwo: '₹300',
+    cuisine: ['Pizza', 'Garlic Bread', 'Sides', 'Beverages', 'Desserts'],
     isVegOnly: false,
     isOpen: true,
-    timing: '10:30 AM - 9:30 PM (Demo Hours)',
+    timing: '10:30 AM - 9:30 PM',
     image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&auto=format&fit=crop&q=80',
     logoType: 'dominos',
     brandColor: '#0055A5',
-    menu: [
-      {
-        id: 'dm-1',
-        name: 'Margherita Pizza',
-        category: 'Pizza',
-        price: 199,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'Classic herb tomato sauce covered with 100% genuine stringy mozzarella cheese.',
-        image: 'https://images.unsplash.com/photo-1604382355076-af4b0eb60143?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'dm-2',
-        name: 'Farmhouse Veg Extravaganza',
-        category: 'Pizza',
-        price: 249,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Loaded with crunchy capsicum, sweet corn, sliced button mushrooms and juicy tomatoes.',
-        image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'dm-3',
-        name: 'Stuffed Garlic Breadsticks',
-        category: 'Snacks',
-        price: 139,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.9,
-        description: 'Freshly baked breadsticks stuffed with seasoned sweet corn and jalapenos with melted cheese.',
-        image: 'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'dm-4',
-        name: 'Molten Choco Lava Cake',
-        category: 'Desserts',
-        price: 99,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.9,
-        description: 'Warm chocolate cake with a velvety molten chocolate centre that oozes out upon first bite.',
-        image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    menu: DOMINOS_MENU
   },
   {
     id: 'nescafe',
@@ -526,47 +482,24 @@ export const OUTLETS = [
   },
   {
     id: 'chutar-putar',
+    aliasId: 'chutarputar',
+    aliases: ['chutarputar', 'cafe-cravings', 'chutar-putar'],
     name: 'Chutar Putar',
-    shortCategory: 'Chaat',
-    tagline: 'Tangy Street Chaats, Crispy Golgappe & Pav Bhaji',
+    shortCategory: 'Cafe',
+    tagline: 'Sandwiches, Burgers, Wraps, Momos, Fries, Chaats, Chai & Shakes',
     location: 'Open Amphitheatre Corner, CGC Mohali',
-    rating: 4.5,
+    rating: 4.7,
     reviewsCount: 470,
-    prepTime: '5-10 mins',
-    priceForTwo: '₹120',
-    cuisine: ['Street Food', 'Chaat', 'Snacks'],
+    prepTime: '8-14 mins',
+    priceForTwo: '₹150',
+    cuisine: ['Sandwiches', 'Burgers', 'Wraps', 'Momos', 'Fries', 'Chaat', 'Chai', 'Shakes'],
     isVegOnly: true,
     isOpen: true,
-    timing: '10:00 AM - 8:00 PM (Demo Hours)',
+    timing: '9:00 AM - 8:30 PM',
     image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
     logoType: 'chutarputar',
     brandColor: '#E76F51',
-    menu: [
-      {
-        id: 'cp-1',
-        name: 'Butter Pav Bhaji (2 Pavs)',
-        category: 'Snacks',
-        price: 80,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'Mashed spicy mixed vegetable curry crowned with a slab of butter, paired with soft toasted buns.',
-        image: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'cp-2',
-        name: 'Dahi Puri Chaat Delight',
-        category: 'Snacks',
-        price: 60,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Crisp puris stuffed with potato-chickpeas, smothered in chilled sweetened yogurt and date-mint chutneys.',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    menu: CHUTAR_PUTAR_MENU
   },
   {
     id: 'food-court',
@@ -762,59 +695,24 @@ export const OUTLETS = [
   },
   {
     id: 'thick-let-to',
+    aliasId: 'thick-letto',
+    aliases: ['thick-letto', 'thick-and-letto', 'thick-let-to'],
     name: 'Thick & Letto',
-    shortCategory: 'Desserts',
-    tagline: 'Ultra-Thick Gourmet Shakes & Overloaded Sundaes',
-    location: 'Girls Hostel Commercial Complex',
-    rating: 4.6,
+    shortCategory: 'Shakes',
+    tagline: 'Exotic Fruit Thick Shakes, Cold Coffees & Cheesecake Shakes',
+    location: 'Girls Hostel Commercial Complex, CGC Mohali',
+    rating: 4.8,
     reviewsCount: 380,
     prepTime: '8-12 mins',
-    priceForTwo: '₹210',
-    cuisine: ['Thick Shakes', 'Ice Cream', 'Beverages', 'Desserts'],
+    priceForTwo: '₹140',
+    cuisine: ['Thick Shakes', 'Cold Coffee', 'Cheesecake Shakes', 'Desserts'],
     isVegOnly: true,
     isOpen: true,
-    timing: '10:30 AM - 9:30 PM (Demo Hours)',
+    timing: '10:30 AM - 9:30 PM',
     image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=800&auto=format&fit=crop&q=80',
     logoType: 'thickletto',
     brandColor: '#582F0E',
-    menu: [
-      {
-        id: 'tlt-brownie',
-        name: 'Chocolate Brownie',
-        category: 'Desserts',
-        price: 79,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.9,
-        description: 'Fudgy baked dark chocolate walnut brownie with warm cocoa drizzle.',
-        image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'tlt-1',
-        name: 'Ferrero Rocher Monster Shake',
-        category: 'Desserts',
-        price: 140,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.9,
-        description: 'Hazelnut chocolate thick shake infused with crushed Ferrero Rocher and whipped cream mountain.',
-        image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'tlt-2',
-        name: 'Oreo Overloaded Thick Shake',
-        category: 'Desserts',
-        price: 110,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Classic chocolate cookie milkshake blended extra thick with rich chocolate drizzle.',
-        image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    menu: THICK_LETTO_MENU
   },
   {
     id: 'rock-n-roll',
@@ -850,7 +748,7 @@ export const OUTLETS = [
 
 // Helper function to extract all popular food items matching reference image order first
 export const getAllPopularItems = () => {
-  const priorityIds = ['dm-1', 'xb-burger', 'nc-1', 'ts-fries', 'kh-1', 'tlt-brownie'];
+  const priorityIds = ['dm-pz-1', 'dm-1', 'xb-burger', 'nc-1', 'ts-fries', 'kh-1', 'tlt-ch-5', 'tlt-brownie', 'cp-sw-4'];
   const allItems = [];
 
   OUTLETS.forEach(outlet => {

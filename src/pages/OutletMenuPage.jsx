@@ -237,6 +237,12 @@ export default function OutletMenuPage() {
                     <><strong>Official College Canteen Menu:</strong> Full verified items, prices & categories from the central university canteen board.</>
                   ) : outlet.id === 'buddys-bistro' ? (
                     <><strong>Official Buddy's Bistro Menu:</strong> Full verified items, prices & portion sizes from the original physical menu boards.</>
+                  ) : outlet.id === 'dominos' ? (
+                    <><strong>Official Domino's Menu:</strong> Full verified pizzas, garlic breads, sides, beverages & desserts from the campus food truck board.</>
+                  ) : outlet.id === 'thick-let-to' ? (
+                    <><strong>Official Thick & Letto Menu:</strong> Full verified exotic fruit thick shakes, cold coffees, cheesecake shakes & extras from the vendor menu board.</>
+                  ) : outlet.id === 'chutar-putar' ? (
+                    <><strong>Official Chutar Putar Menu:</strong> Full verified sandwiches, burgers, wraps, momos, fries, chaats, warm chais & shakes from the counter menu board.</>
                   ) : (
                     <><strong>Sample Outlet Menu:</strong> Representative items & prices for development. Real menus will be loaded per outlet.</>
                   )}
