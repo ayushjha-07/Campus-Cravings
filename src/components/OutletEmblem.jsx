@@ -151,6 +151,15 @@ export default function OutletEmblem({ outlet }) {
         </div>
       );
 
+    case 'yum-experts':
+      return (
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#DC2626] to-[#EF4444] flex flex-col items-center justify-center text-white shadow-sm p-1 text-center">
+          <UtensilsCrossed className="w-5 h-5 text-amber-200 mb-0.5" />
+          <span className="text-[9px] font-black tracking-tight uppercase leading-none">Yum</span>
+          <span className="text-[8px] font-extrabold text-amber-200 leading-none">Experts</span>
+        </div>
+      );
+
     default:
       return (
         <div className="w-16 h-16 rounded-2xl bg-[#1B4D36] flex flex-col items-center justify-center text-white shadow-sm p-1">

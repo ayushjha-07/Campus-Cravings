@@ -255,6 +255,12 @@ export default function OutletMenuPage() {
                     <><strong>Official Top N' Town Menu:</strong> Full verified burgers, sandwiches, momos, fried rice, chowmein, thupka, pastas & Korean specials from the physical menu boards.</>
                   ) : outlet.id === 'x-burgers' ? (
                     <><strong>Official X Burgers Café Menu:</strong> Full verified burgers, Biggie combos, wraps, loaded fries, spring rolls, momos, shakes & cold coffees from the vendor menu boards.</>
+                  ) : outlet.id === 'kulhad' ? (
+                    <><strong>Official Kulhad Menu:</strong> Full verified earthen kulhad chais, pizzas, maggi, burgers, wraps, lassi, shakes & cookies from the vendor menu board.</>
+                  ) : outlet.id === 'yum-experts' ? (
+                    <><strong>Official Yum Experts Menu:</strong> Full verified mocktails, smoothies, fresh juices, chaats, burgers, wraps, pasta, Chinese wok dishes, rice bowls & combos from the vendor menu board.</>
+                  ) : outlet.id === 'sip-n-bites' ? (
+                    <><strong>Official Sip N Bites Menu:</strong> Full verified thick shakes, ice cream shakes, biscuit shakes, fresh juices, burgers, momos, pastas, noodles, rolls & combos from the original menu boards.</>
                   ) : (
                     <><strong>Sample Outlet Menu:</strong> Representative items & prices for development. Real menus will be loaded per outlet.</>
                   )}

@@ -13,6 +13,9 @@ import { EASY_DAY_MENU } from './easyDayMenu.js';
 import { ROCK_N_ROLL_MENU } from './rockNRollMenu.js';
 import { TOP_N_TOWN_MENU } from './topNTownMenu.js';
 import { X_BURGERS_MENU } from './xBurgersMenu.js';
+import { KULHAD_MENU } from './kulhadMenu.js';
+import { YUM_EXPERTS_MENU } from './yumExpertsMenu.js';
+import { SIP_N_BITES_MENU } from './sipNBitesMenu.js';
 
 export const OUTLETS = [
   {
@@ -79,71 +82,23 @@ export const OUTLETS = [
   },
   {
     id: 'kulhad',
+    aliases: ['kulhad', 'kulhad-chai', 'kulhad-cafeteria'],
     name: 'Kulhad',
-    shortCategory: 'Cafe',
-    tagline: 'Desi Flavours in Clay Cups: Kulhad Chai, Maggi & Pizza',
-    location: 'Central Lawn Kiosk, Near Amphitheatre',
+    shortCategory: 'Chai, Snacks & Kulhad Specials',
+    tagline: 'Swad Desh ki Mittee ka — Earthen Kulhad Chai, Maggi, Pizzas, Shakes & Lassi',
+    location: 'Central Lawn Kiosk, Near Amphitheatre, CGC Mohali',
     rating: 4.8,
     reviewsCount: 540,
     prepTime: '7-12 mins',
     priceForTwo: '₹140',
-    cuisine: ['Tea', 'Kulhad Pizza', 'Snacks', 'Street Food'],
+    cuisine: ['Chai', 'Pizza', 'Burger', 'Maggi', 'Sandwiches', 'Lassi', 'Street Food', 'Shakes'],
     isVegOnly: true,
     isOpen: true,
-    timing: '8:30 AM - 8:30 PM (Demo Hours)',
+    timing: '8:30 AM - 9:30 PM',
     image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=800&auto=format&fit=crop&q=80',
     logoType: 'kulhad',
     brandColor: '#8B4513',
-    menu: [
-      {
-        id: 'kh-1',
-        name: 'Kulhad Chai',
-        category: 'Beverages',
-        price: 49,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.9,
-        description: 'Authentic piping-hot ginger & cardamom tea brewed fresh and served in a traditional clay earthen kulhad.',
-        image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'kh-2',
-        name: 'Overloaded Kulhad Pizza',
-        category: 'Pizza',
-        price: 119,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'Diced veggies, paneer, oregano seasoning and bubbling molten mozzarella baked directly in an earthen pot.',
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'kh-3',
-        name: 'Desi Masala Butter Maggi',
-        category: 'Snacks',
-        price: 50,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Steamy double tastemaker Maggi with diced onions, tomatoes, green chillies & Amul butter.',
-        image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'kh-4',
-        name: 'Maska Bun with Cardamom Tea',
-        category: 'Snacks',
-        price: 60,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.6,
-        description: 'Fresh soft sweet bun sliced and generously buttered, paired with a kulhad cutting.',
-        image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    menu: KULHAD_MENU
   },
   {
     id: 'tuckshop',
@@ -388,71 +343,24 @@ export const OUTLETS = [
   },
   {
     id: 'sip-n-bites',
+    aliasId: 'sip-n-bite',
+    aliases: ['sip-n-bites', 'sipnbites', 'sip-n-bite', 'sipnbite'],
     name: 'Sip N Bites',
-    shortCategory: 'Beverages',
-    tagline: 'Fresh Squeezed Juices, Protein Bowls & Paninis',
-    location: 'Sports Complex & Gymnasium Promenade',
-    rating: 4.6,
-    reviewsCount: 310,
+    shortCategory: 'Shakes, Juices & Fast Food',
+    tagline: 'Fresh Juices, Ice Cream Shakes, Biscuit Shakes, Burgers, Pasta, Momos & Rolls',
+    location: 'Sports Complex & Gymnasium Promenade, CGC Mohali',
+    rating: 4.7,
+    reviewsCount: 420,
     prepTime: '7-12 mins',
-    priceForTwo: '₹170',
-    cuisine: ['Healthy', 'Juices', 'Sandwiches', 'Smoothies'],
-    isVegOnly: true,
+    priceForTwo: '₹180',
+    cuisine: ['Shakes', 'Juices', 'Burgers', 'Momos', 'Pasta', 'Noodles', 'Patties', 'Rolls', 'Pizza', 'Sweets'],
+    isVegOnly: false,
     isOpen: true,
-    timing: '7:30 AM - 7:30 PM (Demo Hours)',
+    timing: '8:00 AM - 9:30 PM',
     image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&auto=format&fit=crop&q=80',
     logoType: 'sipnbites',
     brandColor: '#0EA5E9',
-    menu: [
-      {
-        id: 'sb-1',
-        name: 'Fresh Pressed Citrus Juice',
-        category: 'Beverages',
-        price: 50,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'Fresh citrus extraction with zero added sugar and a touch of black salt.',
-        image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'sb-2',
-        name: 'Berry Banana Protein Smoothie',
-        category: 'Beverages',
-        price: 90,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Banana, mixed berries, chia seeds, and honey whipped with skimmed milk.',
-        image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'sb-3',
-        name: 'Protein Sprouts & Paneer Salad Bowl',
-        category: 'Healthy Bites',
-        price: 75,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'Sprouted moong beans, fresh cottage cheese cubes, diced cucumber, and cherry tomatoes in a lemon-herb dressing.',
-        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'sb-4',
-        name: 'Fresh Cut Tropical Fruit Platter',
-        category: 'Healthy Bites',
-        price: 65,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.6,
-        description: 'Chilled watermelon chunks, sweet papaya, crisp apples, and pomegranate arils sprinkled with chaat masala.',
-        image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    menu: SIP_N_BITES_MENU
   },
   {
     id: 'x-burgers',
@@ -519,12 +427,23 @@ export const OUTLETS = [
   {
     id: 'yum-experts',
     aliasId: 'yum-express',
+    aliases: ['yum-experts', 'yumexperts', 'yum-express', 'yumexpress'],
     name: 'Yum Experts',
-    shortCategory: 'Fast Food',
-    tagline: 'Express Fast Food, Snacks & Quick Refreshments',
-    cuisine: ['Fast Food', 'Snacks', 'Quick Bites'],
+    shortCategory: 'Multi-Cuisine Cafe & Fast Food',
+    tagline: 'Mocktails, Smoothies, Chaats, Burgers, Wraps, Pasta, Chinese, Rice Bowls & Combos',
+    location: 'Main Food Court, CGC University, Mohali',
+    rating: 4.8,
+    reviewsCount: 480,
+    prepTime: '8-14 mins',
+    priceForTwo: '₹190',
+    cuisine: ['Mocktails', 'Smoothies', 'Burgers', 'Pasta', 'Chinese', 'Rice Bowls', 'Chaats', 'Rolls', 'Pizza'],
+    isVegOnly: false,
+    isOpen: true,
+    timing: '9:00 AM - 10:00 PM',
     image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800&auto=format&fit=crop&q=80',
-    menu: []
+    logoType: 'yumexperts',
+    brandColor: '#DC2626',
+    menu: YUM_EXPERTS_MENU
   },
   {
     id: 'dockyard-le-bistro',
@@ -541,7 +460,7 @@ export const OUTLETS = [
 
 // Helper function to extract all popular food items matching reference image order first
 export const getAllPopularItems = () => {
-  const priorityIds = ['dm-pz-1', 'dm-1', 'xb-vb-1', 'rnr-er-1', 'tnt-vb-1', 'nc-cc-1', 'nc-1', 'ts-fries', 'kh-1', 'tlt-ch-5', 'tlt-brownie', 'cp-sw-4', 'ab-snk-9', 'ed-bg-1'];
+  const priorityIds = ['dm-pz-1', 'dm-1', 'xb-vb-1', 'rnr-er-1', 'tnt-vb-1', 'kh-ch-1', 'ye-mc-1', 'snb-sh-2', 'nc-cc-1', 'nc-1', 'ts-fries', 'tlt-ch-5', 'tlt-brownie', 'cp-sw-4', 'ab-snk-9', 'ed-bg-1'];
   const allItems = [];
 
   OUTLETS.forEach(outlet => {
