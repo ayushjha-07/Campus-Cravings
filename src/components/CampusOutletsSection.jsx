@@ -43,8 +43,17 @@ export default function CampusOutletsSection({ filteredOutlets }) {
         </div>
       </div>
 
-      {/* Outlet Cards Responsive Grid matching reference */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+      {/* Mobile Horizontal Scrolling Carousel */}
+      <div className="flex sm:hidden overflow-x-auto gap-3.5 pb-3 -mx-4 px-4 scrollbar-none no-scrollbar snap-x snap-mandatory">
+        {displayedOutlets.map((outlet) => (
+          <div key={outlet.id} className="min-w-[240px] max-w-[260px] snap-start shrink-0">
+            <OutletCard outlet={outlet} />
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop / Tablet Responsive Grid */}
+      <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
         {displayedOutlets.map((outlet) => (
           <OutletCard key={outlet.id} outlet={outlet} />
         ))}

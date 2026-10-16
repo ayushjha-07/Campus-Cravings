@@ -58,6 +58,27 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* Safe area and mobile viewport helpers */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.safe-area-pb {
+  padding-bottom: max(0.5rem, calc(0.35rem + env(safe-area-inset-bottom, 0px)));
+}
+
+.safe-area-pt {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Prevent auto-zoom on inputs in iOS Safari (< 768px) */
+@media screen and (max-width: 767px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
 html.dark body {
   background-color: #101713;
   color: #F5F7F4;

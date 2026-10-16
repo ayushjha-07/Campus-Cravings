@@ -50,10 +50,11 @@ function AppContent() {
   const isStaffRoute = location.pathname.startsWith('/staff');
   const isAdminRoute = location.pathname.startsWith('/admin');
   const isAuthRoute = ['/login', '/register', '/forgot-password'].includes(location.pathname);
+  const isCheckoutRoute = location.pathname === '/checkout';
   const isPortalRoute = isStaffRoute || isAdminRoute || isAuthRoute;
 
   return (
-    <div className={`min-h-screen flex flex-col ${isPortalRoute ? 'bg-[#FAF7F0] dark:bg-[#101713]' : 'bg-[#FDFBF7] dark:bg-[#101713] pb-14 md:pb-0'} text-slate-800 dark:text-[#F5F7F4] antialiased font-sans selection:bg-[#1B4D36] selection:text-white transition-colors duration-200`}>
+    <div className={`min-h-screen flex flex-col ${isPortalRoute ? 'bg-[#FAF7F0] dark:bg-[#101713]' : 'bg-[#FDFBF7] dark:bg-[#101713] pb-16 md:pb-0'} text-slate-800 dark:text-[#F5F7F4] antialiased font-sans selection:bg-[#1B4D36] selection:text-white transition-colors duration-200`}>
       {/* Top navigation - hidden on staff kitchen terminal, admin portal, and dedicated auth screens */}
       {!isPortalRoute && <Navbar onOpenSearch={() => setIsSearchOpen(true)} />}
 
@@ -183,8 +184,8 @@ function AppContent() {
       {/* Cart Toast Notification - hidden on staff terminal and admin portal */}
       {!isPortalRoute && <CartToast />}
 
-      {/* Mobile Bottom Navigation - hidden on staff terminal and admin portal */}
-      {!isPortalRoute && <BottomNav />}
+      {/* Mobile Bottom Navigation - hidden on staff terminal, admin portal, and checkout flow */}
+      {!isPortalRoute && !isCheckoutRoute && <BottomNav />}
     </div>
   );
 }

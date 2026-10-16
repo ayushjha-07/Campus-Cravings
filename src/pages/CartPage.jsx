@@ -261,7 +261,7 @@ export default function CartPage() {
                         </div>
 
                         {/* Controls: Quantity Stepper, Item Subtotal & Remove Button */}
-                        <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 pl-19 sm:pl-0 shrink-0">
+                        <div className="flex items-center justify-between sm:justify-end gap-2.5 sm:gap-4 shrink-0">
                           
                           {/* Quantity Stepper */}
                           <div className="flex items-center gap-1.5 bg-stone-100 rounded-xl p-1 border border-stone-200/80">

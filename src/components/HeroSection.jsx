@@ -20,7 +20,7 @@ export default function HeroSection({ onOrderNowClick, onExploreOutletsClick }) 
   };
 
   return (
-    <section className="relative bg-[#07281B] text-white overflow-hidden">
+    <section className="hidden md:block relative bg-[#07281B] text-white overflow-hidden">
       {/* Background container: blend dark forest-green into the campus & food imagery */}
       <div className="absolute inset-0 z-0">
         {/* Real CGC Campus Gate + Gourmet Food Photography composition from reference image */}

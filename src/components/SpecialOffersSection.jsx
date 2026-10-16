@@ -58,8 +58,8 @@ export default function SpecialOffersSection() {
         </div>
       </div>
 
-      {/* Offer Cards Responsive Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* Offer Cards Responsive Carousel / Grid */}
+      <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 overflow-x-auto sm:overflow-visible pb-3 sm:pb-0 scrollbar-none no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory">
         {SPECIAL_OFFERS.map((offer) => {
           const Icon = ICON_MAP[offer.icon] || Tag;
           const isCopied = copiedCode === offer.code;
@@ -67,7 +67,7 @@ export default function SpecialOffersSection() {
           return (
             <div
               key={offer.id}
-              className="group bg-white dark:bg-[#19231D] rounded-3xl border border-stone-200/90 dark:border-[#2A382F] overflow-hidden shadow-2xs hover:shadow-xl hover:border-stone-300 dark:hover:border-stone-700 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              className="min-w-[250px] sm:min-w-0 snap-start shrink-0 sm:shrink group bg-white dark:bg-[#19231D] rounded-3xl border border-stone-200/90 dark:border-[#2A382F] overflow-hidden shadow-2xs hover:shadow-xl hover:border-stone-300 dark:hover:border-stone-700 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 {/* Top Banner Gradient with Food Photography */}

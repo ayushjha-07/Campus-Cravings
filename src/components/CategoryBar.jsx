@@ -36,8 +36,8 @@ export default function CategoryBar({ selectedCategory, onSelectCategory }) {
   };
 
   return (
-    <section className="relative z-20 -mt-4 sm:-mt-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="bg-white dark:bg-[#19231D] rounded-3xl p-3 sm:p-4 shadow-lg shadow-black/5 dark:shadow-black/20 border border-stone-200/90 dark:border-[#2A382F] transition-colors duration-200">
+    <section className="relative z-20 mt-2 md:-mt-6 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div className="bg-white dark:bg-[#19231D] rounded-2xl sm:rounded-3xl p-2.5 sm:p-4 shadow-lg shadow-black/5 dark:shadow-black/20 border border-stone-200/90 dark:border-[#2A382F] transition-colors duration-200">
         
         {/* Horizontal Category Nav Row matching reference image */}
         <div className="flex items-center justify-between gap-2 sm:gap-4 overflow-x-auto pb-1 sm:pb-0 scrollbar-none no-scrollbar">

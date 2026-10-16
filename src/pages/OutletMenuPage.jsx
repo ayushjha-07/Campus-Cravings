@@ -224,9 +224,9 @@ export default function OutletMenuPage() {
           </div>
         </div>
 
-        {/* 3. Food Card Grid */}
+        {/* 3. Food Card Grid (2-column on mobile, responsive up to 4 cols) */}
         {filteredMenu.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
             {filteredMenu.map(food => {
               const quantity = getItemQuantity(food.id);
               const favorited = isFavorite ? isFavorite(food.id) : false;
@@ -236,11 +236,11 @@ export default function OutletMenuPage() {
                 <div
                   key={food.id}
                   onClick={() => setActiveModalItem(food)}
-                  className="group bg-white rounded-3xl border border-stone-200/90 overflow-hidden shadow-2xs hover:shadow-lg hover:border-stone-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                  className="group bg-white dark:bg-[#19231D] rounded-2xl sm:rounded-3xl border border-stone-200/90 dark:border-[#2A382F] overflow-hidden shadow-2xs hover:shadow-lg hover:border-stone-300 dark:hover:border-[#2A382F] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   <div>
                     {/* Food Photo with Overlay Badges */}
-                    <div className="relative aspect-4/3 w-full overflow-hidden bg-stone-100">
+                    <div className="relative aspect-4/3 w-full overflow-hidden bg-stone-100 dark:bg-[#222E26]">
                       <img
                         src={food.image}
                         alt={food.name}
@@ -249,14 +249,14 @@ export default function OutletMenuPage() {
                       />
 
                       {/* Veg / Non-Veg Indicator */}
-                      <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md p-1.5 rounded-lg shadow-xs flex items-center justify-center">
+                      <div className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-white/95 dark:bg-stone-900/90 backdrop-blur-md p-1 sm:p-1.5 rounded-md sm:rounded-lg shadow-xs flex items-center justify-center">
                         <span
-                          className={`w-3.5 h-3.5 border flex items-center justify-center rounded-2xs ${
+                          className={`w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 border flex items-center justify-center rounded-2xs ${
                             food.isVeg ? 'border-emerald-600' : 'border-rose-600'
                           }`}
                         >
                           <span
-                            className={`w-1.5 h-1.5 rounded-full ${
+                            className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full ${
                               food.isVeg ? 'bg-emerald-600' : 'bg-rose-600'
                             }`}
                           />
@@ -269,11 +269,11 @@ export default function OutletMenuPage() {
                           e.stopPropagation();
                           if (toggleFavorite) toggleFavorite(food.id);
                         }}
-                        className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/30 backdrop-blur-md hover:bg-black/50 text-white flex items-center justify-center transition-all cursor-pointer"
+                        className="absolute top-2 right-2 sm:top-3 sm:right-3 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/30 backdrop-blur-md hover:bg-black/50 text-white flex items-center justify-center transition-all cursor-pointer z-10"
                         aria-label="Toggle favourite"
                       >
                         <Heart
-                          className={`w-4 h-4 transition-colors ${
+                          className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-colors ${
                             favorited ? 'text-rose-500 fill-rose-500' : 'text-white'
                           }`}
                         />
@@ -282,40 +282,40 @@ export default function OutletMenuPage() {
                       {/* Availability status badge */}
                       {!isAvailable && (
                         <div className="absolute inset-0 bg-black/60 backdrop-blur-2xs flex items-center justify-center">
-                          <span className="bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                          <span className="bg-rose-600 text-white text-[10px] sm:text-xs font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-md">
                             Sold Out
                           </span>
                         </div>
                       )}
 
                       {/* View Details hint on hover */}
-                      <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg flex items-center gap-1">
+                      <div className="absolute bottom-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 rounded-lg hidden sm:flex items-center gap-1">
                         <Eye className="w-3.5 h-3.5" />
                         <span>Details</span>
                       </div>
                     </div>
 
                     {/* Food Info */}
-                    <div className="p-4 pb-2">
-                      <div className="flex items-center justify-between gap-2 mb-1">
-                        <h4 className="font-extrabold text-stone-900 text-sm sm:text-base leading-snug group-hover:text-[#0D3828] transition-colors truncate">
+                    <div className="p-2.5 sm:p-4 pb-1 sm:pb-2">
+                      <div className="flex items-center justify-between gap-1 mb-0.5 sm:mb-1">
+                        <h4 className="font-extrabold text-stone-900 dark:text-[#F5F7F4] text-xs sm:text-base leading-snug group-hover:text-[#0D3828] dark:group-hover:text-[#52D8A4] transition-colors truncate">
                           {food.name}
                         </h4>
                       </div>
 
-                      <p className="text-xs text-stone-500 line-clamp-2 leading-relaxed mb-3">
+                      <p className="text-[11px] sm:text-xs text-stone-500 dark:text-[#B8C5BB] line-clamp-1 sm:line-clamp-2 leading-relaxed mb-1 sm:mb-3 hidden sm:block">
                         {food.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Price & Add to Cart Controls */}
-                  <div className="p-4 pt-1 flex items-center justify-between border-t border-stone-100">
+                  <div className="p-2.5 sm:p-4 pt-1 flex items-center justify-between border-t border-stone-100 dark:border-[#2A382F]">
                     <div className="flex items-baseline gap-1">
-                      <span className="text-base sm:text-lg font-black text-stone-900">
+                      <span className="text-xs sm:text-lg font-black text-stone-900 dark:text-[#F5F7F4]">
                         ₹{food.price}
                       </span>
-                      <span className="text-[10px] text-stone-400 font-medium">demo</span>
+                      <span className="text-[9px] sm:text-[10px] text-stone-400 font-medium hidden sm:inline">demo</span>
                     </div>
 
                     {isAvailable ? (
@@ -325,38 +325,38 @@ export default function OutletMenuPage() {
                             e.stopPropagation();
                             addToCart(food, outlet, 1);
                           }}
-                          className="flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-[#0D3828] hover:bg-[#144834] text-white text-xs font-bold transition-all active:scale-95 shadow-2xs cursor-pointer"
+                          className="flex items-center gap-1 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-lg sm:rounded-xl bg-[#0D3828] hover:bg-[#144834] text-white text-[11px] sm:text-xs font-bold transition-all active:scale-95 shadow-2xs cursor-pointer"
                         >
                           <span>Add</span>
-                          <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
+                          <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
                         </button>
                       ) : (
                         <div 
                           onClick={(e) => e.stopPropagation()}
-                          className="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200/90 rounded-xl p-1"
+                          className="flex items-center gap-1 bg-emerald-50 dark:bg-[#1A3326] border border-emerald-200/90 dark:border-emerald-800 rounded-lg sm:rounded-xl p-0.5 sm:p-1"
                         >
                           <button
                             onClick={() => updateQuantity(food.id, quantity - 1)}
-                            className="w-6 h-6 rounded-lg bg-white text-[#0D3828] hover:bg-emerald-100 flex items-center justify-center font-bold text-xs shadow-2xs transition-colors cursor-pointer"
+                            className="w-5 h-5 sm:w-6 sm:h-6 rounded-md sm:rounded-lg bg-white dark:bg-[#222E26] text-[#0D3828] dark:text-[#52D8A4] hover:bg-emerald-100 flex items-center justify-center font-bold text-xs shadow-2xs transition-colors cursor-pointer"
                             aria-label="Decrease quantity"
                           >
-                            <Minus className="w-3 h-3" />
+                            <Minus className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                           </button>
-                          <span className="w-5 text-center text-xs font-bold text-[#0D3828]">
+                          <span className="w-4 sm:w-5 text-center text-[11px] sm:text-xs font-bold text-[#0D3828] dark:text-[#52D8A4]">
                             {quantity}
                           </span>
                           <button
                             onClick={() => updateQuantity(food.id, quantity + 1)}
-                            className="w-6 h-6 rounded-lg bg-[#0D3828] text-white hover:bg-[#144834] flex items-center justify-center font-bold text-xs shadow-2xs transition-colors cursor-pointer"
+                            className="w-5 h-5 sm:w-6 sm:h-6 rounded-md sm:rounded-lg bg-[#0D3828] text-white hover:bg-[#144834] flex items-center justify-center font-bold text-xs shadow-2xs transition-colors cursor-pointer"
                             aria-label="Increase quantity"
                           >
-                            <Plus className="w-3 h-3" />
+                            <Plus className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                           </button>
                         </div>
                       )
                     ) : (
-                      <span className="text-xs font-semibold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-xl">
-                        Unavailable
+                      <span className="text-[10px] sm:text-xs font-semibold text-rose-600 bg-rose-50 dark:bg-rose-950/30 px-2 py-0.5 rounded-lg sm:rounded-xl">
+                        Sold Out
                       </span>
                     )}
                   </div>

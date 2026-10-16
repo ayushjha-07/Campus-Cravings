@@ -118,8 +118,8 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF8F2] py-8 sm:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FBF8F2] dark:bg-[#101713] py-4 sm:py-12 pb-16 transition-colors duration-200">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
         
         {/* Back to Cart Navigation Link */}
         <div className="mb-6">

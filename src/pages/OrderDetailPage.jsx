@@ -73,8 +73,8 @@ export default function OrderDetailPage() {
   const outletGroups = getOrderOutletGroups(order);
 
   return (
-    <div className="min-h-screen bg-[#FBF8F2] py-8 sm:py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+    <div className="min-h-screen bg-[#FBF8F2] dark:bg-[#101713] py-4 sm:py-12 pb-24 md:pb-12 transition-colors duration-200">
+      <div className="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 space-y-5 sm:space-y-6">
         
         {/* Top Navigation */}
         <div className="flex items-center justify-between gap-4">

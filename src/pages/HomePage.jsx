@@ -19,7 +19,9 @@ import {
   Utensils,
   Flame,
   CheckCircle2,
-  Tag
+  Tag,
+  MapPin,
+  Clock
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -126,23 +128,97 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F0] dark:bg-[#101713] pb-16 transition-colors duration-200">
+    <div className="min-h-screen bg-[#FAF7F0] dark:bg-[#101713] pb-24 md:pb-16 transition-colors duration-200">
       
-      {/* 1. Hero Section matching reference image */}
+      {/* 1. Desktop Hero Section matching reference image */}
       <HeroSection
         onOrderNowClick={() => handleScrollTo('popular')}
         onExploreOutletsClick={() => handleScrollTo('outlets')}
       />
 
-      {/* 2. Horizontal Food Categories Bar matching reference image */}
+      {/* 2. Mobile Friendly Welcome & Search Block (< md) */}
+      <div className="md:hidden px-4 pt-3.5 pb-2">
+        <div className="flex items-center justify-between gap-2">
+          <div>
+            <div className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#E76F51] tracking-wider uppercase">
+              <MapPin className="w-3.5 h-3.5" />
+              <span>CGC University, Mohali</span>
+            </div>
+            <h1 className="text-xl sm:text-2xl font-black text-stone-900 dark:text-[#F5F7F4] tracking-tight leading-tight mt-0.5">
+              What are you craving today?
+            </h1>
+          </div>
+        </div>
+
+        {/* Prominent Rounded Search Bar for Food and Outlets */}
+        <div className="mt-3 relative">
+          <Search className="w-4 h-4 text-stone-400 dark:text-stone-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search dishes, burgers, rolls, chai, outlets..."
+            className="w-full pl-10 pr-9 py-2.5 rounded-2xl bg-white dark:bg-[#19231D] border border-stone-200/90 dark:border-[#2A382F] text-xs text-stone-900 dark:text-[#F5F7F4] placeholder:text-stone-400 dark:placeholder:text-stone-500 shadow-2xs focus:outline-none focus:ring-2 focus:ring-[#0D3828]/20 focus:border-[#0D3828]"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200"
+              aria-label="Clear search"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* 3. Horizontal Food Categories Bar */}
       <CategoryBar
         selectedCategory={selectedCategory}
         onSelectCategory={(catId) => setSelectedCategory(catId)}
       />
 
+      {/* 4. Mobile Attractive Promotional / Hero Banner (< md) */}
+      <div className="md:hidden px-4 my-4">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#064E36] to-[#043B2B] text-white p-5 shadow-lg border border-emerald-700/40">
+          <div className="relative z-10 max-w-[68%]">
+            <div className="flex items-center gap-1.5 mb-1.5">
+              <span className="text-[10px] font-black uppercase tracking-wider bg-[#F97316] text-white px-2 py-0.5 rounded-full">
+                Fast Pickup
+              </span>
+              <span className="text-[10px] text-emerald-200 font-semibold bg-white/10 px-2 py-0.5 rounded-full">
+                Demo Order
+              </span>
+            </div>
+            <h3 className="text-base sm:text-lg font-black tracking-tight text-white leading-tight">
+              Skip the Queue. <br />
+              <span className="text-[#F97316]">Enjoy Your Break.</span>
+            </h3>
+            <p className="text-[11px] text-emerald-100/90 mt-1 leading-snug">
+              Order ahead from your favourite campus outlets and collect your food without waiting.
+            </p>
+            <button
+              onClick={() => handleScrollTo('popular')}
+              className="mt-3 px-4 py-1.5 rounded-full bg-white text-[#0D3828] text-xs font-black shadow-xs flex items-center gap-1.5 active:scale-95 cursor-pointer"
+            >
+              <span>Order Now</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#F97316]" />
+            </button>
+          </div>
+          {/* Visual food art */}
+          <div className="absolute -right-5 -bottom-3 w-32 h-32 rounded-full overflow-hidden border-2 border-white/20 shadow-xl pointer-events-none">
+            <img
+              src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop&q=80"
+              alt="Campus cravings burger"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
       {/* Active Filter Indicator Banner */}
       {(searchQuery.trim() || selectedCategory !== 'all') && (
-        <div id="search-results" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <div id="search-results" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
           <div className="bg-white dark:bg-[#19231D] rounded-2xl p-4 border border-stone-200/90 dark:border-[#2A382F] shadow-xs flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-[#1A3326] text-[#0D3828] dark:text-[#52D8A4] flex items-center justify-center">
@@ -172,7 +248,7 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* 3. Popular Outlets Section matching reference image */}
+      {/* 5. Popular Outlets Section (horizontal scrolling carousel on mobile, grid on desktop) */}
       <CampusOutletsSection filteredOutlets={filteredOutlets} />
 
       {/* 4. Special Offers Section matching reference image */}
@@ -239,10 +315,10 @@ export default function HomePage() {
               ))}
             </div>
 
-            {/* Mobile Vertical List Rows */}
-            <div className="sm:hidden space-y-3">
-              {filteredFoods.slice(0, 10).map(food => (
-                <FoodCardMobileRow 
+            {/* Mobile 2-Column Food Grid */}
+            <div className="sm:hidden grid grid-cols-2 gap-3">
+              {filteredFoods.slice(0, 12).map(food => (
+                <FoodCard 
                   key={food.id} 
                   food={food} 
                   onItemClick={(item, outlet) => setActiveModalItem({ item, outlet })} 

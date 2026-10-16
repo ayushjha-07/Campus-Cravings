@@ -60,7 +60,7 @@ export default function FoodItemDetailModal({ item, outlet, isOpen, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div 
-        className="relative w-full max-w-lg bg-white rounded-3xl overflow-hidden shadow-2xl border border-stone-200 animate-in zoom-in-95 duration-200 flex flex-col max-h-[92vh]"
+        className="relative w-full max-w-lg bg-white dark:bg-[#19231D] rounded-3xl overflow-hidden shadow-2xl border border-stone-200 dark:border-[#2A382F] animate-in zoom-in-95 duration-200 flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -190,9 +190,9 @@ export default function FoodItemDetailModal({ item, outlet, isOpen, onClose }) {
         </div>
 
         {/* Modal Footer: Quantity Stepper & Add to Cart Button */}
-        <div className="p-4 sm:p-5 bg-stone-50/80 border-t border-stone-200/80 flex items-center justify-between gap-4 shrink-0">
+        <div className="p-3.5 sm:p-5 bg-stone-50/80 dark:bg-[#222E26] border-t border-stone-200/80 dark:border-[#2A382F] flex items-center justify-between gap-3 sm:gap-4 shrink-0 safe-area-pb">
           {/* Quantity Selector */}
-          <div className="flex items-center gap-2 bg-white border border-stone-200 rounded-2xl p-1.5 shadow-2xs">
+          <div className="flex items-center gap-1.5 sm:gap-2 bg-white dark:bg-[#19231D] border border-stone-200 dark:border-[#2A382F] rounded-2xl p-1 sm:p-1.5 shadow-2xs">
             <button
               onClick={handleDecrement}
               disabled={!isAvailable || quantity <= 1}

@@ -66,29 +66,29 @@ export default function Navbar({ onSearchSubmit }) {
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-[#19231D] border-b border-stone-200/90 dark:border-[#2A382F] shadow-xs transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-2 sm:gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14 md:h-20 gap-2 sm:gap-4">
           
-          {/* Left: Brand Logo & CGC Mohali subtitle matching reference */}
-          <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+          {/* Left: Brand Logo & CGC Mohali subtitle */}
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
             {/* Visual Fork & Knife circular emblem */}
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-[#EAF4EE] dark:bg-[#1A3326] flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform border border-emerald-200/50 dark:border-emerald-700/30">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-xl sm:rounded-2xl bg-[#EAF4EE] dark:bg-[#1A3326] flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform border border-emerald-200/50 dark:border-emerald-700/30">
               <div className="flex items-center justify-center">
-                <Utensils className="w-5 h-5 sm:w-6 sm:h-6 text-[#1B4D36] dark:text-[#52D8A4]" />
+                <Utensils className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#1B4D36] dark:text-[#52D8A4]" />
               </div>
-              <span className="absolute bottom-1 right-1 w-2.5 h-2.5 rounded-full bg-[#E76F51]" />
+              <span className="absolute bottom-1 right-1 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#E76F51]" />
             </div>
 
             <div>
               <div className="flex items-baseline">
-                <span className="text-xl sm:text-2xl font-black tracking-tight text-[#143C29] dark:text-[#F5F7F4]">
+                <span className="text-lg sm:text-xl md:text-2xl font-black tracking-tight text-[#143C29] dark:text-[#F5F7F4]">
                   Campus
                 </span>
-                <span className="text-xl sm:text-2xl font-black tracking-tight text-[#E76F51] ml-0.5">
+                <span className="text-lg sm:text-xl md:text-2xl font-black tracking-tight text-[#E76F51] ml-0.5">
                   Cravings
                 </span>
               </div>
-              <div className="text-[10px] sm:text-[11px] text-stone-500 dark:text-[#B8C5BB] font-semibold -mt-0.5 tracking-wider uppercase">
+              <div className="text-[9px] sm:text-[10px] md:text-[11px] text-stone-500 dark:text-[#B8C5BB] font-semibold -mt-0.5 tracking-wider uppercase">
                 CGC University, Mohali
               </div>
             </div>
@@ -151,33 +151,45 @@ export default function Navbar({ onSearchSubmit }) {
           </form>
 
           {/* Right Action Controls: Dark Toggle, Cart, Profile Menu */}
-          <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-3.5 shrink-0">
             
-            {/* Dark Mode / Light Mode Pill Toggle matching reference */}
+            {/* Dark Mode / Light Mode Pill Toggle */}
             <ThemeToggle />
 
-            {/* Shopping Cart Icon with Live Badge matching reference */}
+            {/* Shopping Cart Icon with Live Badge */}
             <Link
               to="/cart"
-              className="relative p-2 sm:p-2.5 rounded-full hover:bg-stone-100 dark:hover:bg-[#222E26] text-stone-800 dark:text-stone-200 transition-colors flex items-center justify-center cursor-pointer"
+              className="relative p-1.5 sm:p-2.5 rounded-full hover:bg-stone-100 dark:hover:bg-[#222E26] text-stone-800 dark:text-stone-200 transition-colors flex items-center justify-center cursor-pointer"
               aria-label="Shopping Cart"
               title="View your campus cart"
             >
               <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6 text-stone-800 dark:text-[#F5F7F4]" />
               {itemCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 bg-[#E76F51] text-white text-[10px] sm:text-[11px] font-black min-w-5 h-5 px-1 rounded-full flex items-center justify-center shadow-xs animate-in zoom-in-75">
+                <span className="absolute -top-0.5 -right-0.5 bg-[#E76F51] text-white text-[10px] sm:text-[11px] font-black min-w-4.5 h-4.5 sm:min-w-5 sm:h-5 px-1 rounded-full flex items-center justify-center shadow-xs animate-in zoom-in-75">
                   {itemCount}
                 </span>
               )}
             </Link>
 
-            {/* User Greeting & Profile Dropdown matching reference "Good to see you, Ayush! ⌄" */}
-            <div className="relative" ref={dropdownRef}>
+            {/* Mobile-only Profile/Login Quick Button (< sm) */}
+            <Link
+              to={isAuthenticated || user?.isLoggedIn ? '/profile' : '/login'}
+              className="sm:hidden p-1 rounded-full hover:bg-stone-100 dark:hover:bg-[#222E26] transition-colors"
+              aria-label={isAuthenticated || user?.isLoggedIn ? 'Student Profile' : 'Student Login'}
+              title={isAuthenticated || user?.isLoggedIn ? 'Student Profile' : 'Student Login'}
+            >
+              <div className="w-8 h-8 rounded-full bg-[#0D3828] text-white flex items-center justify-center font-bold text-xs shadow-xs border border-emerald-600/30">
+                <User className="w-4 h-4 text-[#EAA044]" />
+              </div>
+            </Link>
+
+            {/* Desktop User Greeting & Profile Dropdown (>= sm) */}
+            <div className="relative hidden sm:block" ref={dropdownRef}>
               {isAuthenticated || user?.isLoggedIn ? (
                 <button
                   type="button"
                   onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                  className="hidden sm:flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-full hover:bg-stone-100 dark:hover:bg-[#222E26] transition-colors cursor-pointer border border-transparent hover:border-stone-200/80 dark:hover:border-[#2A382F]"
+                  className="flex items-center gap-2.5 pl-2 pr-3 py-1.5 rounded-full hover:bg-stone-100 dark:hover:bg-[#222E26] transition-colors cursor-pointer border border-transparent hover:border-stone-200/80 dark:hover:border-[#2A382F]"
                 >
                   {/* Circular User Avatar */}
                   <div className="w-9 h-9 rounded-full bg-[#0D3828] text-white flex items-center justify-center font-bold text-xs shadow-xs">
@@ -198,7 +210,7 @@ export default function Navbar({ onSearchSubmit }) {
               ) : (
                 <Link
                   to="/login"
-                  className="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#0D3828] hover:bg-[#144834] text-white text-xs sm:text-sm font-bold shadow-xs transition-all hover:scale-105 active:scale-95"
+                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#0D3828] hover:bg-[#144834] text-white text-xs sm:text-sm font-bold shadow-xs transition-all hover:scale-105 active:scale-95"
                 >
                   <User className="w-4 h-4 text-[#EAA044]" />
                   <span>Login</span>
@@ -272,13 +284,13 @@ export default function Navbar({ onSearchSubmit }) {
               )}
             </div>
 
-            {/* Mobile Hamburger Menu Toggle */}
+            {/* Tablet Menu Toggle (hidden on mobile to prevent overcrowding) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 rounded-xl text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-[#222E26] transition-colors"
+              className="hidden sm:flex xl:hidden p-2 rounded-xl text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-[#222E26] transition-colors"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
 
