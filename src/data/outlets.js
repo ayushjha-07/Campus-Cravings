@@ -10,6 +10,9 @@ import { CHUTAR_PUTAR_MENU } from './chutarPutarMenu.js';
 import { APPLEBEEZ_MENU } from './applebeezMenu.js';
 import { NESCAFE_MENU } from './nescafeMenu.js';
 import { EASY_DAY_MENU } from './easyDayMenu.js';
+import { ROCK_N_ROLL_MENU } from './rockNRollMenu.js';
+import { TOP_N_TOWN_MENU } from './topNTownMenu.js';
+import { X_BURGERS_MENU } from './xBurgersMenu.js';
 
 export const OUTLETS = [
   {
@@ -35,71 +38,23 @@ export const OUTLETS = [
   },
   {
     id: 'topn-n-town-for-hunger',
+    aliases: ['top-n-town', 'topntown', 'topn-n-town-for-hunger', 'top-n-town-hunger'],
     name: "Top N' Town for Hunger",
-    shortCategory: 'Food',
-    tagline: 'Sundaes, Thick Shakes, Waffles & Quick Bites',
-    location: 'Student Plaza, Near Central Fountain',
-    rating: 4.5,
-    reviewsCount: 280,
-    prepTime: '8-12 mins',
-    priceForTwo: '₹180',
-    cuisine: ['Ice Creams', 'Desserts', 'Waffles', 'Fries'],
-    isVegOnly: true,
+    shortCategory: 'Multi-Cuisine & Fast Food',
+    tagline: 'Burgers, Sandwiches, Momos, Fried Rice, Chowmein, Thupka, Pastas & Korean Specials',
+    location: 'Student Plaza, Near Central Fountain, CGC Mohali',
+    rating: 4.7,
+    reviewsCount: 380,
+    prepTime: '10-15 mins',
+    priceForTwo: '₹200',
+    cuisine: ['Burgers', 'Sandwiches', 'Momos', 'Fried Rice', 'Chowmein', 'Pasta', 'Chinese', 'Korean Specials'],
+    isVegOnly: false,
     isOpen: true,
-    timing: '10:00 AM - 9:00 PM (Demo Hours)',
-    image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=800&auto=format&fit=crop&q=80',
+    timing: '9:00 AM - 9:30 PM',
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80',
     logoType: 'topntown',
     brandColor: '#D90429',
-    menu: [
-      {
-        id: 'tt-1',
-        name: 'Nutella Belgian Waffle',
-        category: 'Desserts',
-        price: 120,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'Freshly baked golden waffle smothered with warm Nutella and toasted almond flakes.',
-        image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'tt-2',
-        name: 'Peri Peri Crinkle Fries',
-        category: 'Snacks',
-        price: 75,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.4,
-        description: 'Golden crinkle-cut potato fries tossed in spicy peri peri dusting.',
-        image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'tt-3',
-        name: 'Double Scoop Sundae Special',
-        category: 'Desserts',
-        price: 95,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.6,
-        description: 'Vanilla and roasted almond scoops drizzled with hot chocolate fudge & cherry topping.',
-        image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'tt-4',
-        name: 'Crispy Veg Nuggets (6 pcs)',
-        category: 'Snacks',
-        price: 65,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.3,
-        description: 'Bite-sized crumb-fried vegetable medallions served with tangy mustard dip.',
-        image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    menu: TOP_N_TOWN_MENU
   },
   {
     id: 'easy-day',
@@ -501,59 +456,23 @@ export const OUTLETS = [
   },
   {
     id: 'x-burgers',
+    aliases: ['x-burgers', 'xburgers', 'x-burgers-cafe', 'x-burger'],
     name: 'X Burgers Café',
-    shortCategory: 'Burgers',
-    tagline: 'Smash Burgers, Loaded Fries & Crunchy Nuggets',
-    location: 'Student Center Ground Floor',
-    rating: 4.7,
+    shortCategory: 'Burgers & Combos',
+    tagline: 'Handcrafted Burgers, Biggie Combos, Loaded Fries, Wraps, Momos & Shakes',
+    location: 'Student Center Ground Floor, CGC Mohali',
+    rating: 4.8,
     reviewsCount: 520,
     prepTime: '10-14 mins',
-    priceForTwo: '₹240',
-    cuisine: ['Burgers', 'Fries', 'Fast Food', 'Snacks'],
+    priceForTwo: '₹220',
+    cuisine: ['Burgers', 'Biggie Combos', 'Wraps', 'Fries', 'Spring Rolls', 'Momos', 'Shakes', 'Cold Coffee', 'Mojitos'],
     isVegOnly: false,
     isOpen: true,
-    timing: '10:00 AM - 9:00 PM (Demo Hours)',
+    timing: '9:30 AM - 9:30 PM',
     image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800&auto=format&fit=crop&q=80',
     logoType: 'xburgers',
-    brandColor: '#111827',
-    menu: [
-      {
-        id: 'xb-burger',
-        name: 'Veg Burger',
-        category: 'Burgers',
-        price: 129,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.9,
-        description: 'Crispy seasoned spiced patty with melted double cheddar slices, gherkins & smoky BBQ aioli on brioche.',
-        image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80',
-        isPopular: true
-      },
-      {
-        id: 'xb-2',
-        name: 'Crispy Fiery Chicken Burger',
-        category: 'Burgers',
-        price: 155,
-        isVeg: false,
-        isAvailable: true,
-        rating: 4.8,
-        description: 'Golden fried chicken breast fillet glazed in spicy buffalo hot sauce with creamy slaw.',
-        image: 'https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      },
-      {
-        id: 'xb-3',
-        name: 'Cheesy Jalapeno Loaded Fries',
-        category: 'Snacks',
-        price: 95,
-        isVeg: true,
-        isAvailable: true,
-        rating: 4.7,
-        description: 'Golden fries drowned in warm cheddar cheese sauce, pickled jalapeno peppers, and smoked paprika.',
-        image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
-        isPopular: false
-      }
-    ]
+    brandColor: '#E65100',
+    menu: X_BURGERS_MENU
   },
   {
     id: 'thick-let-to',
@@ -578,12 +497,24 @@ export const OUTLETS = [
   },
   {
     id: 'rock-n-roll',
+    aliasId: 'rock-in-roll',
+    aliases: ['rock-in-roll', 'rock-n-roll', 'rocknroll'],
     name: 'Rock N Roll',
-    shortCategory: 'Fast Food',
-    tagline: 'Kathi Rolls, Gourmet Wraps & Quick Bites',
-    cuisine: ['Fast Food', 'Rolls', 'Wraps'],
+    shortCategory: 'Kathi Rolls & Fast Food',
+    tagline: 'The Real Taste of Roll — Egg, Chicken & Veg Kathi Rolls, Fried Rice & Noodles',
+    location: 'Campus Food Street, CGC Mohali',
+    rating: 4.7,
+    reviewsCount: 340,
+    prepTime: '8-12 mins',
+    priceForTwo: '₹160',
+    cuisine: ['Kathi Rolls', 'Egg Rolls', 'Chicken Rolls', 'Veg Rolls', 'Fried Rice', 'Noodles'],
+    isVegOnly: false,
+    isOpen: true,
+    timing: '10:00 AM - 10:00 PM',
     image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=800&auto=format&fit=crop&q=80',
-    menu: []
+    logoType: 'rocknroll',
+    brandColor: '#B91C1C',
+    menu: ROCK_N_ROLL_MENU
   },
   {
     id: 'yum-experts',
@@ -610,7 +541,7 @@ export const OUTLETS = [
 
 // Helper function to extract all popular food items matching reference image order first
 export const getAllPopularItems = () => {
-  const priorityIds = ['dm-pz-1', 'dm-1', 'xb-burger', 'nc-cc-1', 'nc-1', 'ts-fries', 'kh-1', 'tlt-ch-5', 'tlt-brownie', 'cp-sw-4', 'ab-snk-9', 'ed-bg-1'];
+  const priorityIds = ['dm-pz-1', 'dm-1', 'xb-vb-1', 'rnr-er-1', 'tnt-vb-1', 'nc-cc-1', 'nc-1', 'ts-fries', 'kh-1', 'tlt-ch-5', 'tlt-brownie', 'cp-sw-4', 'ab-snk-9', 'ed-bg-1'];
   const allItems = [];
 
   OUTLETS.forEach(outlet => {

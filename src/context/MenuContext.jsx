@@ -12,8 +12,8 @@ export const useMenu = () => {
 };
 
 const STORAGE_KEYS = {
-  MENUS: 'campus_cravings_outlet_menus_v5',
-  OUTLETS: 'campus_cravings_dynamic_outlets_v5'
+  MENUS: 'campus_cravings_outlet_menus_v6',
+  OUTLETS: 'campus_cravings_dynamic_outlets_v6'
 };
 
 export const MenuProvider = ({ children }) => {

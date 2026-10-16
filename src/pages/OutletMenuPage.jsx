@@ -249,6 +249,12 @@ export default function OutletMenuPage() {
                     <><strong>Official Nescafe Kiosk Menu:</strong> Full verified Maggi varieties, pizzas, sweet corn, coffees, teas, coolers & frappes from the campus kiosk board.</>
                   ) : outlet.id === 'easy-day' ? (
                     <><strong>Official Mini Easy Day Menu:</strong> Full verified burgers, pastas, fries, mini meals, shakes, drinks, sandwiches & crispy patties from the store menu board.</>
+                  ) : outlet.id === 'rock-n-roll' ? (
+                    <><strong>Official Rock N Roll Menu:</strong> Full verified kathi rolls (egg, veg & chicken), fried rice, noodles & cold drinks from the vendor physical menu board.</>
+                  ) : outlet.id === 'topn-n-town-for-hunger' ? (
+                    <><strong>Official Top N' Town Menu:</strong> Full verified burgers, sandwiches, momos, fried rice, chowmein, thupka, pastas & Korean specials from the physical menu boards.</>
+                  ) : outlet.id === 'x-burgers' ? (
+                    <><strong>Official X Burgers Café Menu:</strong> Full verified burgers, Biggie combos, wraps, loaded fries, spring rolls, momos, shakes & cold coffees from the vendor menu boards.</>
                   ) : (
                     <><strong>Sample Outlet Menu:</strong> Representative items & prices for development. Real menus will be loaded per outlet.</>
                   )}
