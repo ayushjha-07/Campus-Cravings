@@ -1,284 +1,469 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useAdmin } from '../context/AdminContext';
 import { 
   ArrowLeft, 
   Mail, 
   Lock, 
   Eye, 
   EyeOff, 
-  User, 
-  Store, 
-  Zap, 
-  UtensilsCrossed, 
-  ShoppingBag, 
   ArrowRight,
-  AlertCircle, 
-  CheckCircle2, 
-  Sparkles 
+  GraduationCap,
+  UtensilsCrossed,
+  ShieldCheck,
+  Utensils,
+  ShoppingCart,
+  ShoppingBag,
+  Sparkles,
+  CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
-import { STORAGE_KEYS } from '../utils/authUtils';
+import { STORAGE_KEYS, SEED_STUDENTS } from '../utils/authUtils';
 import ThemeToggle from '../components/ThemeToggle';
 
 export default function LoginPage() {
   const { login, quickDemoLogin, isAuthenticated, user } = useAuth();
+  const { adminLogin, staffList } = useAdmin();
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Target to redirect after successful login (Requirement 1: Student Dashboard)
-  const from = location.state?.from?.pathname || '/dashboard';
+  // Selected login role: 'student' | 'staff' | 'admin'
+  const [selectedRole, setSelectedRole] = useState('student');
 
-  const [identifier, setIdentifier] = useState('');
-  const [password, setPassword] = useState('');
+  // Input fields
+  const [identifier, setIdentifier] = useState('CGC2023CSE042');
+  const [password, setPassword] = useState('password123');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Prepopulate identifier if saved in localStorage (Remember Me)
+  // Target route after student login
+  const from = location.state?.from?.pathname || '/dashboard';
+
+  // Role switch handler
+  const handleRoleChange = (role) => {
+    setSelectedRole(role);
+    setErrorMessage(null);
+
+    // Pre-populate sensible demo credentials per role for seamless testing
+    if (role === 'student') {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEYS.REMEMBER_ME);
+        setIdentifier(saved || 'CGC2023CSE042');
+      } catch {
+        setIdentifier('CGC2023CSE042');
+      }
+      setPassword('password123');
+    } else if (role === 'staff') {
+      setIdentifier('rajesh.kulhad@cgc.edu.in');
+      setPassword('password123');
+    } else if (role === 'admin') {
+      setIdentifier('dean.welfare@cgc.edu.in');
+      setPassword('admin123');
+    }
+  };
+
+  // Pre-populate remember me on initial mount
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.REMEMBER_ME);
       if (saved) {
         setIdentifier(saved);
         setPassword('password123');
-      } else {
-        setIdentifier('CGC2023CSE042');
-        setPassword('password123');
       }
     } catch {
-      setIdentifier('CGC2023CSE042');
-      setPassword('password123');
+      // ignore
     }
   }, []);
 
-  const handleLogin = async (e) => {
+  // Quick Demo fill buttons
+  const handleQuickFill = (role, demoId, demoPass) => {
+    setSelectedRole(role);
+    setIdentifier(demoId);
+    setPassword(demoPass);
+    setErrorMessage(null);
+  };
+
+  // Main login submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage(null);
     setIsSubmitting(true);
 
-    const result = await login(identifier, password, rememberMe);
-    setIsSubmitting(false);
+    const cleanId = (identifier || '').trim().toLowerCase();
 
-    if (result.success) {
-      navigate(from, { replace: true });
-    } else {
-      // Clean error matching reference image: "Invalid email/Student ID or password. Please try again."
-      setErrorMessage(result.error || 'Invalid email/Student ID or password. Please try again.');
+    // 1. STUDENT LOGIN FLOW
+    if (selectedRole === 'student') {
+      // Cross-role guard: check if user tried entering staff credentials
+      const isStaffMatch = (staffList || []).some(
+        s => s.email?.toLowerCase() === cleanId || s.staffId?.toLowerCase() === cleanId
+      );
+      if (isStaffMatch) {
+        setIsSubmitting(false);
+        setErrorMessage('This account is registered as Outlet Staff. Please select the "Staff" tab above to login.');
+        return;
+      }
+
+      // Cross-role guard: check if user tried entering admin credentials
+      if (cleanId.includes('dean') || cleanId.includes('admin') || cleanId === 'cgc-adm-001') {
+        setIsSubmitting(false);
+        setErrorMessage('This account is registered as University Admin. Please select the "Admin" tab above to login.');
+        return;
+      }
+
+      const result = await login(identifier, password, rememberMe);
+      setIsSubmitting(false);
+
+      if (result.success) {
+        navigate(from, { replace: true });
+      } else {
+        setErrorMessage(result.error || 'Invalid Student ID/Email or password. Please try again.');
+      }
+      return;
+    }
+
+    // 2. STAFF LOGIN FLOW
+    if (selectedRole === 'staff') {
+      // Cross-role guard: check if user entered student ID
+      const isStudentMatch = SEED_STUDENTS.some(
+        s => s.studentId.toLowerCase() === cleanId || s.email.toLowerCase() === cleanId
+      );
+      if (isStudentMatch) {
+        setIsSubmitting(false);
+        setErrorMessage('This account is registered as a Student. Please select the "Student" tab above to login.');
+        return;
+      }
+
+      // Cross-role guard: check if admin
+      if (cleanId.includes('dean') || cleanId.includes('admin') || cleanId === 'cgc-adm-001') {
+        setIsSubmitting(false);
+        setErrorMessage('This account is registered as University Admin. Please select the "Admin" tab above to login.');
+        return;
+      }
+
+      // Match staff member in staffList
+      const matchedStaff = (staffList || []).find(s => 
+        s.email?.toLowerCase() === cleanId || 
+        s.staffId?.toLowerCase() === cleanId ||
+        s.name?.toLowerCase() === cleanId
+      );
+
+      setIsSubmitting(false);
+
+      if (matchedStaff) {
+        // Redirect to their assigned outlet terminal (defaults to kulhad)
+        const targetOutlet = matchedStaff.assignedOutletId || 'kulhad';
+        navigate(`/staff/${targetOutlet}`, { replace: true });
+      } else {
+        setErrorMessage('No staff account found with this ID or Email. (Demo hint: rajesh.kulhad@cgc.edu.in)');
+      }
+      return;
+    }
+
+    // 3. ADMIN LOGIN FLOW
+    if (selectedRole === 'admin') {
+      // Cross-role guards
+      const isStudentMatch = SEED_STUDENTS.some(
+        s => s.studentId.toLowerCase() === cleanId || s.email.toLowerCase() === cleanId
+      );
+      if (isStudentMatch) {
+        setIsSubmitting(false);
+        setErrorMessage('This account is registered as a Student. Please select the "Student" tab above to login.');
+        return;
+      }
+
+      const isStaffMatch = (staffList || []).some(
+        s => s.email?.toLowerCase() === cleanId || s.staffId?.toLowerCase() === cleanId
+      );
+      if (isStaffMatch) {
+        setIsSubmitting(false);
+        setErrorMessage('This account is registered as Outlet Staff. Please select the "Staff" tab above to login.');
+        return;
+      }
+
+      // Check admin credentials
+      if (
+        cleanId.includes('admin') || 
+        cleanId.includes('dean') || 
+        cleanId === 'cgc-adm-001' || 
+        cleanId === 'dean.welfare@cgc.edu.in'
+      ) {
+        adminLogin(identifier, password);
+        setIsSubmitting(false);
+        navigate('/admin', { replace: true });
+      } else {
+        setIsSubmitting(false);
+        setErrorMessage('Invalid Administrator credentials. (Demo hint: dean.welfare@cgc.edu.in)');
+      }
     }
   };
 
-  const handleQuickDemo = (studentId) => {
-    quickDemoLogin(studentId);
-    navigate(from, { replace: true });
-  };
-
-  const handleSocialLogin = (provider) => {
-    // Demo SSO login simulator for Google / Microsoft
-    quickDemoLogin('CGC2023CSE042');
-    navigate(from, { replace: true });
-  };
-
   return (
-    <div className="min-h-screen bg-[#FAF7F0] flex flex-col lg:flex-row antialiased font-sans text-stone-900 selection:bg-[#064E36] selection:text-white">
+    <div className="min-h-screen relative flex items-center justify-center p-3 sm:p-6 lg:p-8 overflow-x-hidden font-sans antialiased text-stone-900 selection:bg-[#DE4927] selection:text-white">
       
-      {/* Mobile Top Header (Visible on Mobile / Tablet) */}
-      <div className="lg:hidden bg-white border-b border-stone-200/80 px-4 py-3.5 flex items-center justify-between sticky top-0 z-30">
-        <Link 
-          to="/"
-          className="p-1.5 -ml-1.5 rounded-xl text-stone-700 hover:bg-stone-100 transition-colors"
-          aria-label="Back to home"
-        >
-          <ArrowLeft className="w-5 h-5 text-stone-700" />
-        </Link>
-
-        {/* Center Logo */}
-        <Link to="/" className="flex items-center">
-          <div className="p-1 rounded-xl bg-white shadow-2xs border border-stone-200/80">
-            <img
-              src="/images/brand/logo.png"
-              alt="Campus Cravings Logo"
-              className="h-7 w-auto object-contain"
-            />
-          </div>
-        </Link>
-
-        <ThemeToggle />
+      {/* Background: Realistic 3D Signboard Cafe Atmosphere */}
+      <div className="fixed inset-0 z-0">
+        <img
+          src="/images/brand/hero-signboard.jpg"
+          alt="Campus Cravings Signboard"
+          className="w-full h-full object-cover object-[24%_center] filter brightness-[0.92]"
+        />
+        {/* Soft vignette to guarantee crisp readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/35 to-black/55" />
       </div>
 
-      {/* Left Panel: Desktop Split-Screen (Navy Blue & Warm Red/Gold) */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#0D1826] to-[#162544] text-white p-12 xl:p-16 flex-col justify-between relative overflow-hidden">
+      {/* Main Container: Split-Screen Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 py-4">
         
-        {/* Subtle Ambient Glow */}
-        <div className="absolute -right-20 -top-20 w-96 h-96 bg-[#E63946]/10 rounded-full blur-3xl pointer-events-none" />
+        {/* LEFT PANEL: Brand Visual & Feature Highlights (~50% width on Desktop) */}
+        <div className="w-full lg:w-1/2 flex flex-col justify-between text-white py-4 lg:py-8 px-2 sm:px-6">
+          
+          {/* Top navigation back link */}
+          <div className="flex items-center justify-between mb-8 lg:mb-16">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-white/90 hover:text-white bg-black/30 hover:bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 transition-all"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to Home</span>
+            </Link>
 
-        {/* Top Logo & University Title */}
-        <div className="relative z-10">
-          <Link to="/" className="inline-block p-2 rounded-2xl bg-white shadow-lg border border-white/20 group hover:scale-102 transition-transform">
-            <img
-              src="/images/brand/logo.png"
-              alt="Campus Cravings Logo"
-              className="h-11 w-auto object-contain"
-            />
-          </Link>
-          <div className="text-[11px] uppercase font-bold tracking-widest text-amber-300 mt-2">
-            CGC UNIVERSITY, MOHALI • STUDENT DINING
+            <div className="bg-black/30 backdrop-blur-md p-1 rounded-full border border-white/20">
+              <ThemeToggle />
+            </div>
           </div>
-        </div>
 
-        {/* Center Headline & Features */}
-        <div className="relative z-10 max-w-lg space-y-6 my-6">
-          <div className="space-y-3">
-            <h1 className="text-4xl xl:text-5xl font-black tracking-tight leading-tight text-white">
-              Good food. <br />
-              <span className="text-[#F97316]">No long queues.</span>
+          {/* Script Headline matching the reference image */}
+          <div className="space-y-3 mb-10 lg:mb-20">
+            <h1 
+              style={{ fontFamily: "'Caveat', cursive" }}
+              className="text-white text-5xl sm:text-6xl lg:text-[68px] xl:text-[76px] font-bold leading-[1.08] tracking-wide drop-shadow-xl"
+            >
+              Your Campus.<br />
+              Your Cravings.<br />
+              One Place.
             </h1>
-            <p className="text-emerald-100/90 text-sm xl:text-base leading-relaxed">
-              Order your campus favourites and pick them up when they're ready.
-            </p>
-          </div>
 
-          {/* 4 Feature Badges with Orange Circle Icons */}
-          <div className="grid grid-cols-2 gap-3.5 pt-2">
-            
-            <div className="flex items-center gap-2.5 text-xs font-bold text-white">
-              <div className="w-6 h-6 rounded-full bg-[#F97316]/20 border border-[#F97316]/60 flex items-center justify-center shrink-0">
-                <Store className="w-3.5 h-3.5 text-[#F97316]" />
-              </div>
-              <span>Your Favourite Outlets</span>
-            </div>
-
-            <div className="flex items-center gap-2.5 text-xs font-bold text-white">
-              <div className="w-6 h-6 rounded-full bg-[#F97316]/20 border border-[#F97316]/60 flex items-center justify-center shrink-0">
-                <Zap className="w-3.5 h-3.5 text-[#F97316]" />
-              </div>
-              <span>Quick Ordering</span>
-            </div>
-
-            <div className="flex items-center gap-2.5 text-xs font-bold text-white">
-              <div className="w-6 h-6 rounded-full bg-[#F97316]/20 border border-[#F97316]/60 flex items-center justify-center shrink-0">
-                <UtensilsCrossed className="w-3.5 h-3.5 text-[#F97316]" />
-              </div>
-              <span>Fresh & Tasty Food</span>
-            </div>
-
-            <div className="flex items-center gap-2.5 text-xs font-bold text-white">
-              <div className="w-6 h-6 rounded-full bg-[#F97316]/20 border border-[#F97316]/60 flex items-center justify-center shrink-0">
-                <ShoppingBag className="w-3.5 h-3.5 text-[#F97316]" />
-              </div>
-              <span>Hassle-Free Pickup</span>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Bottom Food Photography: Official 3D Campus Cravings Cafe Signboard */}
-        <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
-          <img
-            src="/images/brand/hero-signboard.jpg"
-            alt="Campus Cravings 3D Signboard at CGC University Cafe"
-            className="w-full h-64 xl:h-72 object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1528]/90 via-[#0B1528]/20 to-transparent" />
-          
-          <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-xs text-white">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#EAA044] animate-pulse" />
-              <span className="font-bold text-amber-200">Official Campus Cafes</span>
-            </div>
-            <span className="text-stone-300 font-medium">17 Express Counters</span>
-          </div>
-        </div>
-
-      </div>
-
-      {/* Right Panel: Form Screen */}
-      <div className="flex-1 flex flex-col justify-center items-center p-6 sm:p-10 lg:p-12 xl:p-16 max-w-xl mx-auto w-full">
-        
-        {/* Desktop Top Back Link & Theme Toggle */}
-        <div className="hidden lg:flex w-full items-center justify-between mb-6">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-xs font-bold text-stone-500 hover:text-[#0D1826] transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home</span>
-          </Link>
-          <ThemeToggle />
-        </div>
-
-        {/* Mobile Food Image Header */}
-        <div className="lg:hidden w-full flex justify-center mb-4">
-          <div className="w-44 h-28 rounded-2xl overflow-hidden shadow-md border border-stone-200/80 relative bg-white flex items-center justify-center p-2">
-            <img
-              src="/images/brand/logo.png"
-              alt="Campus Cravings Logo"
-              className="w-full h-full object-contain"
-            />
-          </div>
-        </div>
-
-        {/* Content Card */}
-        <div className="w-full max-w-md space-y-6">
-          
-          {/* Header Texts */}
-          <div className="text-center lg:text-left space-y-1.5">
-            <h2 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
-              Welcome Back!
-            </h2>
-            <p className="text-xs sm:text-sm text-stone-500">
-              Sign in to continue to Campus Cravings.
-            </p>
-          </div>
-
-          {/* Currently logged-in status banner if already authenticated */}
-          {isAuthenticated && (
-            <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-950 flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Signed in as <strong>{user?.name}</strong></span>
-              </div>
-              <Link
-                to="/profile"
-                className="text-[#064E36] font-bold underline text-[11px] shrink-0"
+            {/* Orange-Red Brush Stroke Underline directly beneath "One Place." */}
+            <div className="pt-1">
+              <svg 
+                className="w-44 sm:w-56 h-3 text-[#DE4927]" 
+                viewBox="0 0 200 12" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
               >
-                Profile →
+                <path 
+                  d="M3 8.5C50 2 150 1.5 197 7" 
+                  stroke="currentColor" 
+                  strokeWidth="5" 
+                  strokeLinecap="round" 
+                />
+              </svg>
+            </div>
+          </div>
+
+          {/* 3 Horizontal Feature Items matching reference bottom row */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-4 border-t border-white/15">
+            
+            {/* Feature 1: Explore Campus Outlets */}
+            <div className="flex flex-col items-center text-center space-y-2">
+              <div className="w-12 h-12 rounded-full bg-[#DE864F] text-white flex items-center justify-center shadow-lg shadow-black/30">
+                <Utensils className="w-5 h-5" />
+              </div>
+              <div className="font-bold text-white text-xs sm:text-sm leading-tight drop-shadow-sm">
+                Explore<br />Campus Outlets
+              </div>
+              <p className="text-white/80 text-[10px] sm:text-xs leading-relaxed max-w-[130px] hidden sm:block">
+                Discover a variety of food outlets in one place.
+              </p>
+            </div>
+
+            {/* Feature 2: Order Easily */}
+            <div className="flex flex-col items-center text-center space-y-2">
+              <div className="w-12 h-12 rounded-full bg-[#DE864F] text-white flex items-center justify-center shadow-lg shadow-black/30">
+                <ShoppingCart className="w-5 h-5" />
+              </div>
+              <div className="font-bold text-white text-xs sm:text-sm leading-tight drop-shadow-sm">
+                Order Easily
+              </div>
+              <p className="text-white/80 text-[10px] sm:text-xs leading-relaxed max-w-[130px] hidden sm:block">
+                Browse menus and add your favourite items.
+              </p>
+            </div>
+
+            {/* Feature 3: Quick Pickup */}
+            <div className="flex flex-col items-center text-center space-y-2">
+              <div className="w-12 h-12 rounded-full bg-[#DE864F] text-white flex items-center justify-center shadow-lg shadow-black/30">
+                <ShoppingBag className="w-5 h-5" />
+              </div>
+              <div className="font-bold text-white text-xs sm:text-sm leading-tight drop-shadow-sm">
+                Quick Pickup
+              </div>
+              <p className="text-white/80 text-[10px] sm:text-xs leading-relaxed max-w-[130px] hidden sm:block">
+                Order online and pickup without queues.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* RIGHT PANEL: White Rounded Login Card (Matches Reference Image) */}
+        <div className="w-full lg:w-[480px] xl:w-[500px]">
+          <div className="bg-white rounded-3xl sm:rounded-[36px] shadow-2xl p-6 sm:p-9 border border-white/80">
+            
+            {/* Top Official Illustrated Campus Cravings Logo */}
+            <div className="text-center mb-3">
+              <Link to="/" className="inline-block group">
+                <img
+                  src="/images/brand/logo.png"
+                  alt="Campus Cravings"
+                  className="h-16 sm:h-20 w-auto mx-auto object-contain transition-transform group-hover:scale-102"
+                />
               </Link>
             </div>
-          )}
 
-          {/* Error Message Alert (Matches Reference "Login Error Mobile") */}
-          {errorMessage && (
-            <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-800 flex items-start gap-2.5 animate-in fade-in">
-              <div className="w-4 h-4 rounded-full bg-rose-200 text-rose-700 flex items-center justify-center shrink-0 font-bold text-[10px] mt-0.5">
-                !
-              </div>
-              <div className="leading-relaxed">
-                <strong>{errorMessage}</strong>
-              </div>
+            {/* Heading & Subtitle */}
+            <div className="text-center mb-6">
+              <h2 
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="text-2xl sm:text-3xl font-bold text-[#1E232A] tracking-tight"
+              >
+                Welcome Back!
+              </h2>
+              <p className="text-xs sm:text-sm text-stone-500 mt-1">
+                Login to continue to your Campus Cravings account
+              </p>
             </div>
-          )}
 
-          {/* Main Login Form */}
-          <form onSubmit={handleLogin} className="space-y-4">
-            
-            {/* Email or Student ID */}
-            <div>
+            {/* Three Selectable Role Cards */}
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6">
+              
+              {/* Student Role Card */}
+              <button
+                type="button"
+                onClick={() => handleRoleChange('student')}
+                className={`flex flex-col items-center text-center p-2.5 sm:p-3 rounded-2xl border transition-all cursor-pointer ${
+                  selectedRole === 'student'
+                    ? 'border-[#DE4927] bg-[#FFF5F1] shadow-xs'
+                    : 'border-stone-200/90 bg-[#F9FAFB] hover:bg-stone-100'
+                }`}
+              >
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center mb-1.5 ${
+                  selectedRole === 'student' ? 'text-[#DE4927]' : 'text-stone-400'
+                }`}>
+                  <GraduationCap className="w-6 h-6" />
+                </div>
+                <span className="font-bold text-xs sm:text-sm text-[#1E232A]">Student</span>
+                <span className="text-[10px] sm:text-[11px] text-stone-500 leading-tight mt-0.5">
+                  Order food &<br />track orders
+                </span>
+              </button>
+
+              {/* Staff Role Card */}
+              <button
+                type="button"
+                onClick={() => handleRoleChange('staff')}
+                className={`flex flex-col items-center text-center p-2.5 sm:p-3 rounded-2xl border transition-all cursor-pointer ${
+                  selectedRole === 'staff'
+                    ? 'border-[#2563EB] bg-[#EFF6FF] shadow-xs'
+                    : 'border-stone-200/90 bg-[#F9FAFB] hover:bg-stone-100'
+                }`}
+              >
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center mb-1.5 ${
+                  selectedRole === 'staff' ? 'text-[#2563EB]' : 'text-stone-400'
+                }`}>
+                  <UtensilsCrossed className="w-5 h-5" />
+                </div>
+                <span className="font-bold text-xs sm:text-sm text-[#1E232A]">Staff</span>
+                <span className="text-[10px] sm:text-[11px] text-stone-500 leading-tight mt-0.5">
+                  Manage menu<br />& orders
+                </span>
+              </button>
+
+              {/* Admin Role Card */}
+              <button
+                type="button"
+                onClick={() => handleRoleChange('admin')}
+                className={`flex flex-col items-center text-center p-2.5 sm:p-3 rounded-2xl border transition-all cursor-pointer ${
+                  selectedRole === 'admin'
+                    ? 'border-[#7C3AED] bg-[#F5F3FF] shadow-xs'
+                    : 'border-stone-200/90 bg-[#F9FAFB] hover:bg-stone-100'
+                }`}
+              >
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center mb-1.5 ${
+                  selectedRole === 'admin' ? 'text-[#7C3AED]' : 'text-stone-400'
+                }`}>
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <span className="font-bold text-xs sm:text-sm text-[#1E232A]">Admin</span>
+                <span className="text-[10px] sm:text-[11px] text-stone-500 leading-tight mt-0.5">
+                  Manage users<br />& platform
+                </span>
+              </button>
+
+            </div>
+
+            {/* Dynamic Form Header */}
+            <div className="mb-4">
+              <h3 className="font-bold text-sm sm:text-base text-[#1E232A]">
+                {selectedRole === 'student' && 'Student Login'}
+                {selectedRole === 'staff' && 'Staff Login'}
+                {selectedRole === 'admin' && 'Admin Login'}
+              </h3>
+              <p className="text-xs text-stone-500 mt-0.5">
+                {selectedRole === 'student' && 'Access campus food outlets, place orders, and track your orders.'}
+                {selectedRole === 'staff' && 'Manage outlet menus, incoming orders, and kitchen preparation.'}
+                {selectedRole === 'admin' && 'Oversee campus outlets, platform analytics, and user accounts.'}
+              </p>
+            </div>
+
+            {/* Error Message Alert */}
+            {errorMessage && (
+              <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-800 flex items-start gap-2 animate-in fade-in">
+                <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+                <span className="leading-snug">{errorMessage}</span>
+              </div>
+            )}
+
+            {/* Currently Logged In Alert if already authenticated as student */}
+            {isAuthenticated && selectedRole === 'student' && (
+              <div className="mb-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Currently logged in as <strong>{user?.name}</strong></span>
+                </div>
+                <Link to="/dashboard" className="text-[#DE4927] font-bold underline shrink-0">
+                  Dashboard →
+                </Link>
+              </div>
+            )}
+
+            {/* Main Login Form */}
+            <form onSubmit={handleSubmit} className="space-y-3.5">
+              
+              {/* Identifier Input */}
               <div className="relative">
-                <User className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Mail className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="text"
                   required
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  placeholder="Email or Student ID"
-                  className="w-full pl-10 pr-4 py-3 rounded-2xl bg-white border border-stone-200 text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-2 focus:ring-[#064E36]/20 focus:border-[#064E36] transition-all shadow-2xs"
+                  placeholder={
+                    selectedRole === 'student'
+                      ? 'Student Email or Registered ID'
+                      : selectedRole === 'staff'
+                      ? 'Staff Email or Staff ID'
+                      : 'Admin Email or Username'
+                  }
+                  className="w-full pl-10 pr-3.5 py-3 rounded-xl border border-stone-200 text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:border-[#DE4927] focus:ring-1 focus:ring-[#DE4927] transition-all bg-white"
                 />
               </div>
-            </div>
 
-            {/* Password */}
-            <div>
+              {/* Password Input */}
               <div className="relative">
                 <Lock className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
@@ -287,135 +472,110 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
-                  className="w-full pl-10 pr-11 py-3 rounded-2xl bg-white border border-stone-200 text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-2 focus:ring-[#064E36]/20 focus:border-[#064E36] transition-all shadow-2xs"
+                  className="w-full pl-10 pr-10 py-3 rounded-xl border border-stone-200 text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:border-[#DE4927] focus:ring-1 focus:ring-[#DE4927] transition-all bg-white"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-stone-600 cursor-pointer"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 cursor-pointer"
                   title={showPassword ? 'Hide password' : 'Show password'}
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
-            </div>
 
-            {/* Remember Me & Forgot Password Row */}
-            <div className="flex items-center justify-between pt-1">
-              <label className="flex items-center gap-2 cursor-pointer text-xs text-stone-600 font-medium">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 rounded-md border-stone-300 text-[#064E36] focus:ring-[#064E36]/20 cursor-pointer"
-                />
-                <span>Remember me</span>
-              </label>
+              {/* Remember Me & Forgot Password Row */}
+              <div className="flex items-center justify-between pt-0.5">
+                <label className="flex items-center gap-2 cursor-pointer text-xs text-stone-600 font-medium">
+                  <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    className="w-4 h-4 rounded-sm border-stone-300 text-[#DE4927] focus:ring-[#DE4927] cursor-pointer"
+                  />
+                  <span>Remember me</span>
+                </label>
 
-              <Link
-                to="/forgot-password"
-                className="text-xs font-bold text-[#F97316] hover:underline"
+                <Link
+                  to="/forgot-password"
+                  className="text-xs text-[#2563EB] hover:underline font-semibold"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-3.5 rounded-xl bg-[#DE4927] hover:bg-[#C23C1E] text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 mt-2"
               >
-                Forgot Password?
-              </Link>
+                <span>
+                  {isSubmitting
+                    ? 'Logging in...'
+                    : selectedRole === 'student'
+                    ? 'Login as Student'
+                    : selectedRole === 'staff'
+                    ? 'Login as Staff'
+                    : 'Login as Admin'}
+                </span>
+                <ArrowRight className="w-4 h-4 text-white" />
+              </button>
+
+            </form>
+
+            {/* Bottom Register Link */}
+            <div className="text-center pt-4 mt-2">
+              <span className="text-xs text-stone-500">
+                Don't have an account?{' '}
+                <Link
+                  to="/register"
+                  className="text-[#2563EB] font-bold hover:underline"
+                >
+                  Register here
+                </Link>
+              </span>
             </div>
 
-            {/* Sign In Primary Button */}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full py-3.5 rounded-2xl bg-[#064E36] hover:bg-[#043B2B] text-white font-black text-xs sm:text-sm shadow-md shadow-emerald-950/15 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
-            >
-              <span>{isSubmitting ? 'Signing In...' : 'Sign In'}</span>
-              <ArrowRight className="w-4 h-4 text-[#EAA044]" />
-            </button>
-
-          </form>
-
-          {/* Social Continue Divider */}
-          <div className="relative my-4">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-stone-200" />
-            </div>
-            <div className="relative flex justify-center text-[11px] text-stone-400 bg-[#FAF7F0] px-3">
-              or continue with
-            </div>
-          </div>
-
-          {/* SSO Buttons: Google & Microsoft */}
-          <div className="space-y-2.5">
-            <button
-              type="button"
-              onClick={() => handleSocialLogin('Google')}
-              className="w-full py-2.5 px-4 rounded-2xl bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 font-bold text-xs flex items-center justify-center gap-2.5 shadow-2xs hover:shadow-xs transition-all cursor-pointer"
-            >
-              <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
-                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-              </svg>
-              <span>Continue with Google</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleSocialLogin('Microsoft')}
-              className="w-full py-2.5 px-4 rounded-2xl bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 font-bold text-xs flex items-center justify-center gap-2.5 shadow-2xs hover:shadow-xs transition-all cursor-pointer"
-            >
-              <svg className="w-4 h-4 shrink-0" viewBox="0 0 21 21">
-                <rect x="1" y="1" width="9" height="9" fill="#f25022" />
-                <rect x="11" y="1" width="9" height="9" fill="#7fba00" />
-                <rect x="1" y="11" width="9" height="9" fill="#00a4ef" />
-                <rect x="11" y="11" width="9" height="9" fill="#ffb900" />
-              </svg>
-              <span>Continue with Microsoft</span>
-            </button>
-          </div>
-
-          {/* Quick Demo Evaluation Bar */}
-          <div className="pt-2">
-            <div className="p-3 rounded-2xl bg-amber-50/80 border border-amber-200/70 text-xs space-y-1.5">
-              <div className="flex items-center justify-between text-[11px] font-bold text-amber-900">
-                <div className="flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-[#F97316]" />
-                  <span>Instant Demo Student Login:</span>
+            {/* Discreet Demo Quick Fill Bar for Examiners */}
+            <div className="mt-5 pt-3 border-t border-stone-100">
+              <div className="flex items-center justify-between text-[11px] text-stone-500 mb-1.5">
+                <div className="flex items-center gap-1 font-bold text-stone-600">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Demo Evaluation Quick-Fill:</span>
                 </div>
-                <span className="font-mono text-stone-500">pass: password123</span>
+                <span className="text-[10px] text-stone-400">Click to fill</span>
               </div>
-              <div className="flex gap-2">
+              <div className="grid grid-cols-3 gap-1.5">
                 <button
                   type="button"
-                  onClick={() => handleQuickDemo('CGC2023CSE042')}
-                  className="flex-1 py-1.5 px-2 rounded-xl bg-white text-[11px] font-bold text-stone-800 border border-amber-200 hover:bg-amber-100 transition-colors truncate"
+                  onClick={() => handleQuickFill('student', 'CGC2023CSE042', 'password123')}
+                  className="py-1 px-1.5 rounded-lg bg-stone-50 hover:bg-stone-100 border border-stone-200 text-[10px] font-semibold text-stone-700 truncate cursor-pointer"
+                  title="Aarav Sharma (Student)"
                 >
-                  Aarav (CSE)
+                  Student (Aarav)
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleQuickDemo('CGC2023ECE019')}
-                  className="flex-1 py-1.5 px-2 rounded-xl bg-white text-[11px] font-bold text-stone-800 border border-amber-200 hover:bg-amber-100 transition-colors truncate"
+                  onClick={() => handleQuickFill('staff', 'rajesh.kulhad@cgc.edu.in', 'password123')}
+                  className="py-1 px-1.5 rounded-lg bg-stone-50 hover:bg-stone-100 border border-stone-200 text-[10px] font-semibold text-stone-700 truncate cursor-pointer"
+                  title="Rajesh Kumar (Kulhad Staff)"
                 >
-                  Simran (ECE)
+                  Staff (Rajesh)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleQuickFill('admin', 'dean.welfare@cgc.edu.in', 'admin123')}
+                  className="py-1 px-1.5 rounded-lg bg-stone-50 hover:bg-stone-100 border border-stone-200 text-[10px] font-semibold text-stone-700 truncate cursor-pointer"
+                  title="Dr. Harpreet Singh (Dean/Admin)"
+                >
+                  Admin (Dean)
                 </button>
               </div>
             </div>
-          </div>
 
-          {/* Bottom Link: Don't have an account? Create Account */}
-          <div className="text-center pt-2">
-            <span className="text-xs text-stone-500 font-medium">
-              Don't have an account?{' '}
-              <Link
-                to="/register"
-                className="font-bold text-[#F97316] hover:underline"
-              >
-                Create Account
-              </Link>
-            </span>
           </div>
-
         </div>
 
       </div>
