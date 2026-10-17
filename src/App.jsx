@@ -12,6 +12,7 @@ import SearchModal from './components/SearchModal';
 import ScrollToTop from './components/ScrollToTop';
 import CartToast from './components/CartToast';
 import ProtectedRoute from './components/ProtectedRoute';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Student Pages
 import LandingPage from './pages/LandingPage';
@@ -216,7 +217,9 @@ function App() {
             <ThemeProvider>
               <Router>
                 <ScrollToTop />
-                <AppContent />
+                <ErrorBoundary>
+                  <AppContent />
+                </ErrorBoundary>
               </Router>
             </ThemeProvider>
           </CartProvider>

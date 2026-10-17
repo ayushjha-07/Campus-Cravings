@@ -34,9 +34,14 @@ export default function ForgotPasswordPage() {
 
     setIsSubmitting(true);
     setTimeout(() => {
+      const res = requestPasswordReset(email);
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 600);
+      if (res.success) {
+        setIsSubmitted(true);
+      } else {
+        setErrorMessage(res.error);
+      }
+    }, 400);
   };
 
   return (

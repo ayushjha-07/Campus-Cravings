@@ -14,7 +14,8 @@ import {
   LogOut, 
   Sparkles,
   ShieldCheck,
-  Tag
+  Tag,
+  ArrowRight
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
