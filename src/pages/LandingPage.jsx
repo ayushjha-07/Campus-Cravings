@@ -27,7 +27,9 @@ import {
   HelpCircle, 
   Info,
   Coffee,
-  Pizza
+  Pizza,
+  Utensils,
+  ShoppingCart
 } from 'lucide-react';
 
 export default function LandingPage() {
@@ -110,24 +112,24 @@ export default function LandingPage() {
       {/* =========================================================================
           1. HERO SECTION (Requirement 3)
           ========================================================================= */}
-      <section id="hero" className="relative bg-[#0D1826] text-white overflow-hidden min-h-[580px] sm:min-h-[640px] lg:min-h-[700px] flex flex-col justify-between">
+      <section id="hero" className="relative bg-[#0D1826] text-white overflow-hidden min-h-[560px] sm:min-h-[640px] lg:min-h-[700px] flex flex-col justify-between">
         
         {/* Background visual: Realistic 3D Campus Cravings signboard image */}
         <div className="absolute inset-0 z-0">
           <img
             src="/images/brand/hero-signboard.jpg"
             alt="Campus Cravings 3D illuminated signboard at university cafe"
-            className="w-full h-full object-cover object-[35%_25%] sm:object-[40%_30%] md:object-center brightness-[0.92] contrast-[1.04]"
+            className="w-full h-full object-cover object-[26%_20%] sm:object-[35%_25%] md:object-center brightness-[0.92] contrast-[1.04]"
             loading="eager"
             fetchPriority="high"
           />
           {/* Subtle top vignette preserving authentic cafe ambient lighting */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/15 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/20 to-transparent pointer-events-none" />
           
           {/* Smooth bottom dark navy gradient placed below the 3D signboard to guarantee text contrast */}
           <div 
             className="absolute inset-0 bg-gradient-to-t from-[#0B1528] via-[#0B1528]/85 to-transparent pointer-events-none" 
-            style={{ top: '35%' }} 
+            style={{ top: '28%' }} 
           />
           
           {/* Ambient subtle decorative glow matching logo accents */}
@@ -136,8 +138,8 @@ export default function LandingPage() {
         </div>
 
         {/* Top Location & Campus Badges */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-5 sm:pt-7 w-full flex items-center justify-between">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/45 border border-white/20 text-white text-xs font-bold backdrop-blur-md shadow-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-4 sm:pt-6 w-full flex items-center justify-between">
+          <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-black/45 border border-white/20 text-white text-[11px] sm:text-xs font-bold backdrop-blur-md shadow-md">
             <MapPin className="w-3.5 h-3.5 text-[#F4A261]" />
             <span>CGC University, Mohali</span>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse ml-0.5" />
@@ -151,116 +153,103 @@ export default function LandingPage() {
         </div>
 
         {/* Main Hero Content: Positioned below the 3D signboard so illuminated lettering is fully visible */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-12 sm:pb-16 pt-36 sm:pt-48 md:pt-56 lg:pt-64 w-full">
-          <div className="max-w-2xl lg:max-w-3xl space-y-5 sm:space-y-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-6 sm:pb-12 pt-28 sm:pt-40 md:pt-48 lg:pt-56 w-full">
+          <div className="max-w-2xl lg:max-w-3xl space-y-4 sm:space-y-6">
             
-            {/* Pill & Headline */}
-            <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E63946] text-white text-[11px] sm:text-xs font-black uppercase tracking-wider shadow-md backdrop-blur-xs">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Skip The Queue • Fast Counter Pickup</span>
-              </div>
-
-              {/* Exact Headline from Requirement 3 */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.08] text-white drop-shadow-md">
-                Your Campus. <br className="hidden sm:inline" />
-                <span className="text-[#F4A261] drop-shadow-sm">Your Cravings.</span> One Place.
+            {/* Headline matching Reference Mobile Image */}
+            <div className="space-y-2 sm:space-y-3">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.12] text-white drop-shadow-md">
+                Your Campus.<br />
+                Your Cravings.<br />
+                <span className="text-[#EAA044]">One Place.</span>
               </h1>
 
-              {/* Exact Supporting Text from Requirement 3 */}
-              <p className="pt-1 text-stone-200 text-sm sm:text-base lg:text-lg font-medium leading-relaxed max-w-xl drop-shadow-xs">
+              {/* Supporting Text matching Reference Mobile Image */}
+              <p className="pt-0.5 text-stone-200/95 text-xs sm:text-sm md:text-base font-medium leading-relaxed max-w-md drop-shadow-xs">
                 Discover your favourite campus food outlets, explore menus, and order your meals conveniently without standing in long queues.
               </p>
             </div>
 
-            {/* Buttons: Primary "Explore Outlets" & Secondary "Get Started" */}
-            <div className="flex flex-wrap items-center gap-3.5 pt-1">
+            {/* Buttons: Primary "Explore Outlets →" & Secondary "Get Started" */}
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 pt-1">
               <button
                 type="button"
                 onClick={() => scrollTo('outlets')}
-                className="px-7 sm:px-8 py-3.5 rounded-full bg-[#E63946] hover:bg-[#D93845] active:scale-[0.98] text-white font-extrabold text-sm sm:text-base flex items-center gap-2.5 shadow-xl shadow-red-950/40 transition-all cursor-pointer"
+                className="px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-xl bg-[#DE4927] hover:bg-[#C23C1E] active:scale-[0.98] text-white font-extrabold text-xs sm:text-sm flex items-center gap-2 shadow-xl shadow-red-950/40 transition-all cursor-pointer min-h-[44px]"
               >
-                <Store className="w-4 h-4 text-white" />
                 <span>Explore Outlets</span>
-                <ArrowRight className="w-4 h-4 text-white ml-0.5" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </button>
 
               {isAuthenticated ? (
                 <Link
                   to="/dashboard"
-                  className="px-6 sm:px-7 py-3.5 rounded-full bg-white hover:bg-stone-100 active:scale-[0.98] text-[#0D1826] font-bold text-sm sm:text-base flex items-center gap-2 shadow-lg transition-all"
+                  className="px-5 sm:px-6 py-2.5 sm:py-3.5 rounded-xl bg-white hover:bg-stone-100 active:scale-[0.98] text-[#0D1826] font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg transition-all min-h-[44px]"
                 >
                   <span>Go to Dashboard</span>
-                  <ArrowRight className="w-4 h-4 text-[#E63946]" />
+                  <ArrowRight className="w-4 h-4 text-[#DE4927]" />
                 </Link>
               ) : (
                 <Link
                   to="/register"
-                  className="px-6 sm:px-7 py-3.5 rounded-full bg-black/40 hover:bg-black/60 active:scale-[0.98] border border-white/30 hover:border-white/60 text-white font-bold text-sm sm:text-base flex items-center gap-2 backdrop-blur-md transition-all cursor-pointer"
+                  className="px-5 sm:px-6 py-2.5 sm:py-3.5 rounded-xl bg-black/60 hover:bg-black/80 active:scale-[0.98] border border-white/25 hover:border-white/50 text-white font-bold text-xs sm:text-sm flex items-center gap-2 backdrop-blur-md transition-all cursor-pointer min-h-[44px]"
                 >
                   <span>Get Started</span>
-                  <ArrowRight className="w-4 h-4 text-[#F4A261]" />
                 </Link>
               )}
             </div>
 
-            {/* 4 Feature Highlights Row */}
-            <div className="pt-6 sm:pt-8 grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4 border-t border-white/15 max-w-3xl">
-              
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center shrink-0 shadow-inner">
-                  <Store className="w-5 h-5 text-[#F4A261]" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-white leading-tight">
-                    17 Campus Outlets
+            {/* 3 Circular Feature Highlights matching Reference Left Phone Screen */}
+            <div className="pt-3 sm:pt-6 border-t border-white/15">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 max-w-lg">
+                
+                {/* 1. Multiple Outlets */}
+                <div className="flex flex-col items-center text-center space-y-1">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#DE864F] text-white flex items-center justify-center shadow-md shrink-0">
+                    <Utensils className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
-                  <div className="text-[11px] text-stone-300 font-medium">
-                    All cafeterias & kiosks
+                  <div className="text-[11px] sm:text-xs font-bold text-white leading-tight">
+                    Multiple<br />Outlets
                   </div>
+                  <p className="text-[9px] sm:text-[11px] text-stone-300 leading-tight">
+                    All your campus favourites in one place.
+                  </p>
                 </div>
+
+                {/* 2. Easy Ordering */}
+                <div className="flex flex-col items-center text-center space-y-1">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#DE864F] text-white flex items-center justify-center shadow-md shrink-0">
+                    <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </div>
+                  <div className="text-[11px] sm:text-xs font-bold text-white leading-tight">
+                    Easy<br />Ordering
+                  </div>
+                  <p className="text-[9px] sm:text-[11px] text-stone-300 leading-tight">
+                    Browse menus and add items to your cart.
+                  </p>
+                </div>
+
+                {/* 3. Quick Pickup */}
+                <div className="flex flex-col items-center text-center space-y-1">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#DE864F] text-white flex items-center justify-center shadow-md shrink-0">
+                    <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </div>
+                  <div className="text-[11px] sm:text-xs font-bold text-white leading-tight">
+                    Quick<br />Pickup
+                  </div>
+                  <p className="text-[9px] sm:text-[11px] text-stone-300 leading-tight">
+                    Order online and pickup without queues.
+                  </p>
+                </div>
+
               </div>
 
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center shrink-0 shadow-inner">
-                  <Clock className="w-5 h-5 text-emerald-300" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-white leading-tight">
-                    Skip Long Queues
-                  </div>
-                  <div className="text-[11px] text-stone-300 font-medium">
-                    Fast break pickup
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center shrink-0 shadow-inner">
-                  <ShieldCheck className="w-5 h-5 text-[#F4A261]" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-white leading-tight">
-                    Digital Menus
-                  </div>
-                  <div className="text-[11px] text-stone-300 font-medium">
-                    Transparent prices
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center shrink-0 shadow-inner">
-                  <Sparkles className="w-5 h-5 text-[#E63946]" />
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-white leading-tight">
-                    Student Dining
-                  </div>
-                  <div className="text-[11px] text-stone-300 font-medium">
-                    CGC Mohali campus
-                  </div>
-                </div>
+              {/* 4 Pagination / Carousel indicator dots matching reference */}
+              <div className="flex items-center justify-center gap-1.5 pt-3.5 sm:pt-4">
+                <span className="w-4 h-1.5 rounded-full bg-[#DE4927]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
               </div>
 
             </div>
@@ -268,6 +257,123 @@ export default function LandingPage() {
           </div>
         </div>
 
+        {/* Organic Wavy Transition to Popular Outlets Section */}
+        <div className="w-full overflow-hidden leading-none relative z-10 -mb-1">
+          <svg 
+            className="relative block w-full h-7 sm:h-11 text-[#FAF7F0] dark:text-[#101713]" 
+            viewBox="0 0 1200 120" 
+            preserveAspectRatio="none"
+          >
+            <path d="M0,0 C320,85 880,115 1200,35 L1200,120 L0,120 Z" fill="currentColor"></path>
+          </svg>
+        </div>
+
+      </section>
+
+      {/* =========================================================================
+          POPULAR CAMPUS OUTLETS (Matches Reference Left Phone Screen)
+          ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-4">
+        <div className="mb-3.5">
+          <h2 
+            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            className="text-xl sm:text-2xl font-bold text-[#1E232A] dark:text-white tracking-tight"
+          >
+            Popular Campus Outlets
+          </h2>
+          <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
+            Explore food outlets available on campus
+          </p>
+        </div>
+
+        {/* 2-Column Responsive Grid on Mobile / 4 on Tablets & Desktops */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          
+          {/* Card 1: College Canteen */}
+          <Link
+            to="/outlet/canteen"
+            className="group bg-white dark:bg-[#19231D] rounded-2xl overflow-hidden border border-stone-200/90 dark:border-stone-800 shadow-2xs hover:shadow-md transition-all flex flex-col cursor-pointer"
+          >
+            <div className="relative h-24 sm:h-32 overflow-hidden bg-stone-100 dark:bg-stone-800">
+              <img
+                src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80"
+                alt="College Canteen"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+            </div>
+            <div className="px-3 py-2 bg-white dark:bg-[#1E2922] flex items-center justify-between">
+              <span className="text-xs font-bold text-stone-900 dark:text-white truncate">
+                College Canteen
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-stone-400 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+            </div>
+          </Link>
+
+          {/* Card 2: Buddy's Bistro */}
+          <Link
+            to="/outlet/buddys-bistro"
+            className="group bg-white dark:bg-[#19231D] rounded-2xl overflow-hidden border border-stone-200/90 dark:border-stone-800 shadow-2xs hover:shadow-md transition-all flex flex-col cursor-pointer"
+          >
+            <div className="relative h-24 sm:h-32 overflow-hidden bg-stone-100 dark:bg-stone-800">
+              <img
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80"
+                alt="Buddy's Bistro"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+            </div>
+            <div className="px-3 py-2 bg-white dark:bg-[#1E2922] flex items-center justify-between">
+              <span className="text-xs font-bold text-stone-900 dark:text-white truncate">
+                Buddy's Bistro
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-stone-400 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+            </div>
+          </Link>
+
+          {/* Card 3: Nescafe */}
+          <Link
+            to="/outlet/nescafe"
+            className="group bg-white dark:bg-[#19231D] rounded-2xl overflow-hidden border border-stone-200/90 dark:border-stone-800 shadow-2xs hover:shadow-md transition-all flex flex-col cursor-pointer"
+          >
+            <div className="relative h-24 sm:h-32 overflow-hidden bg-stone-100 dark:bg-stone-800">
+              <img
+                src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&auto=format&fit=crop&q=80"
+                alt="Nescafe"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+            </div>
+            <div className="px-3 py-2 bg-white dark:bg-[#1E2922] flex items-center justify-between">
+              <span className="text-xs font-bold text-stone-900 dark:text-white truncate">
+                Nescafe
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-stone-400 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+            </div>
+          </Link>
+
+          {/* Card 4: Domino's */}
+          <Link
+            to="/outlet/dominos"
+            className="group bg-white dark:bg-[#19231D] rounded-2xl overflow-hidden border border-stone-200/90 dark:border-stone-800 shadow-2xs hover:shadow-md transition-all flex flex-col cursor-pointer"
+          >
+            <div className="relative h-24 sm:h-32 overflow-hidden bg-stone-100 dark:bg-stone-800">
+              <img
+                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&auto=format&fit=crop&q=80"
+                alt="Domino's"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+            </div>
+            <div className="px-3 py-2 bg-white dark:bg-[#1E2922] flex items-center justify-between">
+              <span className="text-xs font-bold text-stone-900 dark:text-white truncate">
+                Domino's
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-stone-400 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+            </div>
+          </Link>
+
+        </div>
       </section>
 
       {/* =========================================================================

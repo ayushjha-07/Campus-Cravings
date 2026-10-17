@@ -348,7 +348,7 @@ export default function Navbar({ onSearchSubmit }) {
                 )}
               </div>
             ) : (
-              <div className="flex items-center gap-2 sm:gap-2.5">
+              <div className="hidden sm:flex items-center gap-2 sm:gap-2.5">
                 {/* Login Button (Requirement 2) */}
                 <Link
                   to="/login"
