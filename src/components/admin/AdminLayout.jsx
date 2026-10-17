@@ -81,14 +81,18 @@ export default function AdminLayout({ children }) {
             </button>
 
             <Link to="/admin" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-[#144834] text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
-                <Building2 className="w-5 h-5 text-[#EAA044]" />
+              <div className="p-1 rounded-xl bg-white shadow-2xs group-hover:scale-105 transition-transform shrink-0">
+                <img
+                  src="/images/brand/logo.png"
+                  alt="Campus Cravings Logo"
+                  className="h-8 w-auto object-contain"
+                />
               </div>
               <div>
                 <span className="font-black text-sm tracking-tight block leading-tight text-white">
                   Campus Cravings
                 </span>
-                <span className="text-[10px] text-emerald-200/90 font-medium block uppercase tracking-wider">
+                <span className="text-[10px] text-amber-300 font-medium block uppercase tracking-wider">
                   CGC University Admin
                 </span>
               </div>

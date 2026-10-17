@@ -25,17 +25,16 @@ export default function Footer() {
           
           {/* Brand & Campus Pickup Note */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#EAF4EE] flex items-center justify-center text-[#1B4D36] shadow-md">
-                <UtensilsCrossed className="w-5 h-5 text-[#1B4D36]" />
-              </div>
-              <div>
-                <span className="font-extrabold text-xl tracking-tight text-white">
-                  Campus<span className="text-[#E76F51]">Cravings</span>
-                </span>
-                <span className="block text-[11px] font-semibold text-emerald-400 uppercase tracking-wider">
-                  CGC University, Mohali
-                </span>
+            <div className="space-y-2">
+              <Link to="/" className="inline-block p-2 rounded-2xl bg-white shadow-md border border-stone-200/80 hover:scale-102 transition-transform">
+                <img
+                  src="/images/brand/logo.png"
+                  alt="Campus Cravings Logo"
+                  className="h-10 sm:h-12 w-auto object-contain"
+                />
+              </Link>
+              <div className="text-[11px] font-bold text-amber-400 uppercase tracking-wider">
+                CGC University, Mohali • Student Dining
               </div>
             </div>
 
@@ -74,44 +73,73 @@ export default function Footer() {
               </li>
               <li>
                 <a href="/#outlets" className="hover:text-white transition-colors">
-                  Food Outlets
-                </a>
-              </li>
-              <li>
-                <a href="/#offers" className="hover:text-white transition-colors">
-                  Special Offers
-                </a>
-              </li>
-              <li>
-                <a href="/#popular" className="hover:text-white transition-colors">
-                  Popular Food
+                  Explore Outlets
                 </a>
               </li>
               <li>
                 <a href="/#how-it-works" className="hover:text-white transition-colors">
-                  How Pickup Works
+                  How It Works
                 </a>
               </li>
               <li>
+                <a href="/#why-us" className="hover:text-white transition-colors">
+                  Why Campus Cravings
+                </a>
+              </li>
+              <li>
+                <a href="/#about" className="hover:text-white transition-colors">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="/#contact" className="hover:text-white transition-colors">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Student Account Links (Requirement 8) */}
+          <div>
+            <h4 className="text-white font-semibold text-sm tracking-wide mb-4 uppercase">
+              Account & Portal
+            </h4>
+            <ul className="space-y-2.5 text-sm text-stone-400">
+              <li>
+                <Link to="/login" className="hover:text-white transition-colors">
+                  Student Login
+                </Link>
+              </li>
+              <li>
+                <Link to="/register" className="hover:text-white transition-colors text-amber-300 font-medium">
+                  Register / Get Started
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard" className="hover:text-white transition-colors">
+                  Student Dashboard
+                </Link>
+              </li>
+              <li>
                 <Link to="/orders" className="hover:text-white transition-colors">
-                  My Orders & Tracking
+                  My Orders & Pickup
                 </Link>
               </li>
               <li>
                 <Link to="/cart" className="hover:text-white transition-colors">
-                  Shopping Cart
+                  Dining Cart
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Campus Food Outlets (All 14) */}
-          <div className="lg:col-span-2">
+          {/* Campus Food Outlets (All 17) */}
+          <div className="lg:col-span-1">
             <h4 className="text-white font-semibold text-sm tracking-wide mb-4 uppercase flex items-center gap-2">
               <Store className="w-4 h-4 text-[#EAA044]" />
-              <span>Campus Outlets (14 Spots)</span>
+              <span>Campus Outlets (17)</span>
             </h4>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs text-stone-400">
+            <div className="space-y-1.5 text-xs text-stone-400 max-h-48 overflow-y-auto pr-2">
               {OUTLETS.map(outlet => (
                 <Link
                   key={outlet.id}
@@ -123,7 +151,7 @@ export default function Footer() {
               ))}
             </div>
 
-            <div className="pt-6 flex flex-wrap items-center gap-3">
+            <div className="pt-4 flex flex-col gap-2">
               <Link
                 to="/staff/kulhad"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 text-xs font-semibold hover:bg-emerald-900 transition-colors"

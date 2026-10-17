@@ -14,6 +14,7 @@ import CartToast from './components/CartToast';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Student Pages
+import LandingPage from './pages/LandingPage';
 import HomePage from './pages/HomePage';
 import OutletsPage from './pages/OutletsPage';
 import OutletMenuPage from './pages/OutletMenuPage';
@@ -70,14 +71,29 @@ function AppContent() {
       {/* Main content routes */}
       <main className="flex-1">
         <Routes>
-          {/* Student Routes */}
-          <Route path="/" element={<HomePage />} />
+          {/* Student & Public Routes */}
+          <Route path="/" element={<LandingPage />} />
+          <Route 
+            path="/dashboard" 
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            } 
+          />
           <Route path="/menu" element={<HomePage />} />
           <Route path="/outlets" element={<OutletsPage />} />
-          <Route path="/about" element={<HomePage />} />
+          <Route path="/about" element={<LandingPage />} />
           <Route path="/outlet/:id" element={<OutletMenuPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route 
+            path="/checkout" 
+            element={
+              <ProtectedRoute>
+                <CheckoutPage />
+              </ProtectedRoute>
+            } 
+          />
           <Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
           <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
           <Route path="/orders" element={<OrdersPage />} />

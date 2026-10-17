@@ -70,9 +70,17 @@ export default function OrdersPage() {
         {/* Top Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D3828] uppercase tracking-wider mb-1">
-              <ReceiptText className="w-4 h-4" />
-              <span>CGC University, Mohali</span>
+            <div className="inline-flex items-center gap-2 mb-1.5">
+              <span className="p-1 rounded-lg bg-white border border-stone-200/90 shadow-2xs">
+                <img
+                  src="/images/brand/logo.png"
+                  alt="Campus Cravings Logo"
+                  className="h-5 w-auto object-contain"
+                />
+              </span>
+              <span className="text-xs font-bold text-[#0D1826] uppercase tracking-wider">
+                CGC University, Mohali
+              </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
               My Campus Orders & Pickup Tracking

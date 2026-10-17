@@ -60,13 +60,17 @@ export default function CartPage() {
   if (cartItems.length === 0) {
     return (
       <div className="min-h-[75vh] flex flex-col items-center justify-center px-4 py-16 text-center max-w-lg mx-auto">
-        {/* Custom Empty Cart Illustration in Forest-green and Warm Cream */}
+        {/* Custom Empty Cart Illustration with Official Campus Cravings Emblem */}
         <div className="relative mb-6">
-          <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-[#EAF4EE] border border-[#C2DED0] flex items-center justify-center shadow-inner">
-            <ShoppingBag className="w-14 h-14 sm:w-16 sm:h-16 text-[#0D3828] stroke-[1.5]" />
+          <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-white border border-stone-200/80 p-3 flex items-center justify-center shadow-md">
+            <img
+              src="/images/brand/logo-icon.png"
+              alt="Campus Cravings Emblem"
+              className="w-full h-full object-contain"
+            />
           </div>
-          <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-2xl bg-[#EAA044] text-white flex items-center justify-center shadow-md">
-            <Sparkles className="w-5 h-5" />
+          <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-2xl bg-[#E63946] text-white flex items-center justify-center shadow-md">
+            <ShoppingBag className="w-5 h-5 text-white" />
           </div>
         </div>
 
@@ -106,9 +110,17 @@ export default function CartPage() {
         {/* Top Header Row */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 border-b border-stone-200/80">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D3828] uppercase tracking-wider mb-1">
-              <ShoppingBag className="w-4 h-4 text-[#E76F51]" />
-              <span>CGC University Student Dining Cart</span>
+            <div className="inline-flex items-center gap-2 mb-1.5">
+              <span className="p-1 rounded-lg bg-white border border-stone-200 shadow-2xs">
+                <img
+                  src="/images/brand/logo.png"
+                  alt="Campus Cravings Logo"
+                  className="h-5 w-auto object-contain"
+                />
+              </span>
+              <span className="text-xs font-bold text-[#0D1826] uppercase tracking-wider">
+                CGC University Student Dining Cart
+              </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
               Review Cart & Pickup Summary

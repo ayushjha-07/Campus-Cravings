@@ -79,9 +79,17 @@ export default function ProfilePage() {
         {/* Top Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D3828] uppercase tracking-wider mb-1">
-              <GraduationCap className="w-4 h-4" />
-              <span>CGC Student Account</span>
+            <div className="inline-flex items-center gap-2 mb-1.5">
+              <span className="p-1 rounded-lg bg-white border border-stone-200/90 shadow-2xs">
+                <img
+                  src="/images/brand/logo.png"
+                  alt="Campus Cravings Logo"
+                  className="h-5 w-auto object-contain"
+                />
+              </span>
+              <span className="text-xs font-bold text-[#0D1826] uppercase tracking-wider">
+                CGC Student Account
+              </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
               Student Profile & Account
@@ -127,22 +135,31 @@ export default function ProfilePage() {
           <div className="md:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 shadow-2xs space-y-6">
             
             {/* Avatar & Title */}
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#0D3828] to-[#1B4D36] text-white font-black text-2xl flex items-center justify-center shadow-md">
-                {user?.name ? user.name.charAt(0).toUpperCase() : 'S'}
-              </div>
-              <div>
-                <h2 className="text-xl font-black text-stone-900">
-                  {user?.name || 'Aarav Sharma'}
-                </h2>
-                <div className="flex items-center gap-2 mt-1">
-                  <span className="text-xs font-mono font-bold text-[#0D3828] bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-md inline-block">
-                    Roll No: {user?.studentId || user?.rollNo || 'CGC2023CSE042'}
-                  </span>
-                  <span className="text-[11px] font-semibold text-stone-500">
-                    CGC University, Mohali
-                  </span>
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#0D1826] to-[#162544] text-white font-black text-2xl flex items-center justify-center shadow-md">
+                  {user?.name ? user.name.charAt(0).toUpperCase() : 'S'}
                 </div>
+                <div>
+                  <h2 className="text-xl font-black text-stone-900">
+                    {user?.name || 'Aarav Sharma'}
+                  </h2>
+                  <div className="flex items-center gap-2 mt-1">
+                    <span className="text-xs font-mono font-bold text-[#0D1826] bg-amber-50 border border-amber-200 px-2.5 py-0.5 rounded-md inline-block">
+                      Roll No: {user?.studentId || user?.rollNo || 'CGC2023CSE042'}
+                    </span>
+                    <span className="text-[11px] font-semibold text-stone-500">
+                      CGC University, Mohali
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="hidden sm:block p-1.5 rounded-xl bg-stone-50 border border-stone-200/80 shadow-2xs">
+                <img
+                  src="/images/brand/logo-icon.png"
+                  alt="Campus Cravings Mascot"
+                  className="w-10 h-10 object-contain"
+                />
               </div>
             </div>
 

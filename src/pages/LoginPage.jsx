@@ -25,8 +25,8 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Target to redirect after successful login
-  const from = location.state?.from?.pathname || '/';
+  // Target to redirect after successful login (Requirement 1: Student Dashboard)
+  const from = location.state?.from?.pathname || '/dashboard';
 
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
@@ -93,41 +93,37 @@ export default function LoginPage() {
         </Link>
 
         {/* Center Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-[#064E36] text-white flex items-center justify-center">
-            <UtensilsCrossed className="w-3.5 h-3.5 text-[#EAA044]" />
-          </div>
-          <div className="text-left">
-            <span className="font-black text-sm text-stone-900 tracking-tight block leading-tight">
-              Campus Cravings
-            </span>
+        <Link to="/" className="flex items-center">
+          <div className="p-1 rounded-xl bg-white shadow-2xs border border-stone-200/80">
+            <img
+              src="/images/brand/logo.png"
+              alt="Campus Cravings Logo"
+              className="h-7 w-auto object-contain"
+            />
           </div>
         </Link>
 
         <ThemeToggle />
       </div>
 
-      {/* Left Panel: Desktop Split-Screen (Dark Forest-Green with Burger Photography) */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#064E36] to-[#043B2B] text-white p-12 xl:p-16 flex-col justify-between relative overflow-hidden">
+      {/* Left Panel: Desktop Split-Screen (Navy Blue & Warm Red/Gold) */}
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#0D1826] to-[#162544] text-white p-12 xl:p-16 flex-col justify-between relative overflow-hidden">
         
         {/* Subtle Ambient Glow */}
-        <div className="absolute -right-20 -top-20 w-96 h-96 bg-[#EAA044]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -right-20 -top-20 w-96 h-96 bg-[#E63946]/10 rounded-full blur-3xl pointer-events-none" />
 
         {/* Top Logo & University Title */}
         <div className="relative z-10">
-          <Link to="/" className="inline-flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform backdrop-blur-xs">
-              <UtensilsCrossed className="w-5 h-5 text-[#EAA044]" />
-            </div>
-            <div>
-              <div className="font-black text-xl tracking-tight text-white leading-tight">
-                Campus Cravings
-              </div>
-              <div className="text-[10px] uppercase font-bold tracking-widest text-emerald-200/90">
-                CGC UNIVERSITY, MOHALI
-              </div>
-            </div>
+          <Link to="/" className="inline-block p-2 rounded-2xl bg-white shadow-lg border border-white/20 group hover:scale-102 transition-transform">
+            <img
+              src="/images/brand/logo.png"
+              alt="Campus Cravings Logo"
+              className="h-11 w-auto object-contain"
+            />
           </Link>
+          <div className="text-[11px] uppercase font-bold tracking-widest text-amber-300 mt-2">
+            CGC UNIVERSITY, MOHALI • STUDENT DINING
+          </div>
         </div>
 
         {/* Center Headline & Features */}
@@ -176,21 +172,21 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Bottom Food Photography: Burger, Fries & Cold Drink */}
+        {/* Bottom Food Photography: Official 3D Campus Cravings Cafe Signboard */}
         <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
           <img
-            src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=900&auto=format&fit=crop&q=80"
-            alt="Delicious burger, crispy fries, and refreshing iced drink at CGC cafeteria"
+            src="/images/brand/hero-signboard.jpg"
+            alt="Campus Cravings 3D Signboard at CGC University Cafe"
             className="w-full h-64 xl:h-72 object-cover group-hover:scale-105 transition-transform duration-500"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#043B2B]/90 via-[#043B2B]/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1528]/90 via-[#0B1528]/20 to-transparent" />
           
           <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-xs text-white">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#EAA044] animate-pulse" />
-              <span className="font-bold text-emerald-100">Live Campus Kitchens</span>
+              <span className="font-bold text-amber-200">Official Campus Cafes</span>
             </div>
-            <span className="text-emerald-200/80 font-medium">Block 2 Food Court</span>
+            <span className="text-stone-300 font-medium">17 Express Counters</span>
           </div>
         </div>
 
@@ -203,7 +199,7 @@ export default function LoginPage() {
         <div className="hidden lg:flex w-full items-center justify-between mb-6">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-xs font-bold text-stone-500 hover:text-[#064E36] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-bold text-stone-500 hover:text-[#0D1826] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
@@ -211,18 +207,14 @@ export default function LoginPage() {
           <ThemeToggle />
         </div>
 
-        {/* Mobile Food Image Header (As shown in Reference Image column 1) */}
+        {/* Mobile Food Image Header */}
         <div className="lg:hidden w-full flex justify-center mb-4">
-          <div className="w-40 h-28 rounded-2xl overflow-hidden shadow-md border border-stone-200/80 relative">
+          <div className="w-44 h-28 rounded-2xl overflow-hidden shadow-md border border-stone-200/80 relative bg-white flex items-center justify-center p-2">
             <img
-              src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80"
-              alt="Burger and fries"
-              className="w-full h-full object-cover"
+              src="/images/brand/logo.png"
+              alt="Campus Cravings Logo"
+              className="w-full h-full object-contain"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent" />
-            <span className="absolute bottom-1.5 left-2 text-[10px] text-white font-bold">
-              Break Meals
-            </span>
           </div>
         </div>
 

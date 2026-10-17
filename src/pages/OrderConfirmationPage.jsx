@@ -62,8 +62,18 @@ export default function OrderConfirmationPage() {
         
         {/* Success Header Card */}
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 shadow-2xs text-center space-y-4">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto shadow-inner">
-            <CheckCircle2 className="w-9 h-9 sm:w-11 sm:h-11 stroke-[2.2]" />
+          <div className="flex justify-center mb-1">
+            <div className="p-1.5 rounded-2xl bg-white border border-stone-200 shadow-2xs inline-block">
+              <img
+                src="/images/brand/logo.png"
+                alt="Campus Cravings Logo"
+                className="h-10 w-auto object-contain"
+              />
+            </div>
+          </div>
+
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-3xl bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto shadow-inner">
+            <CheckCircle2 className="w-8 h-8 sm:w-9 sm:h-9 stroke-[2.2]" />
           </div>
 
           <div>

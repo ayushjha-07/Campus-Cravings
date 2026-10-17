@@ -28,10 +28,18 @@ export default function BottomNav() {
   };
 
   const navItems = [
-    { label: 'Home', path: '/', icon: Home },
+    { 
+      label: isAuthenticated ? 'Dashboard' : 'Home', 
+      path: isAuthenticated ? '/dashboard' : '/', 
+      icon: Home 
+    },
     { label: 'Outlets', path: '/outlets', icon: Store },
     { label: 'My Orders', path: '/orders', icon: ClipboardList, badge: activeOrdersCount },
-    { label: 'Profile', path: isAuthenticated || user?.isLoggedIn ? '/profile' : '/login', icon: User }
+    { 
+      label: isAuthenticated ? 'Profile' : 'Login', 
+      path: isAuthenticated ? '/profile' : '/login', 
+      icon: User 
+    }
   ];
 
   return (

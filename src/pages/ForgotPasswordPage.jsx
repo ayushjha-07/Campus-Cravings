@@ -53,41 +53,37 @@ export default function ForgotPasswordPage() {
         </Link>
 
         {/* Center Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-[#064E36] text-white flex items-center justify-center">
-            <UtensilsCrossed className="w-3.5 h-3.5 text-[#EAA044]" />
-          </div>
-          <div className="text-left">
-            <span className="font-black text-sm text-stone-900 tracking-tight block leading-tight">
-              Campus Cravings
-            </span>
+        <Link to="/" className="flex items-center">
+          <div className="p-1 rounded-xl bg-white shadow-2xs border border-stone-200/80">
+            <img
+              src="/images/brand/logo.png"
+              alt="Campus Cravings Logo"
+              className="h-7 w-auto object-contain"
+            />
           </div>
         </Link>
 
         <ThemeToggle />
       </div>
 
-      {/* Left Panel: Desktop Split-Screen (Dark Forest-Green with Latte Photography) */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#064E36] to-[#043B2B] text-white p-12 xl:p-16 flex-col justify-between relative overflow-hidden">
+      {/* Left Panel: Desktop Split-Screen (Navy Blue & Warm Red/Gold) */}
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#0D1826] to-[#162544] text-white p-12 xl:p-16 flex-col justify-between relative overflow-hidden">
         
         {/* Subtle Ambient Glow */}
-        <div className="absolute -right-20 -top-20 w-96 h-96 bg-[#EAA044]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -right-20 -top-20 w-96 h-96 bg-[#E63946]/10 rounded-full blur-3xl pointer-events-none" />
 
         {/* Top Logo & University Title */}
         <div className="relative z-10">
-          <Link to="/" className="inline-flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:scale-105 transition-transform backdrop-blur-xs">
-              <UtensilsCrossed className="w-5 h-5 text-[#EAA044]" />
-            </div>
-            <div>
-              <div className="font-black text-xl tracking-tight text-white leading-tight">
-                Campus Cravings
-              </div>
-              <div className="text-[10px] uppercase font-bold tracking-widest text-emerald-200/90">
-                CGC UNIVERSITY, MOHALI
-              </div>
-            </div>
+          <Link to="/" className="inline-block p-2 rounded-2xl bg-white shadow-lg border border-white/20 group hover:scale-102 transition-transform">
+            <img
+              src="/images/brand/logo.png"
+              alt="Campus Cravings Logo"
+              className="h-11 w-auto object-contain"
+            />
           </Link>
+          <div className="text-[11px] uppercase font-bold tracking-widest text-amber-300 mt-2">
+            CGC UNIVERSITY, MOHALI • STUDENT DINING
+          </div>
         </div>
 
         {/* Center Headline & Supporting Text */}
@@ -96,26 +92,26 @@ export default function ForgotPasswordPage() {
             Reset Your <br />
             <span className="text-[#F97316]">Password</span>
           </h1>
-          <p className="text-emerald-100/90 text-sm xl:text-base leading-relaxed">
+          <p className="text-amber-100/90 text-sm xl:text-base leading-relaxed">
             No worries! Enter your email and we'll help you reset your password.
           </p>
         </div>
 
-        {/* Bottom Food Photography: Premium Coffee Latte in Ceramic Cup */}
+        {/* Bottom Food Photography: Official 3D Campus Cravings Cafe Signboard */}
         <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
           <img
-            src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=900&auto=format&fit=crop&q=80"
-            alt="Hot cafe latte art at Campus Cravings"
+            src="/images/brand/hero-signboard.jpg"
+            alt="Campus Cravings 3D Signboard at CGC University Cafe"
             className="w-full h-72 xl:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#043B2B]/90 via-[#043B2B]/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1528]/90 via-[#0B1528]/20 to-transparent" />
           
           <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-xs text-white">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#EAA044] animate-pulse" />
-              <span className="font-bold text-emerald-100">CGC Cafe Counters</span>
+              <span className="font-bold text-amber-200">Official Campus Cafes</span>
             </div>
-            <span className="text-emerald-200/80 font-medium">Campus Cravings</span>
+            <span className="text-stone-300 font-medium">17 Express Counters</span>
           </div>
         </div>
 

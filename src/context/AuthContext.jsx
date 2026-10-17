@@ -33,15 +33,19 @@ export const AuthProvider = ({ children }) => {
           return parsed;
         }
       }
-      // Default to initial logged-in demo student so new visitors can explore right away
+      // Default to guest visitor so they experience the public landing page before login
       return {
-        ...SEED_STUDENTS[0],
-        isLoggedIn: true
+        isLoggedIn: false,
+        name: 'Guest Student',
+        studentId: 'Guest',
+        email: ''
       };
     } catch {
       return {
-        ...SEED_STUDENTS[0],
-        isLoggedIn: true
+        isLoggedIn: false,
+        name: 'Guest Student',
+        studentId: 'Guest',
+        email: ''
       };
     }
   });

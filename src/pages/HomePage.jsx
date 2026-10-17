@@ -192,37 +192,37 @@ export default function HomePage() {
 
       {/* 4. Mobile Attractive Promotional / Hero Banner (< md) */}
       <div className="md:hidden px-4 my-4">
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#064E36] to-[#043B2B] text-white p-5 shadow-lg border border-emerald-700/40">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0D1826] to-[#162544] text-white p-5 shadow-lg border border-slate-700/40">
           <div className="relative z-10 max-w-[68%]">
             <div className="flex items-center gap-1.5 mb-1.5">
-              <span className="text-[10px] font-black uppercase tracking-wider bg-[#F97316] text-white px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-black uppercase tracking-wider bg-[#E63946] text-white px-2 py-0.5 rounded-full">
                 Fast Pickup
               </span>
-              <span className="text-[10px] text-emerald-200 font-semibold bg-white/10 px-2 py-0.5 rounded-full">
-                Demo Order
+              <span className="text-[10px] text-amber-200 font-semibold bg-white/10 px-2 py-0.5 rounded-full">
+                17 Outlets
               </span>
             </div>
             <h3 className="text-base sm:text-lg font-black tracking-tight text-white leading-tight">
               Skip the Queue. <br />
-              <span className="text-[#F97316]">Enjoy Your Break.</span>
+              <span className="text-[#F4A261]">Enjoy Your Break.</span>
             </h3>
-            <p className="text-[11px] text-emerald-100/90 mt-1 leading-snug">
+            <p className="text-[11px] text-stone-200 mt-1 leading-snug">
               Order ahead from your favourite campus outlets and collect your food without waiting.
             </p>
             <button
               onClick={() => handleScrollTo('popular')}
-              className="mt-3 px-4 py-1.5 rounded-full bg-white text-[#0D3828] text-xs font-black shadow-xs flex items-center gap-1.5 active:scale-95 cursor-pointer"
+              className="mt-3 px-4 py-1.5 rounded-full bg-white text-[#0D1826] text-xs font-black shadow-xs flex items-center gap-1.5 active:scale-95 cursor-pointer"
             >
               <span>Order Now</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#F97316]" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#E63946]" />
             </button>
           </div>
-          {/* Visual food art */}
-          <div className="absolute -right-5 -bottom-3 w-32 h-32 rounded-full overflow-hidden border-2 border-white/20 shadow-xl pointer-events-none">
+          {/* Official brand mascot emblem */}
+          <div className="absolute -right-3 -bottom-2 w-28 h-28 rounded-2xl bg-white/95 p-1.5 shadow-xl border border-white/20 pointer-events-none flex items-center justify-center">
             <img
-              src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop&q=80"
-              alt="Campus cravings burger"
-              className="w-full h-full object-cover"
+              src="/images/brand/logo-icon.png"
+              alt="Campus Cravings mascot"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
