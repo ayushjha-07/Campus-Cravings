@@ -12,7 +12,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Wok-tossed stir-fried hakka noodles with sliced bell peppers, cabbage, carrots, and house soy-garlic seasoning.',
-    image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-1_veg-noodles.jpg',
     isPopular: true
   },
   {
@@ -24,7 +24,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Thin golden noodles stir-fried with scrambled eggs, shredded vegetables, and zesty Asian seasonings.',
-    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-2_egg-noodles.jpg',
     isPopular: true
   },
   {
@@ -36,7 +36,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Spicy chili-garlic glazed pasta tossed with sautéed bell peppers and savory oriental sauce.',
-    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-3_chili-garlic-pasta.jpg',
     isPopular: false
   },
   {
@@ -48,7 +48,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Crispy fried vegetable dumplings smothered in a glossy, tangy garlic-soy coriander gravy (10 pieces).',
-    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-4_veg-manchurian.jpg',
     isPopular: true
   },
   {
@@ -60,7 +60,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Golden crunchy wrapper rolls packed with spiced vegetable juliennes, served with hot sweet chili dip (4 pieces).',
-    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-5_veg-spring-roll.jpg',
     isPopular: false
   },
   {
@@ -72,7 +72,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Warm flaky tawa paratha rolled with spiced vegetable filling, onion slivers, and zesty mint chutney.',
-    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-6_veg-kathi-roll.jpg',
     isPopular: false
   },
   {
@@ -84,7 +84,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Flaky paratha layered with a fluffy egg omelette, seasoned diced vegetables, and tangy rolling sauce.',
-    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-7_egg-kathi-roll.jpg',
     isPopular: true
   },
   {
@@ -96,7 +96,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Fresh tawa paratha packed with spiced vegetable stuffing and molten mozzarella cheese.',
-    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-8_cheese-kathi-roll.jpg',
     isPopular: true
   },
   {
@@ -108,7 +108,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Two fluffy golden fried bhaturas paired with 100g of rich Amritsari spiced chana masala, pickle, and onions.',
-    image: 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-9_chana-bhatura.jpg',
     isPopular: true
   },
   {
@@ -120,7 +120,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Two puffed bhaturas stuffed with spiced mashed potato filling, served hot with tangy mixed pickle.',
-    image: 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-10_aloo-bhatura.jpg',
     isPopular: false
   },
   {
@@ -132,7 +132,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Toasted sesame burger bun with a thick golden vegetable patty, fresh lettuce, tomatoes, and secret house dressing.',
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-11_veg-burger.jpg',
     isPopular: true
   },
   {
@@ -144,7 +144,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Cubes of fresh paneer wok-tossed with green chillies, capsicum, and onions in savory dark soy glaze (10 pieces).',
-    image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-12_chilli-paneer.jpg',
     isPopular: true
   },
   {
@@ -156,7 +156,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Golden grilled sandwich stuffed with spiced potato and vegetable filling, cut into four triangular quarters.',
-    image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-13_grilled-sandwich.jpg',
     isPopular: false
   },
   {
@@ -168,7 +168,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Two fluffy farm-fresh eggs spiced with chopped green chillies and onions, folded inside two butter-toasted bread slices.',
-    image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-14_bread-omlette.jpg',
     isPopular: true
   },
   {
@@ -180,7 +180,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Fluffy long-grain basmati rice tossed on high flame with diced seasonal vegetables, spring onions, and oriental aromatics.',
-    image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-15_veg-fried-rice.jpg',
     isPopular: false
   },
   {
@@ -192,7 +192,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Aromatic wok-fried basmati rice scrambled with golden farm eggs, crunchy vegetables, and savory seasonings.',
-    image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-16_egg-fried-rice.jpg',
     isPopular: true
   },
   {
@@ -204,7 +204,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Crisp fried flour crackers topped with seasoned boiled potatoes, chilled sweetened curd, date-tamarind chutney, and roasted cumin.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-17_dahi-papdi.jpg',
     isPopular: false
   },
   {
@@ -216,7 +216,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Steaming hot classic 2-minute instant Maggi prepared with diced tomatoes, onions, sweet peas, and double tastemaker.',
-    image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-18_vegetable-maggi.jpg',
     isPopular: true
   },
   {
@@ -228,7 +228,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Piping hot Maggi noodles topped with a melting layer of rich mozzarella and cheddar cheese.',
-    image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-19_cheese-maggi.jpg',
     isPopular: true
   },
   {
@@ -240,7 +240,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Desi style spiced scrambled eggs sautéed with onions, tomatoes, fresh coriander, and green chillies.',
-    image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-20_egg-bhurji.jpg',
     isPopular: false
   },
   {
@@ -252,7 +252,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Crumbled fresh cottage cheese cooked in butter with onions, ripe tomatoes, ginger, and aromatic ground spices.',
-    image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-21_paneer-bhurji.jpg',
     isPopular: true
   },
   {
@@ -264,7 +264,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Creamy Italian penne pasta tossed in a velvety bechamel sauce with sweet corn, bell peppers, and oregano herbs.',
-    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-22_white-sauce-pasta.jpg',
     isPopular: true
   },
   {
@@ -276,7 +276,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Rich and decadent white sauce penne pasta loaded with extra melted cheese and herbs.',
-    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-23_white-sauce-pasta-cheese.jpg',
     isPopular: false
   },
   {
@@ -288,7 +288,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Al dente penne pasta simmered in a tangy tomato-basil marinara sauce with sautéed capsicum and onions.',
-    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-24_red-sauce-pasta.jpg',
     isPopular: false
   },
   {
@@ -300,7 +300,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Zesty tomato arrabbiata pasta smothered with extra shredded mozzarella cheese.',
-    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-25_red-sauce-pasta-cheese.jpg',
     isPopular: false
   },
   {
@@ -312,7 +312,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Warm and comforting thick vegetable broth infused with crushed black pepper, sweet corn, and herbs.',
-    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-26_veg-soup.jpg',
     isPopular: false
   },
   {
@@ -324,7 +324,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Twelve plump dumplings stuffed with finely minced vegetables, available steamed or fried, served with spicy red chutney.',
-    image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-27_veg-momos.jpg',
     isPopular: true
   },
   {
@@ -336,7 +336,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: '7-inch hand-stretched crust baked with tomato-herb pizza sauce, sliced red onions, green capsicum, and mozzarella.',
-    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-28_pizza-onion-capsicum.jpg',
     isPopular: false
   },
   {
@@ -348,7 +348,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: '7-inch pizza topped with juicy diced tomatoes, golden American sweet corn, and bubbly melted cheese.',
-    image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-29_pizza-tomato-corn.jpg',
     isPopular: false
   },
   {
@@ -360,7 +360,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Loaded 7-inch farmhouse pizza with crisp onions, ripe tomatoes, green capsicum, sliced mushrooms, and rich mozzarella.',
-    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-30_pizza-farmhouse.jpg',
     isPopular: true
   },
   {
@@ -372,7 +372,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: '7-inch pizza topped with marinated paneer cubes, spicy green chillies, onions, capsicum, and stretchy cheese.',
-    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-31_pizza-spicy-paneer.jpg',
     isPopular: true
   },
   {
@@ -384,7 +384,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Add a generous extra layer of 100% genuine stringy mozzarella cheese to any 7-inch pizza.',
-    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-32_pizza-extra-cheese.jpg',
     isPopular: false
   },
   {
@@ -396,7 +396,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Two soft tortilla wraps rolled with crunchy spiced vegetable patty pieces, shredded lettuce, and mayonnaise.',
-    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-33_veg-wrap.jpg',
     isPopular: false
   },
   {
@@ -408,7 +408,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Two grilled tortilla wraps stuffed with tandoori-spiced paneer chunks, crisp bell peppers, and creamy garlic dressing.',
-    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-34_paneer-wrap.jpg',
     isPopular: true
   },
   {
@@ -420,7 +420,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Crispy deep-fried golden potato fingers generously tossed in spicy African peri peri chili-herb seasoning.',
-    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-snk-35_peri-peri-fries.jpg',
     isPopular: true
   },
 
@@ -434,7 +434,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Comforting Punjabi style slow-cooked red kidney beans in rich spiced tomato gravy served with steamed basmati rice.',
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-mc-1_rajma-chawal.jpg',
     isPopular: true
   },
   {
@@ -446,7 +446,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Tangy gram-flour and yogurt curry with soft onion pakodas, tempered with mustard seeds and paired with rice.',
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-mc-2_kadhi-chawal.jpg',
     isPopular: false
   },
   {
@@ -458,7 +458,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Hearty chickpea curry cooked with aromatic whole spices, served piping hot with fragrant basmati rice.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-mc-3_chole-chawal.jpg',
     isPopular: true
   },
   {
@@ -470,7 +470,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Crispy fried potato fingers tossed in a spicy Indo-Chinese honey-chilli sauce with sesame seeds and spring onions.',
-    image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-mc-4_chilli-potato.jpg',
     isPopular: false
   },
 
@@ -484,7 +484,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.5,
     description: 'Hot, freshly boiled nutritious whole dairy milk served in a clean glass.',
-    image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-1_boiled-milk.jpg',
     isPopular: false
   },
   {
@@ -496,7 +496,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Steaming hot freshly brewed frothy milk coffee with rich aroma.',
-    image: 'https://images.unsplash.com/photo-1534778101976-62847782c213?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-2_hot-coffee.jpg',
     isPopular: true,
     variants: [
       { name: 'Regular', price: 20 },
@@ -512,7 +512,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Classic chilled blended coffee made with rich milk and chocolate syrup swirl.',
-    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-3_cold-coffee.jpg',
     isPopular: true
   },
   {
@@ -524,7 +524,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Creamy wholesome banana milkshake blended fresh with ripe bananas and chilled milk.',
-    image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-4_banana-shake.jpg',
     isPopular: false
   },
   {
@@ -536,7 +536,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Sweet butterscotch milkshake blended with crunchy caramelized praline bits.',
-    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-5_butterscotch-shake.jpg',
     isPopular: false
   },
   {
@@ -548,7 +548,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Rich tropical mango milkshake made with thick sweet mango pulp and cream.',
-    image: 'https://images.unsplash.com/photo-1546173159-315724a31696?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-6_mango-shake.jpg',
     isPopular: true
   },
   {
@@ -560,7 +560,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Thick creamy milkshake overloaded with crushed chocolate Oreo cookies and vanilla cream.',
-    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-7_oreo-shake.jpg',
     isPopular: true
   },
   {
@@ -572,7 +572,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.5,
     description: 'Chilled refreshing aerated carbonated soft drink served at standard MRP.',
-    image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-8_cold-drink.jpg',
     isPopular: false,
     isMRP: true
   },
@@ -585,7 +585,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Chilled bottle of original Coca-Cola served at standard official MRP.',
-    image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-9_coke.jpg',
     isPopular: true,
     isMRP: true
   },
@@ -598,7 +598,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Chilled premium energy drink can (Red Bull / Monster Energy) at official MRP.',
-    image: 'https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-10_energy-drink.jpg',
     isPopular: false,
     isMRP: true
   },
@@ -611,7 +611,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Tetra pack of nutritious Real fruit juice (Mixed / Mango / Guava) at MRP.',
-    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-11_real-juice.jpg',
     isPopular: false,
     isMRP: true
   },
@@ -624,7 +624,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Traditional sweet chilled packaged Punjabi lassi with authentic creamy curd taste at MRP.',
-    image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-12_lassi.jpg',
     isPopular: true,
     isMRP: true
   },
@@ -637,7 +637,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.5,
     description: 'Chilled 7up Nimbooz real lemon juice refreshment bottle at MRP.',
-    image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-13_nimbooz.jpg',
     isPopular: false,
     isMRP: true
   },
@@ -650,7 +650,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Chilled aluminum can of Coca-Cola (300ml) served at MRP.',
-    image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-14_coke-can.jpg',
     isPopular: false,
     isMRP: true
   },
@@ -663,7 +663,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.5,
     description: 'Assorted packaged tea biscuits and cookies at standard MRP.',
-    image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-15_biscuit.jpg',
     isPopular: false,
     isMRP: true
   },
@@ -676,7 +676,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Packaged premium brand milk chocolate bars (Dairy Milk / KitKat / 5 Star) at MRP.',
-    image: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-16_chocolate.jpg',
     isPopular: true,
     isMRP: true
   },
@@ -689,7 +689,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Crisp packaged potato chips (Lay\'s / Kurkure / Bingo) in savory campus favorites at MRP.',
-    image: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-17_chips.jpg',
     isPopular: true,
     isMRP: true
   },
@@ -702,7 +702,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.5,
     description: 'Crispy savory Indian packaged snacks (Aloo Bhujia / Moong Dal / Navratan Mix) at MRP.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-18_namkeen.jpg',
     isPopular: false,
     isMRP: true
   },
@@ -715,7 +715,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Creamy frozen ice cream bar or cone in vanilla, chocolate, or butterscotch at MRP.',
-    image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-19_ice-cream.jpg',
     isPopular: true,
     isMRP: true
   },
@@ -728,7 +728,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Authentic chilled Verka dairy rice pudding cup with cardamom and dry fruits at MRP.',
-    image: 'https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-20_verka-kheer.jpg',
     isPopular: true,
     isMRP: true
   },
@@ -741,7 +741,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Two warm, melt-in-mouth golden khoya dumplings soaked in fragrant saffron-rose sugar syrup.',
-    image: 'https://images.unsplash.com/photo-1605197584547-c9381d6f4699?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-21_hot-gulab-jamun.jpg',
     isPopular: true
   },
   {
@@ -753,7 +753,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Soft layered chocolate sponge slice topped with whipped vanilla cream, dark chocolate curls, and red cherry.',
-    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-22_black-forest-pastry.jpg',
     isPopular: true
   },
   {
@@ -765,7 +765,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Delicate light sponge layered with pink strawberry cream glaze and fresh strawberry syrup.',
-    image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-23_strawberry-pastry.jpg',
     isPopular: false
   },
   {
@@ -777,7 +777,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Moist vanilla sponge filled with juicy sweet pineapple chunks and fresh whipped white cream.',
-    image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-24_pineapple-pastry.jpg',
     isPopular: false
   },
   {
@@ -789,7 +789,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Classic celebration chocolate cake smothered in whipped cream frosting, chocolate shavings, and cherries.',
-    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-25_black-forest-cake.jpg',
     isPopular: true,
     variants: [
       { name: '½ kg', price: 300 },
@@ -805,7 +805,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Fresh and fruity bakery celebration cake with pineapple compote layers and light whipped cream.',
-    image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?w=600&auto=format&fit=crop&q=80',
+    image: '/images/apple-beez/ab-bev-26_pineapple-cake.jpg',
     isPopular: true,
     variants: [
       { name: '½ kg', price: 250 },
