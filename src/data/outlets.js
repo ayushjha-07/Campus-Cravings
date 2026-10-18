@@ -304,7 +304,7 @@ export const OUTLETS = [
     isVegOnly: true,
     isOpen: true,
     timing: '10:30 AM - 9:30 PM',
-    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/thick-letto.png',
     logoType: 'thickletto',
     brandColor: '#582F0E',
     menu: THICK_LETTO_MENU

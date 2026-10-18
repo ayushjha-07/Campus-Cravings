@@ -107,7 +107,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                           <img
                             src={outlet.image}
                             alt={
-                              outlet.id === 'rock-n-roll' || outlet.name === 'Rock N Roll' || outlet.name === 'Rock In Roll'
+                              outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.name === 'Thick & Letto'
+                                ? 'Thick & Letto milkshake outlet storefront'
+                                : outlet.id === 'rock-n-roll' || outlet.name === 'Rock N Roll' || outlet.name === 'Rock In Roll'
                                 ? 'Rock N Roll campus food outlet storefront'
                                 : outlet.id === 'topn-n-town-for-hunger' || outlet.name === "Top N' Town for Hunger" || outlet.name === "Top N' Town"
                                 ? "Top N' Town for Hunger campus food outlet storefront"
@@ -120,7 +122,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.name
                             }
                             className={`w-10 h-10 rounded-lg object-cover ${
-                              outlet.id === 'rock-n-roll'
+                              outlet.id === 'thick-let-to' || outlet.id === 'thick-letto'
+                                ? 'object-[center_25%]'
+                                : outlet.id === 'rock-n-roll'
                                 ? 'object-[center_28%]'
                                 : outlet.id === 'topn-n-town-for-hunger'
                                 ? 'object-[center_32%]'

@@ -90,7 +90,9 @@ export default function OutletMenuPage() {
           <img
             src={outlet.image}
             alt={
-              outlet.id === 'rock-n-roll' || outlet.name === 'Rock N Roll' || outlet.name === 'Rock In Roll'
+              outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.name === 'Thick & Letto'
+                ? 'Thick & Letto milkshake outlet storefront'
+                : outlet.id === 'rock-n-roll' || outlet.name === 'Rock N Roll' || outlet.name === 'Rock In Roll'
                 ? 'Rock N Roll campus food outlet storefront'
                 : outlet.id === 'topn-n-town-for-hunger' || outlet.name === "Top N' Town for Hunger" || outlet.name === "Top N' Town"
                 ? "Top N' Town for Hunger campus food outlet storefront"
@@ -103,7 +105,9 @@ export default function OutletMenuPage() {
                 : outlet.name
             }
             className={`w-full h-full object-cover ${
-              outlet.id === 'rock-n-roll'
+              outlet.id === 'thick-let-to' || outlet.id === 'thick-letto'
+                ? 'object-[center_25%]'
+                : outlet.id === 'rock-n-roll'
                 ? 'object-[center_28%]'
                 : outlet.id === 'topn-n-town-for-hunger'
                 ? 'object-[center_32%]'
@@ -186,12 +190,14 @@ export default function OutletMenuPage() {
             <div className="md:col-span-4 bg-white/10 backdrop-blur-md border border-white/15 p-4 sm:p-5 rounded-3xl space-y-3 text-xs text-stone-200">
               {/* Authentic Outlet Storefront Photo Showcase */}
               <div className={`relative w-full rounded-2xl overflow-hidden border border-white/20 shadow-md bg-black/20 group ${
-                outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[250px] sm:h-[280px] lg:h-[380px]' : 'aspect-16/10'
+                outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[250px] sm:h-[280px] lg:h-[380px]' : 'aspect-16/10'
               }`}>
                 <img
                   src={outlet.image}
                   alt={
-                    outlet.id === 'rock-n-roll' || outlet.name === 'Rock N Roll' || outlet.name === 'Rock In Roll'
+                    outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.name === 'Thick & Letto'
+                      ? 'Thick & Letto milkshake outlet storefront'
+                      : outlet.id === 'rock-n-roll' || outlet.name === 'Rock N Roll' || outlet.name === 'Rock In Roll'
                       ? 'Rock N Roll campus food outlet storefront'
                       : outlet.id === 'topn-n-town-for-hunger' || outlet.name === "Top N' Town for Hunger" || outlet.name === "Top N' Town"
                       ? "Top N' Town for Hunger campus food outlet storefront"
@@ -204,7 +210,9 @@ export default function OutletMenuPage() {
                       : `${outlet.name} storefront`
                   }
                   className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
-                    outlet.id === 'rock-n-roll'
+                    outlet.id === 'thick-let-to' || outlet.id === 'thick-letto'
+                      ? 'object-[center_25%]'
+                      : outlet.id === 'rock-n-roll'
                       ? 'object-[center_28%]'
                       : outlet.id === 'topn-n-town-for-hunger'
                       ? 'object-[center_32%]'
@@ -217,7 +225,7 @@ export default function OutletMenuPage() {
                 />
                 <div className="absolute bottom-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-black/60 backdrop-blur-md text-white border border-white/20 flex items-center gap-1.5 shadow-xs">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  <span>{outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' || outlet.id === 'yum-experts' ? 'Official Outlet Storefront' : 'Storefront Photo'}</span>
+                  <span>{outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' || outlet.id === 'yum-experts' ? 'Official Outlet Storefront' : 'Storefront Photo'}</span>
                 </div>
               </div>
 
