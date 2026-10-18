@@ -346,7 +346,7 @@ export const OUTLETS = [
     isVegOnly: false,
     isOpen: true,
     timing: '9:00 AM - 10:00 PM',
-    image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/yum-experts.png',
     logoType: 'yumexperts',
     brandColor: '#DC2626',
     menu: YUM_EXPERTS_MENU

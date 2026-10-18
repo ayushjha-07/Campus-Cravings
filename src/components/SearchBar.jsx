@@ -106,7 +106,7 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                         <div className="flex items-center gap-3">
                           <img
                             src={outlet.image}
-                            alt={outlet.name}
+                            alt={outlet.id === 'yum-experts' || outlet.name === 'Yum Experts' ? 'Yum Experts outlet storefront' : outlet.name}
                             className="w-10 h-10 rounded-lg object-cover"
                           />
                           <div>

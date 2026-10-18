@@ -32,7 +32,7 @@ export default function OutletCard({ outlet }) {
         <div className="relative aspect-16/10 w-full overflow-hidden bg-stone-100 dark:bg-[#222E26]">
           <img
             src={outlet.image}
-            alt={outlet.name}
+            alt={outlet.id === 'yum-experts' || outlet.name === 'Yum Experts' ? 'Yum Experts outlet storefront' : outlet.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
             loading="lazy"
           />

@@ -461,7 +461,7 @@ export default function LandingPage() {
                     <div className="relative h-48 sm:h-52 overflow-hidden bg-stone-100 dark:bg-stone-800">
                       <img
                         src={outlet.image}
-                        alt={outlet.name}
+                        alt={outlet.id === 'yum-experts' || outlet.name === 'Yum Experts' ? 'Yum Experts outlet storefront' : outlet.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
