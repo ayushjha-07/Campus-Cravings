@@ -325,7 +325,7 @@ export const OUTLETS = [
     isVegOnly: false,
     isOpen: true,
     timing: '10:00 AM - 10:00 PM',
-    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/rock-n-roll.png',
     logoType: 'rocknroll',
     brandColor: '#B91C1C',
     menu: ROCK_N_ROLL_MENU

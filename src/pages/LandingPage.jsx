@@ -459,12 +459,14 @@ export default function LandingPage() {
                   <div>
                     {/* Outlet Image Container */}
                     <div className={`relative overflow-hidden bg-stone-100 dark:bg-stone-800 ${
-                      outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[180px] sm:h-[240px]' : 'h-48 sm:h-52'
+                      outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[180px] sm:h-[240px]' : 'h-48 sm:h-52'
                     }`}>
                       <img
                         src={outlet.image}
                         alt={
-                          outlet.id === 'topn-n-town-for-hunger' || outlet.name === "Top N' Town for Hunger" || outlet.name === "Top N' Town"
+                          outlet.id === 'rock-n-roll' || outlet.name === 'Rock N Roll' || outlet.name === 'Rock In Roll'
+                            ? 'Rock N Roll campus food outlet storefront'
+                            : outlet.id === 'topn-n-town-for-hunger' || outlet.name === "Top N' Town for Hunger" || outlet.name === "Top N' Town"
                             ? "Top N' Town for Hunger campus food outlet storefront"
                             : outlet.id === 'x-burgers' || outlet.name === 'X Burgers Café' || outlet.name === 'X Burgers'
                             ? 'X Burgers storefront with red sign and menu boards'
@@ -475,7 +477,7 @@ export default function LandingPage() {
                             : outlet.name
                         }
                         className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
-                          outlet.id === 'topn-n-town-for-hunger' ? 'object-[center_32%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
+                          outlet.id === 'rock-n-roll' ? 'object-[center_28%]' : outlet.id === 'topn-n-town-for-hunger' ? 'object-[center_32%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
                         }`}
                         loading="lazy"
                       />
