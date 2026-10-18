@@ -107,13 +107,17 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                           <img
                             src={outlet.image}
                             alt={
-                              outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
+                              outlet.id === 'x-burgers' || outlet.name === 'X Burgers Café' || outlet.name === 'X Burgers'
+                                ? 'X Burgers storefront with red sign and menu boards'
+                                : outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
                                 ? 'Sip N Bites outlet storefront'
                                 : outlet.id === 'yum-experts' || outlet.name === 'Yum Experts'
                                 ? 'Yum Experts outlet storefront'
                                 : outlet.name
                             }
-                            className={`w-10 h-10 rounded-lg object-cover ${outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''}`}
+                            className={`w-10 h-10 rounded-lg object-cover ${
+                              outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
+                            }`}
                           />
                           <div>
                             <div className="text-sm font-semibold text-stone-900 group-hover:text-[#1B4D36]">

@@ -459,19 +459,21 @@ export default function LandingPage() {
                   <div>
                     {/* Outlet Image Container */}
                     <div className={`relative overflow-hidden bg-stone-100 dark:bg-stone-800 ${
-                      outlet.id === 'sip-n-bites' ? 'h-[180px] sm:h-[240px]' : 'h-48 sm:h-52'
+                      outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[180px] sm:h-[240px]' : 'h-48 sm:h-52'
                     }`}>
                       <img
                         src={outlet.image}
                         alt={
-                          outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
+                          outlet.id === 'x-burgers' || outlet.name === 'X Burgers Café' || outlet.name === 'X Burgers'
+                            ? 'X Burgers storefront with red sign and menu boards'
+                            : outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
                             ? 'Sip N Bites outlet storefront'
                             : outlet.id === 'yum-experts' || outlet.name === 'Yum Experts'
                             ? 'Yum Experts outlet storefront'
                             : outlet.name
                         }
                         className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
-                          outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
+                          outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
                         }`}
                         loading="lazy"
                       />

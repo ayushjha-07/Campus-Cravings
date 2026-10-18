@@ -90,13 +90,17 @@ export default function OutletMenuPage() {
           <img
             src={outlet.image}
             alt={
-              outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
+              outlet.id === 'x-burgers' || outlet.name === 'X Burgers Café' || outlet.name === 'X Burgers'
+                ? 'X Burgers storefront with red sign and menu boards'
+                : outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
                 ? 'Sip N Bites outlet storefront'
                 : outlet.id === 'yum-experts' || outlet.name === 'Yum Experts'
                 ? 'Yum Experts outlet storefront'
                 : outlet.name
             }
-            className={`w-full h-full object-cover ${outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''}`}
+            className={`w-full h-full object-cover ${
+              outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
+            }`}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0B3426] via-[#0D3828]/80 to-transparent" />
@@ -170,24 +174,26 @@ export default function OutletMenuPage() {
             <div className="md:col-span-4 bg-white/10 backdrop-blur-md border border-white/15 p-4 sm:p-5 rounded-3xl space-y-3 text-xs text-stone-200">
               {/* Authentic Outlet Storefront Photo Showcase */}
               <div className={`relative w-full rounded-2xl overflow-hidden border border-white/20 shadow-md bg-black/20 group ${
-                outlet.id === 'sip-n-bites' ? 'h-[250px] sm:h-[280px] lg:h-[380px]' : 'aspect-16/10'
+                outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[250px] sm:h-[280px] lg:h-[380px]' : 'aspect-16/10'
               }`}>
                 <img
                   src={outlet.image}
                   alt={
-                    outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
+                    outlet.id === 'x-burgers' || outlet.name === 'X Burgers Café' || outlet.name === 'X Burgers'
+                      ? 'X Burgers storefront with red sign and menu boards'
+                      : outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
                       ? 'Sip N Bites outlet storefront'
                       : outlet.id === 'yum-experts' || outlet.name === 'Yum Experts'
                       ? 'Yum Experts outlet storefront'
                       : `${outlet.name} storefront`
                   }
                   className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
-                    outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : 'object-center'
+                    outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : 'object-center'
                   }`}
                 />
                 <div className="absolute bottom-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-black/60 backdrop-blur-md text-white border border-white/20 flex items-center gap-1.5 shadow-xs">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  <span>{outlet.id === 'sip-n-bites' || outlet.id === 'yum-experts' ? 'Official Outlet Storefront' : 'Storefront Photo'}</span>
+                  <span>{outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' || outlet.id === 'yum-experts' ? 'Official Outlet Storefront' : 'Storefront Photo'}</span>
                 </div>
               </div>
 

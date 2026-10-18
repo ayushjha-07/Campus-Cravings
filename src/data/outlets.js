@@ -283,7 +283,7 @@ export const OUTLETS = [
     isVegOnly: false,
     isOpen: true,
     timing: '9:30 AM - 9:30 PM',
-    image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/x-burgers.png',
     logoType: 'xburgers',
     brandColor: '#E65100',
     menu: X_BURGERS_MENU
