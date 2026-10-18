@@ -479,7 +479,7 @@ export default function LandingPage() {
                             : outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.name === 'Easy Day SuperMart'
                             ? 'Easy Day SuperMart storefront with shop sign and entrance'
                             : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.name === 'Chutar Putar'
-                            ? 'Chutar Putar yellow and red campus food outlet storefront'
+                            ? 'Chutar Putar yellow and red storefront with its sign clearly visible'
                             : outlet.id === 'nescafe' || outlet.name === 'Nescafe'
                             ? 'Nescafe coffee outlet storefront'
                             : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.name === 'Thick & Letto'
