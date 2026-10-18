@@ -107,7 +107,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                           <img
                             src={outlet.image}
                             alt={
-                              outlet.id === 'nescafe' || outlet.name === 'Nescafe'
+                              outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.name === 'Chutar Putar'
+                                ? 'Chutar Putar yellow and red campus food outlet storefront'
+                                : outlet.id === 'nescafe' || outlet.name === 'Nescafe'
                                 ? 'Nescafe coffee outlet storefront'
                                 : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.name === 'Thick & Letto'
                                 ? 'Thick & Letto milkshake outlet storefront'
@@ -124,7 +126,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.name
                             }
                             className={`w-10 h-10 rounded-lg object-cover ${
-                              outlet.id === 'nescafe'
+                              outlet.id === 'chutar-putar' || outlet.id === 'chutarputar'
+                                ? 'object-[center_15%]'
+                                : outlet.id === 'nescafe'
                                 ? 'object-[center_25%]'
                                 : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto'
                                 ? 'object-[center_25%]'

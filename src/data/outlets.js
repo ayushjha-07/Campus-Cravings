@@ -222,7 +222,7 @@ export const OUTLETS = [
     isVegOnly: true,
     isOpen: true,
     timing: '9:00 AM - 8:30 PM',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/chutar-putar.png',
     logoType: 'chutarputar',
     brandColor: '#E76F51',
     menu: CHUTAR_PUTAR_MENU

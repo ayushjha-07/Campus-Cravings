@@ -459,12 +459,14 @@ export default function LandingPage() {
                   <div>
                     {/* Outlet Image Container */}
                     <div className={`relative overflow-hidden bg-stone-100 dark:bg-stone-800 ${
-                      outlet.id === 'nescafe' || outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[180px] sm:h-[240px]' : 'h-48 sm:h-52'
+                      outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.id === 'nescafe' || outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[180px] sm:h-[240px]' : 'h-48 sm:h-52'
                     }`}>
                       <img
                         src={outlet.image}
                         alt={
-                          outlet.id === 'nescafe' || outlet.name === 'Nescafe'
+                          outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.name === 'Chutar Putar'
+                            ? 'Chutar Putar yellow and red campus food outlet storefront'
+                            : outlet.id === 'nescafe' || outlet.name === 'Nescafe'
                             ? 'Nescafe coffee outlet storefront'
                             : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.name === 'Thick & Letto'
                             ? 'Thick & Letto milkshake outlet storefront'
@@ -481,7 +483,7 @@ export default function LandingPage() {
                             : outlet.name
                         }
                         className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
-                          outlet.id === 'nescafe' ? 'object-[center_25%]' : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' ? 'object-[center_25%]' : outlet.id === 'rock-n-roll' ? 'object-[center_28%]' : outlet.id === 'topn-n-town-for-hunger' ? 'object-[center_32%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
+                          outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' ? 'object-[center_15%]' : outlet.id === 'nescafe' ? 'object-[center_25%]' : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' ? 'object-[center_25%]' : outlet.id === 'rock-n-roll' ? 'object-[center_28%]' : outlet.id === 'topn-n-town-for-hunger' ? 'object-[center_32%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
                         }`}
                         loading="lazy"
                       />
