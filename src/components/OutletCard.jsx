@@ -30,12 +30,14 @@ export default function OutletCard({ outlet }) {
       <div>
         {/* Top Storefront / Food Photography Image */}
         <div className={`relative w-full overflow-hidden bg-stone-100 dark:bg-[#222E26] ${
-          outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[190px] sm:h-[260px]' : 'aspect-16/10'
+          outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[190px] sm:h-[260px]' : 'aspect-16/10'
         }`}>
           <img
             src={outlet.image}
             alt={
-              outlet.id === 'x-burgers' || outlet.name === 'X Burgers Café' || outlet.name === 'X Burgers'
+              outlet.id === 'topn-n-town-for-hunger' || outlet.name === "Top N' Town for Hunger" || outlet.name === "Top N' Town"
+                ? "Top N' Town for Hunger campus food outlet storefront"
+                : outlet.id === 'x-burgers' || outlet.name === 'X Burgers Café' || outlet.name === 'X Burgers'
                 ? 'X Burgers storefront with red sign and menu boards'
                 : outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
                 ? 'Sip N Bites outlet storefront'
@@ -44,7 +46,7 @@ export default function OutletCard({ outlet }) {
                 : outlet.name
             }
             className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out ${
-              outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
+              outlet.id === 'topn-n-town-for-hunger' ? 'object-[center_32%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
             }`}
             loading="lazy"
           />
