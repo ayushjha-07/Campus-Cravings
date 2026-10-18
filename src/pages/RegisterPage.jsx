@@ -252,6 +252,8 @@ export default function RegisterPage() {
                 <User className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="text"
+                  name="name"
+                  id="register-name"
                   required
                   value={formData.name}
                   onChange={(e) => handleChange('name', e.target.value)}
@@ -267,6 +269,8 @@ export default function RegisterPage() {
                 <Mail className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="email"
+                  name="email"
+                  id="register-email"
                   required
                   value={formData.email}
                   onChange={(e) => handleChange('email', e.target.value)}
@@ -282,6 +286,8 @@ export default function RegisterPage() {
                 <CreditCard className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="text"
+                  name="studentId"
+                  id="register-studentId"
                   required
                   value={formData.studentId}
                   onChange={(e) => handleChange('studentId', e.target.value)}
@@ -297,6 +303,8 @@ export default function RegisterPage() {
                 <Phone className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="tel"
+                  name="phone"
+                  id="register-phone"
                   required
                   value={formData.phone}
                   onChange={(e) => handleChange('phone', e.target.value)}
@@ -312,6 +320,8 @@ export default function RegisterPage() {
                 <Lock className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  id="register-password"
                   required
                   value={formData.password}
                   onChange={(e) => handleChange('password', e.target.value)}
@@ -336,6 +346,8 @@ export default function RegisterPage() {
                 <Lock className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
+                  name="confirmPassword"
+                  id="register-confirmPassword"
                   required
                   value={formData.confirmPassword}
                   onChange={(e) => handleChange('confirmPassword', e.target.value)}

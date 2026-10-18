@@ -174,7 +174,7 @@ export const DOMINOS_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Baked to perfection fresh garlic breadsticks sprinkled with exotic Italian herbs (4 pieces).',
-    image: 'https://images.unsplash.com/photo-1619881589737-14ee7893cb56?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -186,7 +186,7 @@ export const DOMINOS_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Fresh baked bread glazed with roasted garlic butter and smothered in bubbling melted mozzarella.',
-    image: 'https://images.unsplash.com/photo-1619881589737-14ee7893cb56?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -198,7 +198,7 @@ export const DOMINOS_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Freshly baked stuffed bread with cheese, sweet corn and sliced tangy jalapenos.',
-    image: 'https://images.unsplash.com/photo-1619881589737-14ee7893cb56?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {

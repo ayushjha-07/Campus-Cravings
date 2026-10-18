@@ -1348,7 +1348,7 @@ export const YUM_EXPERTS_MENU = [
     isAvailable: true,
     rating: 4.5,
     description: 'Golden crispy potato fingers tossed in pure sea salt.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1360,7 +1360,7 @@ export const YUM_EXPERTS_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Crispy fried French fries tossed in fiery African peri-peri spices.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1536,7 +1536,7 @@ export const YUM_EXPERTS_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Penne tossed in zesty tangy tomato marinara with garlic, herbs and bell peppers.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281699?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1548,7 +1548,7 @@ export const YUM_EXPERTS_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Silky rich Alfredo cheese sauce pasta with sweet corn, mushrooms and herbs.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281699?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1560,7 +1560,7 @@ export const YUM_EXPERTS_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Fusion pink sauce pasta blending creamy Alfredo and tangy arrabbiata.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281699?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
 
@@ -1758,7 +1758,7 @@ export const YUM_EXPERTS_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Roasted crunchy peanuts tossed with chopped onions, tomatoes, lemon and chaat spices.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -1770,7 +1770,7 @@ export const YUM_EXPERTS_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Crispy roasted papad topped with spicy onion-tomato-coriander salsa.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -1782,7 +1782,7 @@ export const YUM_EXPERTS_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Classic salted potato fries fried to golden crisp perfection.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1794,7 +1794,7 @@ export const YUM_EXPERTS_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Battered and deep fried sweet onion rings with creamy dipping sauce.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -2016,7 +2016,7 @@ export const YUM_EXPERTS_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Choice of Red/White Sauce Pasta + Chilled Cold Drink (Special Combo Offer).',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281699?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {

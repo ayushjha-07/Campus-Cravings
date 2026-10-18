@@ -418,7 +418,7 @@ export const FOOD_COURT_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Creamy Alfredo white sauce penne cooked with fresh sweet corn, capsicum, butter, and Italian seasonings.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281699?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -652,7 +652,7 @@ export const FOOD_COURT_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Crispy salted golden potato fries served with classic tomato ketchup.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -664,7 +664,7 @@ export const FOOD_COURT_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Hot crispy french fries smothered in warm, savory melted liquid cheese and herb seasoning.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {

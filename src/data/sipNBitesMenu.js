@@ -1424,7 +1424,7 @@ export const SIP_N_BITES_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Penne pasta tossed in tangy tomato marinara with garlic and herbs.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281699?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1440,7 +1440,7 @@ export const SIP_N_BITES_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Rich creamy cheesy Alfredo sauce pasta with sweet corn and herbs.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281699?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1456,7 +1456,7 @@ export const SIP_N_BITES_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Creamy pink sauce pasta combining rich Alfredo and tangy marinara.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281699?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1472,7 +1472,7 @@ export const SIP_N_BITES_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Loaded pasta tossed with soft cottage cheese paneer cubes and sweet corn.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281699?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
 
@@ -1598,7 +1598,7 @@ export const SIP_N_BITES_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Crisp potato fingers glazed in sweet honey and fiery red chili garlic sauce.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1626,7 +1626,7 @@ export const SIP_N_BITES_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Crispy salted potato fries served with tomato ketchup.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1642,7 +1642,7 @@ export const SIP_N_BITES_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Golden fries dusted with chatpata Indian spice mix.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {

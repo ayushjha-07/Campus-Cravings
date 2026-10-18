@@ -204,7 +204,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Crispy salted golden potato french fries with tomato dip.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -215,7 +215,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Hot and zesty french fries tossed in African peri peri seasoning shaker mix.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -226,7 +226,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Golden fries smothered in smoky tandoori sauce and roasted spices.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -237,7 +237,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Crispy fries blanketed in rich melted yellow cheddar cheese sauce.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -248,7 +248,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Loaded fries topped with crushed tortilla chips, tangy salsa, and cheese sauce.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -259,7 +259,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Baked potato fries layered with marinara sauce, mozzarella cheese, and oregano.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -270,7 +270,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Ultimate platter of crispy fries topped with assorted sauces, cheese, jalapeños & herbs.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
 
@@ -507,7 +507,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Penne pasta tossed in tangy Italian tomato arrabbiata sauce with garlic and herbs.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281242?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -518,7 +518,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Creamy and velvety bechamel cheese sauce pasta garnished with oregano and olives.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281242?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -529,7 +529,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Perfect harmony of creamy white sauce and rich tangy red marinara sauce.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281242?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -540,7 +540,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Desi fusion pasta simmered in rich buttery Punjabi makhni gravy with spices.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281242?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -551,7 +551,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Classic parmesan alfredo pasta loaded with butter sauteed sliced button mushrooms.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281242?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -562,7 +562,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Fiery Italian pasta prepared with crushed red chillies, garlic, basil and crushed tomatoes.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281242?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
 
@@ -823,7 +823,7 @@ export const DOCKYARD_LE_BISTRO_MENU = [
     isVeg: true,
     isAvailable: true,
     description: 'Double crunchy potato fries tossed in spicy kurkure masala blend and cheesy drizzle.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
 

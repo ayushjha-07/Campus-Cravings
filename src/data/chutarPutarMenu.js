@@ -334,7 +334,7 @@ export const CHUTAR_PUTAR_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Golden salted potato fries fried crisp and served with tomato ketchup.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true,
     variants: [
       { name: 'Regular', price: 60 },
@@ -350,7 +350,7 @@ export const CHUTAR_PUTAR_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Crispy golden fries tossed in fiery African peri-peri spice mix.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true,
     variants: [
       { name: 'Regular', price: 80 },
@@ -410,7 +410,7 @@ export const CHUTAR_PUTAR_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Extra shaker seasoning of premium hot peri-peri spice dust.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
 

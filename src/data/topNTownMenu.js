@@ -1286,7 +1286,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Golden french fries dusted with tangy chatpata chaat seasoning.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -1298,7 +1298,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Batter-coated extra crispy crinkle fries with spicy kurkure masala.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1310,7 +1310,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Crispy fries smothered in cheese sauce, diced jalapenos, sweet corn, and chipotle drizzle.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1482,7 +1482,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Penne pasta tossed in velvety bechamel cream sauce with sweet corn and Italian herbs.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1494,7 +1494,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Creamy pink sauce pasta blending rich white cheese and tangy red tomato sauce.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1506,7 +1506,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Overloaded molten cheese penne pasta with oregano and chili flakes.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -1518,7 +1518,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Chef\'s special rich Manhattan style pasta loaded with exotic veggies, mushrooms, and cheese.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1530,7 +1530,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Tangy red tomato arrabbiata pasta loaded with spiced roasted chicken chunks.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -1542,7 +1542,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Rich bechamel cream cheese pasta smothered with tender boneless chicken bits.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1554,7 +1554,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Velvety pink cream sauce pasta loaded with seasoned chicken and herbs.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1566,7 +1566,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Savory penne pasta tossed with seasoned chicken chunks and garlic butter.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -1578,7 +1578,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Fiery fusion pasta with spicy chilli chicken chunks and dark soya glaze.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -1590,7 +1590,7 @@ export const TOP_N_TOWN_MENU = [
     isAvailable: true,
     rating: 5.0,
     description: 'Special Manhattan chicken pasta with rich cheese sauce, mushrooms, and herbs.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
 

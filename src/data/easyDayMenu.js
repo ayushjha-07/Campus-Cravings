@@ -74,7 +74,7 @@ export const EASY_DAY_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Penne pasta tossed in tangy Italian tomato-herb marinara sauce with sautéed capsicum and onions.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -86,7 +86,7 @@ export const EASY_DAY_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Rich, velvety bechamel cream sauce pasta cooked with sweet corn, mushrooms, and mixed Italian herbs.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -98,7 +98,7 @@ export const EASY_DAY_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'The best of both worlds: creamy pink sauce blending rich white cheese and tangy red tomato sauce.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -110,7 +110,7 @@ export const EASY_DAY_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Desi fusion pasta cooked in smoky tandoori makhani sauce with paneer cubes and capsicum.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
 
@@ -124,7 +124,7 @@ export const EASY_DAY_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Crispy salted golden potato french fries served hot with tomato ketchup.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -136,7 +136,7 @@ export const EASY_DAY_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Golden fries tossed with zesty campus chaat masala and chili-lemon spice dust.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -148,7 +148,7 @@ export const EASY_DAY_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Crispy fries smothered in warm molten cheddar cheese sauce and herb seasoning.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -160,7 +160,7 @@ export const EASY_DAY_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Fries baked with pizza sauce, diced sweet corn, capsicum, and thick stringy mozzarella.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
 

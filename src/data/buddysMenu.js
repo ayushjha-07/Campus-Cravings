@@ -174,7 +174,7 @@ export const BUDDYS_BISTRO_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Crisp golden french fries dusted with Buddy\'s signature spicy peri-peri chaat masala.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true,
     variants: [
       { name: 'Regular', price: 60 },
@@ -278,7 +278,7 @@ export const BUDDYS_BISTRO_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Penne cooked in tangy spicy tomato arrabbiata sauce with garlic, black olives and basil.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281724?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -290,7 +290,7 @@ export const BUDDYS_BISTRO_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Creamy rich alfredo sauce penne with sweet corn, mushrooms, herbs and grated parmesan.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281724?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
 

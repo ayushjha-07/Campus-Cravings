@@ -150,7 +150,7 @@ export const X_BURGERS_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Golden crispy potato fingers tossed lightly in pure sea salt.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -162,7 +162,7 @@ export const X_BURGERS_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Crispy fried potatoes dusted with fiery chatpata Indian spice mix.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -174,7 +174,7 @@ export const X_BURGERS_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Hot and zesty fries generously coated with tangy African peri peri spice blend.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {

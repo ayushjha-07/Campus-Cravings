@@ -194,7 +194,7 @@ export const TUCKSHOP_MENU = [
     isAvailable: true,
     rating: 4.9,
     description: 'Smooth-flow reliable ballpoint / gel pen in standard examination blue or black ink.',
-    image: 'https://images.unsplash.com/photo-1585336261026-41ff91b17a0a?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -206,7 +206,7 @@ export const TUCKSHOP_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Dark HB bonded lead graphite pencil ideal for engineering graphics, diagrams, and shading.',
-    image: 'https://images.unsplash.com/photo-1585336261026-41ff91b17a0a?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -218,7 +218,7 @@ export const TUCKSHOP_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Dust-free soft non-abrasive white rubber eraser that cleanly rubs pencil marks without tearing paper.',
-    image: 'https://images.unsplash.com/photo-1585336261026-41ff91b17a0a?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -230,7 +230,7 @@ export const TUCKSHOP_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Precision anti-rust steel blade pencil sharpener with clean tip shaping.',
-    image: 'https://images.unsplash.com/photo-1585336261026-41ff91b17a0a?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -242,7 +242,7 @@ export const TUCKSHOP_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Chisel tip fluorescent highlighter pen for marking key exam concepts and definitions.',
-    image: 'https://images.unsplash.com/photo-1585336261026-41ff91b17a0a?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -254,7 +254,7 @@ export const TUCKSHOP_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Complete mathematical instruments set with compass, divider, protractor, set-squares, and ruler.',
-    image: 'https://images.unsplash.com/photo-1585336261026-41ff91b17a0a?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -266,7 +266,7 @@ export const TUCKSHOP_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Clear transparent 30cm / 12-inch acrylic ruler with distinct mm and inch graduations.',
-    image: 'https://images.unsplash.com/photo-1585336261026-41ff91b17a0a?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -278,7 +278,7 @@ export const TUCKSHOP_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Mess-free non-toxic PVP adhesive glue stick for pasting photographs and assignment slips.',
-    image: 'https://images.unsplash.com/photo-1585336261026-41ff91b17a0a?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -290,7 +290,7 @@ export const TUCKSHOP_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Strong synthetic white adhesive squeezer bottle for craft, binding, and model building.',
-    image: 'https://images.unsplash.com/photo-1585336261026-41ff91b17a0a?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -302,7 +302,7 @@ export const TUCKSHOP_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Fast-drying opaque white correction fluid pen with fine metal tip for error-free documentation.',
-    image: 'https://images.unsplash.com/photo-1585336261026-41ff91b17a0a?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {

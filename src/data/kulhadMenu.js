@@ -112,7 +112,7 @@ export const KULHAD_MENU = [
     isAvailable: true,
     rating: 4.5,
     description: 'Golden crispy potato fingers tossed lightly in pure sea salt.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -124,7 +124,7 @@ export const KULHAD_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Crispy fried French fries dusted generously with hot spicy African peri peri seasoning.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {

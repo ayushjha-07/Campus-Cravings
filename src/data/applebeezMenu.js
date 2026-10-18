@@ -36,7 +36,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.6,
     description: 'Spicy chili-garlic glazed pasta tossed with sautéed bell peppers and savory oriental sauce.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -264,7 +264,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Creamy Italian penne pasta tossed in a velvety bechamel sauce with sweet corn, bell peppers, and oregano herbs.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
   {
@@ -276,7 +276,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Rich and decadent white sauce penne pasta loaded with extra melted cheese and herbs.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -288,7 +288,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.7,
     description: 'Al dente penne pasta simmered in a tangy tomato-basil marinara sauce with sautéed capsicum and onions.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -300,7 +300,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Zesty tomato arrabbiata pasta smothered with extra shredded mozzarella cheese.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281744?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
     isPopular: false
   },
   {
@@ -420,7 +420,7 @@ export const APPLEBEEZ_MENU = [
     isAvailable: true,
     rating: 4.8,
     description: 'Crispy deep-fried golden potato fingers generously tossed in spicy African peri peri chili-herb seasoning.',
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?w=600&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80',
     isPopular: true
   },
 
