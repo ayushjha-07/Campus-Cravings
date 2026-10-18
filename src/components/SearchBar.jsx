@@ -139,6 +139,8 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 ? 'Sip N Bites campus outlet storefront with green awning and menu boards'
                                 : outlet.id === 'yum-experts' || outlet.name === 'Yum Experts'
                                 ? 'Yum Experts campus food outlet storefront with red and green sign'
+                                : outlet.id === 'food-court' || outlet.name === 'Food Court'
+                                ? 'Campus Cravings Food Court storefront with food stalls and seating area'
                                 : outlet.name
                             }
                             className={`w-10 h-10 rounded-lg object-cover ${
@@ -174,6 +176,8 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 ? 'object-[center_20%]'
                                 : outlet.id === 'sip-n-bites'
                                 ? 'object-[center_25%]'
+                                : outlet.id === 'food-court'
+                                ? 'object-[center_40%]'
                                 : ''
                             }`}
                           />

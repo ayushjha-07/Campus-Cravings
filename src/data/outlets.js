@@ -242,7 +242,7 @@ export const OUTLETS = [
     isVegOnly: false,
     isOpen: true,
     timing: '8:00 AM - 9:30 PM',
-    image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/food-court.png',
     logoType: 'foodcourt',
     brandColor: '#1B4D36',
     menu: FOOD_COURT_MENU
