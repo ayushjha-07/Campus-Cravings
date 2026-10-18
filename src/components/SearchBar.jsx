@@ -138,11 +138,13 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
                                 ? 'Sip N Bites outlet storefront'
                                 : outlet.id === 'yum-experts' || outlet.name === 'Yum Experts'
-                                ? 'Yum Experts outlet storefront'
+                                ? 'Yum Experts campus food outlet storefront with red and green sign'
                                 : outlet.name
                             }
                             className={`w-10 h-10 rounded-lg object-cover ${
-                              outlet.id === 'applebeez' || outlet.id === 'apple-beez'
+                              outlet.id === 'yum-experts'
+                                ? 'object-[center_22%]'
+                                : outlet.id === 'applebeez' || outlet.id === 'apple-beez'
                                 ? 'object-[center_50%]'
                                 : outlet.id === 'tuckshop'
                                 ? 'object-[center_15%]'
