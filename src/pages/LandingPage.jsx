@@ -487,7 +487,7 @@ export default function LandingPage() {
                             : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.name === 'Thick & Letto'
                             ? 'Thick & Letto red shake and dessert kiosk with striped awning on campus'
                             : outlet.id === 'rock-n-roll' || outlet.name === 'Rock N Roll' || outlet.name === 'Rock In Roll'
-                            ? 'Rock N Roll campus food outlet storefront'
+                            ? 'Rock In Roll campus food stall with blue awning, menu boards, and serving counter'
                             : outlet.id === 'topn-n-town-for-hunger' || outlet.name === "Top N' Town for Hunger" || outlet.name === "Top N' Town"
                             ? "Top N' Town for Hunger campus food outlet storefront"
                             : outlet.id === 'x-burgers' || outlet.name === 'X Burgers Café' || outlet.name === 'X Burgers'
@@ -499,7 +499,7 @@ export default function LandingPage() {
                             : outlet.name
                         }
                         className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
-                          outlet.id === 'yum-experts' ? 'object-[center_22%]' : outlet.id === 'applebeez' || outlet.id === 'apple-beez' ? 'object-[center_50%]' : outlet.id === 'tuckshop' ? 'object-[center_15%]' : outlet.id === 'canteen' || outlet.id === 'college-canteen' ? 'object-[center_20%]' : outlet.id === 'kulhad' ? 'object-[center_30%]' : outlet.id === 'dockyard-le-bistro' ? 'object-[center_45%]' : outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' ? 'object-[center_25%]' : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' ? 'object-[center_12%]' : outlet.id === 'easy-day' || outlet.id === 'easyday' ? 'object-[center_15%]' : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' ? 'object-[center_15%]' : outlet.id === 'nescafe' ? 'object-[center_25%]' : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' ? 'object-[center_30%]' : outlet.id === 'rock-n-roll' ? 'object-[center_28%]' : outlet.id === 'topn-n-town-for-hunger' ? 'object-[center_32%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_25%]' : ''
+                          outlet.id === 'yum-experts' ? 'object-[center_22%]' : outlet.id === 'applebeez' || outlet.id === 'apple-beez' ? 'object-[center_50%]' : outlet.id === 'tuckshop' ? 'object-[center_15%]' : outlet.id === 'canteen' || outlet.id === 'college-canteen' ? 'object-[center_20%]' : outlet.id === 'kulhad' ? 'object-[center_30%]' : outlet.id === 'dockyard-le-bistro' ? 'object-[center_45%]' : outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' ? 'object-[center_25%]' : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' ? 'object-[center_12%]' : outlet.id === 'easy-day' || outlet.id === 'easyday' ? 'object-[center_15%]' : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' ? 'object-[center_15%]' : outlet.id === 'nescafe' ? 'object-[center_25%]' : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' ? 'object-[center_30%]' : outlet.id === 'rock-n-roll' ? 'object-[center_40%]' : outlet.id === 'topn-n-town-for-hunger' ? 'object-[center_32%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_25%]' : ''
                         }`}
                         loading="lazy"
                       />

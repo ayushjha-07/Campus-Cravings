@@ -130,7 +130,7 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.name === 'Thick & Letto'
                                 ? 'Thick & Letto red shake and dessert kiosk with striped awning on campus'
                                 : outlet.id === 'rock-n-roll' || outlet.name === 'Rock N Roll' || outlet.name === 'Rock In Roll'
-                                ? 'Rock N Roll campus food outlet storefront'
+                                ? 'Rock In Roll campus food stall with blue awning, menu boards, and serving counter'
                                 : outlet.id === 'topn-n-town-for-hunger' || outlet.name === "Top N' Town for Hunger" || outlet.name === "Top N' Town"
                                 ? "Top N' Town for Hunger campus food outlet storefront"
                                 : outlet.id === 'x-burgers' || outlet.name === 'X Burgers Café' || outlet.name === 'X Burgers'
@@ -167,7 +167,7 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto'
                                 ? 'object-[center_30%]'
                                 : outlet.id === 'rock-n-roll'
-                                ? 'object-[center_28%]'
+                                ? 'object-[center_40%]'
                                 : outlet.id === 'topn-n-town-for-hunger'
                                 ? 'object-[center_32%]'
                                 : outlet.id === 'x-burgers'
