@@ -201,7 +201,7 @@ export const OUTLETS = [
     isVegOnly: false,
     isOpen: true,
     timing: '9:30 AM - 8:30 PM (Demo Hours)',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/buddys-bistro.png',
     logoType: 'buddys',
     brandColor: '#F77F00',
     menu: BUDDYS_BISTRO_MENU

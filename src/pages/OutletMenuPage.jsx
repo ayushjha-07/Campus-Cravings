@@ -90,7 +90,9 @@ export default function OutletMenuPage() {
           <img
             src={outlet.image}
             alt={
-              outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.name === "Domino's" || outlet.name === "Domino's Pizza" || outlet.name === "Dominos"
+              outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.name === "Buddy's Bistro"
+                ? "Buddy’s Bistro restaurant storefront"
+                : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.name === "Domino's" || outlet.name === "Domino's Pizza" || outlet.name === "Dominos"
                 ? "Domino’s pizza outlet storefront"
                 : outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.name === 'Easy Day SuperMart'
                 ? 'Easy Day SuperMart storefront with shop sign and entrance'
@@ -113,7 +115,9 @@ export default function OutletMenuPage() {
                 : outlet.name
             }
             className={`w-full h-full object-cover ${
-              outlet.id === 'dominos' || outlet.id === 'dominos-pizza'
+              outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro'
+                ? 'object-[center_25%]'
+                : outlet.id === 'dominos' || outlet.id === 'dominos-pizza'
                 ? 'object-[center_12%]'
                 : outlet.id === 'easy-day' || outlet.id === 'easyday'
                 ? 'object-[center_15%]'
@@ -206,12 +210,14 @@ export default function OutletMenuPage() {
             <div className="md:col-span-4 bg-white/10 backdrop-blur-md border border-white/15 p-4 sm:p-5 rounded-3xl space-y-3 text-xs text-stone-200">
               {/* Authentic Outlet Storefront Photo Showcase */}
               <div className={`relative w-full rounded-2xl overflow-hidden border border-white/20 shadow-md bg-black/20 group ${
-                outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.id === 'nescafe' || outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[250px] sm:h-[280px] lg:h-[380px]' : 'aspect-16/10'
+                outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.id === 'nescafe' || outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[250px] sm:h-[280px] lg:h-[380px]' : 'aspect-16/10'
               }`}>
                 <img
                   src={outlet.image}
                   alt={
-                    outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.name === "Domino's" || outlet.name === "Domino's Pizza" || outlet.name === "Dominos"
+                    outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.name === "Buddy's Bistro"
+                      ? "Buddy’s Bistro restaurant storefront"
+                      : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.name === "Domino's" || outlet.name === "Domino's Pizza" || outlet.name === "Dominos"
                       ? "Domino’s pizza outlet storefront"
                       : outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.name === 'Easy Day SuperMart'
                       ? 'Easy Day SuperMart storefront with shop sign and entrance'
@@ -234,7 +240,9 @@ export default function OutletMenuPage() {
                       : `${outlet.name} storefront`
                   }
                   className={`w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ${
-                    outlet.id === 'dominos' || outlet.id === 'dominos-pizza'
+                    outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro'
+                      ? 'object-[center_25%]'
+                      : outlet.id === 'dominos' || outlet.id === 'dominos-pizza'
                       ? 'object-[center_12%]'
                       : outlet.id === 'easy-day' || outlet.id === 'easyday'
                       ? 'object-[center_15%]'
@@ -257,7 +265,7 @@ export default function OutletMenuPage() {
                 />
                 <div className="absolute bottom-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-black/60 backdrop-blur-md text-white border border-white/20 flex items-center gap-1.5 shadow-xs">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  <span>{outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.id === 'nescafe' || outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' || outlet.id === 'yum-experts' ? 'Official Outlet Storefront' : 'Storefront Photo'}</span>
+                  <span>{outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.id === 'nescafe' || outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' || outlet.id === 'yum-experts' ? 'Official Outlet Storefront' : 'Storefront Photo'}</span>
                 </div>
               </div>
 

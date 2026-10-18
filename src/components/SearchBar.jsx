@@ -107,7 +107,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                           <img
                             src={outlet.image}
                             alt={
-                              outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.name === "Domino's" || outlet.name === "Domino's Pizza" || outlet.name === "Dominos"
+                              outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.name === "Buddy's Bistro"
+                                ? "Buddy’s Bistro restaurant storefront"
+                                : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.name === "Domino's" || outlet.name === "Domino's Pizza" || outlet.name === "Dominos"
                                 ? "Domino’s pizza outlet storefront"
                                 : outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.name === 'Easy Day SuperMart'
                                 ? 'Easy Day SuperMart storefront with shop sign and entrance'
@@ -130,7 +132,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.name
                             }
                             className={`w-10 h-10 rounded-lg object-cover ${
-                              outlet.id === 'dominos' || outlet.id === 'dominos-pizza'
+                              outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro'
+                                ? 'object-[center_25%]'
+                                : outlet.id === 'dominos' || outlet.id === 'dominos-pizza'
                                 ? 'object-[center_12%]'
                                 : outlet.id === 'easy-day' || outlet.id === 'easyday'
                                 ? 'object-[center_15%]'
