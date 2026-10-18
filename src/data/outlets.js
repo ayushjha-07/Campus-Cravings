@@ -357,7 +357,7 @@ export const OUTLETS = [
     shortCategory: 'Bistro',
     tagline: 'Amritsari Kulchas, Handcrafted Pizzas, Burgers, Shakes & Desi Chinese',
     cuisine: ['Amritsari Kulcha', 'Pizza', 'Burgers', 'Shakes', 'Pasta', 'Chinese', 'North Indian'],
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/dockyard-le-bistro.png',
     brandColor: '#1E293B',
     offers: DOCKYARD_OFFERS,
     menu: DOCKYARD_LE_BISTRO_MENU

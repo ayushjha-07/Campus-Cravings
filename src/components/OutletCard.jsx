@@ -30,12 +30,14 @@ export default function OutletCard({ outlet }) {
       <div>
         {/* Top Storefront / Food Photography Image */}
         <div className={`relative w-full overflow-hidden bg-stone-100 dark:bg-[#222E26] ${
-          outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.id === 'nescafe' || outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[190px] sm:h-[260px]' : 'aspect-16/10'
+          outlet.id === 'dockyard-le-bistro' || outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.id === 'nescafe' || outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[190px] sm:h-[260px]' : 'aspect-16/10'
         }`}>
           <img
             src={outlet.image}
             alt={
-              outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.name === "Buddy's Bistro"
+              outlet.id === 'dockyard-le-bistro' || outlet.name === 'Dockyard Le Bistro'
+                ? 'Dockyard Le Bistro green container-style restaurant with outdoor seating'
+                : outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.name === "Buddy's Bistro"
                 ? "Buddy’s Bistro restaurant storefront"
                 : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.name === "Domino's" || outlet.name === "Domino's Pizza" || outlet.name === "Dominos"
                 ? "Domino’s pizza outlet storefront"
@@ -60,7 +62,7 @@ export default function OutletCard({ outlet }) {
                 : outlet.name
             }
             className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out ${
-              outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' ? 'object-[center_25%]' : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' ? 'object-[center_12%]' : outlet.id === 'easy-day' || outlet.id === 'easyday' ? 'object-[center_15%]' : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' ? 'object-[center_15%]' : outlet.id === 'nescafe' ? 'object-[center_25%]' : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' ? 'object-[center_25%]' : outlet.id === 'rock-n-roll' ? 'object-[center_28%]' : outlet.id === 'topn-n-town-for-hunger' ? 'object-[center_32%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
+              outlet.id === 'dockyard-le-bistro' ? 'object-[center_45%]' : outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' ? 'object-[center_25%]' : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' ? 'object-[center_12%]' : outlet.id === 'easy-day' || outlet.id === 'easyday' ? 'object-[center_15%]' : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' ? 'object-[center_15%]' : outlet.id === 'nescafe' ? 'object-[center_25%]' : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' ? 'object-[center_25%]' : outlet.id === 'rock-n-roll' ? 'object-[center_28%]' : outlet.id === 'topn-n-town-for-hunger' ? 'object-[center_32%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
             }`}
             loading="lazy"
           />
