@@ -77,7 +77,7 @@ export const OUTLETS = [
     isVegOnly: false,
     isOpen: true,
     timing: '8:00 AM - 10:00 PM',
-    image: 'https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/easy-day.png',
     logoType: 'easyday',
     brandColor: '#2B9348',
     menu: EASY_DAY_MENU
