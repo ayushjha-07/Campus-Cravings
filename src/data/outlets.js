@@ -138,7 +138,7 @@ export const OUTLETS = [
     isVegOnly: false,
     isOpen: true,
     timing: '10:30 AM - 9:30 PM',
-    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/dominos.png',
     logoType: 'dominos',
     brandColor: '#0055A5',
     menu: DOMINOS_MENU
