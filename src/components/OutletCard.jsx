@@ -50,7 +50,7 @@ export default function OutletCard({ outlet }) {
                 : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.name === "Domino's" || outlet.name === "Domino's Pizza" || outlet.name === "Dominos"
                 ? "Domino’s pizza outlet storefront"
                 : outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.name === 'Easy Day SuperMart'
-                ? 'Easy Day SuperMart storefront with shop sign and entrance'
+                ? 'Easy Day SuperMart campus storefront with blue sign and grocery shelves'
                 : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.name === 'Chutar Putar'
                 ? 'Chutar Putar yellow and red storefront with its sign clearly visible'
                 : outlet.id === 'nescafe' || outlet.name === 'Nescafe'
@@ -70,7 +70,7 @@ export default function OutletCard({ outlet }) {
                 : outlet.name
             }
             className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out ${
-              outlet.id === 'yum-experts' ? 'object-[center_22%]' : outlet.id === 'applebeez' || outlet.id === 'apple-beez' ? 'object-[center_50%]' : outlet.id === 'tuckshop' ? 'object-[center_15%]' : outlet.id === 'canteen' || outlet.id === 'college-canteen' ? 'object-[center_20%]' : outlet.id === 'kulhad' ? 'object-[center_30%]' : outlet.id === 'dockyard-le-bistro' ? 'object-[center_45%]' : outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' ? 'object-[center_25%]' : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' ? 'object-[center_12%]' : outlet.id === 'easy-day' || outlet.id === 'easyday' ? 'object-[center_15%]' : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' ? 'object-[center_15%]' : outlet.id === 'nescafe' ? 'object-[center_25%]' : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' ? 'object-[center_30%]' : outlet.id === 'rock-n-roll' ? 'object-[center_40%]' : outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'top-n-town-for-hunger' ? 'object-[center_30%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_25%]' : ''
+              outlet.id === 'yum-experts' ? 'object-[center_22%]' : outlet.id === 'applebeez' || outlet.id === 'apple-beez' ? 'object-[center_50%]' : outlet.id === 'tuckshop' ? 'object-[center_15%]' : outlet.id === 'canteen' || outlet.id === 'college-canteen' ? 'object-[center_20%]' : outlet.id === 'kulhad' ? 'object-[center_30%]' : outlet.id === 'dockyard-le-bistro' ? 'object-[center_45%]' : outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' ? 'object-[center_25%]' : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' ? 'object-[center_12%]' : outlet.id === 'easy-day' || outlet.id === 'easyday' ? 'object-[center_25%]' : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' ? 'object-[center_15%]' : outlet.id === 'nescafe' ? 'object-[center_25%]' : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' ? 'object-[center_30%]' : outlet.id === 'rock-n-roll' ? 'object-[center_40%]' : outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'top-n-town-for-hunger' ? 'object-[center_30%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_25%]' : ''
             }`}
             loading="lazy"
           />

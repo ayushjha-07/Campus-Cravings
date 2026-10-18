@@ -105,7 +105,7 @@ export default function OutletMenuPage() {
                 : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.name === "Domino's" || outlet.name === "Domino's Pizza" || outlet.name === "Dominos"
                 ? "Domino’s pizza outlet storefront"
                 : outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.name === 'Easy Day SuperMart'
-                ? 'Easy Day SuperMart storefront with shop sign and entrance'
+                ? 'Easy Day SuperMart campus storefront with blue sign and grocery shelves'
                 : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.name === 'Chutar Putar'
                 ? 'Chutar Putar yellow and red storefront with its sign clearly visible'
                 : outlet.id === 'nescafe' || outlet.name === 'Nescafe'
@@ -142,7 +142,7 @@ export default function OutletMenuPage() {
                 : outlet.id === 'dominos' || outlet.id === 'dominos-pizza'
                 ? 'object-[center_12%]'
                 : outlet.id === 'easy-day' || outlet.id === 'easyday'
-                ? 'object-[center_15%]'
+                ? 'object-[center_25%]'
                 : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar'
                 ? 'object-[center_15%]'
                 : outlet.id === 'nescafe'
@@ -252,7 +252,7 @@ export default function OutletMenuPage() {
                       : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.name === "Domino's" || outlet.name === "Domino's Pizza" || outlet.name === "Dominos"
                       ? "Domino’s pizza outlet storefront"
                       : outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.name === 'Easy Day SuperMart'
-                      ? 'Easy Day SuperMart storefront with shop sign and entrance'
+                      ? 'Easy Day SuperMart campus storefront with blue sign and grocery shelves'
                       : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.name === 'Chutar Putar'
                       ? 'Chutar Putar yellow and red storefront with its sign clearly visible'
                       : outlet.id === 'nescafe' || outlet.name === 'Nescafe'
@@ -289,7 +289,7 @@ export default function OutletMenuPage() {
                       : outlet.id === 'dominos' || outlet.id === 'dominos-pizza'
                       ? 'object-[center_12%]'
                       : outlet.id === 'easy-day' || outlet.id === 'easyday'
-                      ? 'object-[center_15%]'
+                      ? 'object-[center_25%]'
                       : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar'
                       ? 'object-[center_15%]'
                       : outlet.id === 'nescafe'
