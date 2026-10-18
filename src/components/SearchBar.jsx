@@ -136,7 +136,7 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.id === 'x-burgers' || outlet.name === 'X Burgers Café' || outlet.name === 'X Burgers'
                                 ? 'X Burgers storefront with red sign and menu boards'
                                 : outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
-                                ? 'Sip N Bites outlet storefront'
+                                ? 'Sip N Bites campus outlet storefront with green awning and menu boards'
                                 : outlet.id === 'yum-experts' || outlet.name === 'Yum Experts'
                                 ? 'Yum Experts campus food outlet storefront with red and green sign'
                                 : outlet.name
@@ -173,7 +173,7 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.id === 'x-burgers'
                                 ? 'object-[center_20%]'
                                 : outlet.id === 'sip-n-bites'
-                                ? 'object-[center_30%]'
+                                ? 'object-[center_25%]'
                                 : ''
                             }`}
                           />
