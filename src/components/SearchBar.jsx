@@ -106,8 +106,14 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                         <div className="flex items-center gap-3">
                           <img
                             src={outlet.image}
-                            alt={outlet.id === 'yum-experts' || outlet.name === 'Yum Experts' ? 'Yum Experts outlet storefront' : outlet.name}
-                            className="w-10 h-10 rounded-lg object-cover"
+                            alt={
+                              outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
+                                ? 'Sip N Bites outlet storefront'
+                                : outlet.id === 'yum-experts' || outlet.name === 'Yum Experts'
+                                ? 'Yum Experts outlet storefront'
+                                : outlet.name
+                            }
+                            className={`w-10 h-10 rounded-lg object-cover ${outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''}`}
                           />
                           <div>
                             <div className="text-sm font-semibold text-stone-900 group-hover:text-[#1B4D36]">

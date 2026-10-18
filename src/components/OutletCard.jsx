@@ -29,11 +29,21 @@ export default function OutletCard({ outlet }) {
     >
       <div>
         {/* Top Storefront / Food Photography Image */}
-        <div className="relative aspect-16/10 w-full overflow-hidden bg-stone-100 dark:bg-[#222E26]">
+        <div className={`relative w-full overflow-hidden bg-stone-100 dark:bg-[#222E26] ${
+          outlet.id === 'sip-n-bites' ? 'h-[190px] sm:h-[260px]' : 'aspect-16/10'
+        }`}>
           <img
             src={outlet.image}
-            alt={outlet.id === 'yum-experts' || outlet.name === 'Yum Experts' ? 'Yum Experts outlet storefront' : outlet.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+            alt={
+              outlet.id === 'sip-n-bites' || outlet.name === 'Sip N Bites'
+                ? 'Sip N Bites outlet storefront'
+                : outlet.id === 'yum-experts' || outlet.name === 'Yum Experts'
+                ? 'Yum Experts outlet storefront'
+                : outlet.name
+            }
+            className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out ${
+              outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
+            }`}
             loading="lazy"
           />
 

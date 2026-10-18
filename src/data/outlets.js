@@ -263,7 +263,7 @@ export const OUTLETS = [
     isVegOnly: false,
     isOpen: true,
     timing: '8:00 AM - 9:30 PM',
-    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/sip-n-bites.png',
     logoType: 'sipnbites',
     brandColor: '#0EA5E9',
     menu: SIP_N_BITES_MENU
