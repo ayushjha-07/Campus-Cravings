@@ -107,7 +107,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                           <img
                             src={outlet.image}
                             alt={
-                              outlet.id === 'dockyard-le-bistro' || outlet.name === 'Dockyard Le Bistro'
+                              outlet.id === 'kulhad' || outlet.name === 'Kulhad'
+                                ? 'Kulhad campus food outlet with black storefront and menu boards'
+                                : outlet.id === 'dockyard-le-bistro' || outlet.name === 'Dockyard Le Bistro'
                                 ? 'Dockyard Le Bistro green container-style restaurant with outdoor seating'
                                 : outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.name === "Buddy's Bistro"
                                 ? "Buddy’s Bistro restaurant storefront"
@@ -134,7 +136,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.name
                             }
                             className={`w-10 h-10 rounded-lg object-cover ${
-                              outlet.id === 'dockyard-le-bistro'
+                              outlet.id === 'kulhad'
+                                ? 'object-[center_30%]'
+                                : outlet.id === 'dockyard-le-bistro'
                                 ? 'object-[center_45%]'
                                 : outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro'
                                 ? 'object-[center_25%]'

@@ -97,7 +97,7 @@ export const OUTLETS = [
     isVegOnly: true,
     isOpen: true,
     timing: '8:30 AM - 9:30 PM',
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/kulhad.png',
     logoType: 'kulhad',
     brandColor: '#8B4513',
     menu: KULHAD_MENU
