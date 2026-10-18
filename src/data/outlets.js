@@ -56,7 +56,7 @@ export const OUTLETS = [
     isVegOnly: false,
     isOpen: true,
     timing: '9:00 AM - 9:30 PM',
-    image: '/images/outlets/topn-n-town-for-hunger.png',
+    image: '/images/outlets/top-n-town-for-hunger.png',
     logoType: 'topntown',
     brandColor: '#D90429',
     menu: TOP_N_TOWN_MENU
