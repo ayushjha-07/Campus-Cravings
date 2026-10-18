@@ -159,7 +159,7 @@ export const OUTLETS = [
     isVegOnly: true,
     isOpen: true,
     timing: '8:00 AM - 8:30 PM',
-    image: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/nescafe.png',
     logoType: 'nescafe',
     brandColor: '#C1121F',
     menu: NESCAFE_MENU
