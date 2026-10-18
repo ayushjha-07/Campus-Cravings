@@ -107,7 +107,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                           <img
                             src={outlet.image}
                             alt={
-                              outlet.id === 'tuckshop' || outlet.name === 'Tuckshop' || outlet.name === 'Tuck Shop'
+                              outlet.id === 'applebeez' || outlet.id === 'apple-beez' || outlet.name === 'Apple Beez'
+                                ? 'Apple Beez campus garden and outdoor dining pavilion at Block 2'
+                                : outlet.id === 'tuckshop' || outlet.name === 'Tuckshop' || outlet.name === 'Tuck Shop'
                                 ? 'Tuck Shop stationery, printing and daily essentials campus store'
                                 : outlet.id === 'canteen' || outlet.id === 'college-canteen' || outlet.name === 'College Canteen'
                                 ? 'College Canteen storefront with food counters and outdoor seating'
@@ -140,7 +142,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.name
                             }
                             className={`w-10 h-10 rounded-lg object-cover ${
-                              outlet.id === 'tuckshop'
+                              outlet.id === 'applebeez' || outlet.id === 'apple-beez'
+                                ? 'object-[center_50%]'
+                                : outlet.id === 'tuckshop'
                                 ? 'object-[center_15%]'
                                 : outlet.id === 'canteen' || outlet.id === 'college-canteen'
                                 ? 'object-[center_20%]'

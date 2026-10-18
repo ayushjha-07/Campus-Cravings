@@ -36,7 +36,7 @@ export const OUTLETS = [
     isVegOnly: false,
     isOpen: true,
     timing: '8:30 AM - 9:30 PM',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/apple-beez.png',
     logoType: 'applebeez',
     brandColor: '#E63946',
     menu: APPLEBEEZ_MENU
