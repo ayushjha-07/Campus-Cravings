@@ -180,7 +180,7 @@ export const OUTLETS = [
     isVegOnly: false,
     isOpen: true,
     timing: '8:00 AM - 7:30 PM (Demo Hours)',
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/college-canteen.png',
     logoType: 'canteen',
     brandColor: '#2D6A4F',
     menu: CANTEEN_MENU

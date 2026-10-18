@@ -107,7 +107,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                           <img
                             src={outlet.image}
                             alt={
-                              outlet.id === 'kulhad' || outlet.name === 'Kulhad'
+                              outlet.id === 'canteen' || outlet.id === 'college-canteen' || outlet.name === 'College Canteen'
+                                ? 'College Canteen storefront with food counters and outdoor seating'
+                                : outlet.id === 'kulhad' || outlet.name === 'Kulhad'
                                 ? 'Kulhad campus food outlet with black storefront and menu boards'
                                 : outlet.id === 'dockyard-le-bistro' || outlet.name === 'Dockyard Le Bistro'
                                 ? 'Dockyard Le Bistro green container-style restaurant with outdoor seating'
@@ -136,7 +138,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.name
                             }
                             className={`w-10 h-10 rounded-lg object-cover ${
-                              outlet.id === 'kulhad'
+                              outlet.id === 'canteen' || outlet.id === 'college-canteen'
+                                ? 'object-[center_20%]'
+                                : outlet.id === 'kulhad'
                                 ? 'object-[center_30%]'
                                 : outlet.id === 'dockyard-le-bistro'
                                 ? 'object-[center_45%]'
