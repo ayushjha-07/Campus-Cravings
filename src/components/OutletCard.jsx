@@ -30,12 +30,14 @@ export default function OutletCard({ outlet }) {
       <div>
         {/* Top Storefront / Food Photography Image */}
         <div className={`relative w-full overflow-hidden bg-stone-100 dark:bg-[#222E26] ${
-          outlet.id === 'canteen' || outlet.id === 'college-canteen' || outlet.id === 'kulhad' || outlet.id === 'dockyard-le-bistro' || outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.id === 'nescafe' || outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[190px] sm:h-[260px]' : 'aspect-16/10'
+          outlet.id === 'tuckshop' || outlet.id === 'canteen' || outlet.id === 'college-canteen' || outlet.id === 'kulhad' || outlet.id === 'dockyard-le-bistro' || outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' || outlet.id === 'dominos' || outlet.id === 'dominos-pizza' || outlet.id === 'easy-day' || outlet.id === 'easyday' || outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' || outlet.id === 'nescafe' || outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' || outlet.id === 'rock-n-roll' || outlet.id === 'topn-n-town-for-hunger' || outlet.id === 'x-burgers' || outlet.id === 'sip-n-bites' ? 'h-[190px] sm:h-[260px]' : 'aspect-16/10'
         }`}>
           <img
             src={outlet.image}
             alt={
-              outlet.id === 'canteen' || outlet.id === 'college-canteen' || outlet.name === 'College Canteen'
+              outlet.id === 'tuckshop' || outlet.name === 'Tuckshop'
+                ? 'Tuck Shop stationery, printing and daily essentials campus store'
+                : outlet.id === 'canteen' || outlet.id === 'college-canteen' || outlet.name === 'College Canteen'
                 ? 'College Canteen storefront with food counters and outdoor seating'
                 : outlet.id === 'kulhad' || outlet.name === 'Kulhad'
                 ? 'Kulhad campus food outlet with black storefront and menu boards'
@@ -66,7 +68,7 @@ export default function OutletCard({ outlet }) {
                 : outlet.name
             }
             className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out ${
-              outlet.id === 'canteen' || outlet.id === 'college-canteen' ? 'object-[center_20%]' : outlet.id === 'kulhad' ? 'object-[center_30%]' : outlet.id === 'dockyard-le-bistro' ? 'object-[center_45%]' : outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' ? 'object-[center_25%]' : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' ? 'object-[center_12%]' : outlet.id === 'easy-day' || outlet.id === 'easyday' ? 'object-[center_15%]' : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' ? 'object-[center_15%]' : outlet.id === 'nescafe' ? 'object-[center_25%]' : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' ? 'object-[center_25%]' : outlet.id === 'rock-n-roll' ? 'object-[center_28%]' : outlet.id === 'topn-n-town-for-hunger' ? 'object-[center_32%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
+              outlet.id === 'tuckshop' ? 'object-[center_15%]' : outlet.id === 'canteen' || outlet.id === 'college-canteen' ? 'object-[center_20%]' : outlet.id === 'kulhad' ? 'object-[center_30%]' : outlet.id === 'dockyard-le-bistro' ? 'object-[center_45%]' : outlet.id === 'buddys-bistro' || outlet.id === 'buds-bistro' ? 'object-[center_25%]' : outlet.id === 'dominos' || outlet.id === 'dominos-pizza' ? 'object-[center_12%]' : outlet.id === 'easy-day' || outlet.id === 'easyday' ? 'object-[center_15%]' : outlet.id === 'chutar-putar' || outlet.id === 'chutarputar' ? 'object-[center_15%]' : outlet.id === 'nescafe' ? 'object-[center_25%]' : outlet.id === 'thick-let-to' || outlet.id === 'thick-letto' ? 'object-[center_25%]' : outlet.id === 'rock-n-roll' ? 'object-[center_28%]' : outlet.id === 'topn-n-town-for-hunger' ? 'object-[center_32%]' : outlet.id === 'x-burgers' ? 'object-[center_20%]' : outlet.id === 'sip-n-bites' ? 'object-[center_30%]' : ''
             }`}
             loading="lazy"
           />

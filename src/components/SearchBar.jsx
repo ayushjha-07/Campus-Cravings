@@ -107,7 +107,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                           <img
                             src={outlet.image}
                             alt={
-                              outlet.id === 'canteen' || outlet.id === 'college-canteen' || outlet.name === 'College Canteen'
+                              outlet.id === 'tuckshop' || outlet.name === 'Tuckshop' || outlet.name === 'Tuck Shop'
+                                ? 'Tuck Shop stationery, printing and daily essentials campus store'
+                                : outlet.id === 'canteen' || outlet.id === 'college-canteen' || outlet.name === 'College Canteen'
                                 ? 'College Canteen storefront with food counters and outdoor seating'
                                 : outlet.id === 'kulhad' || outlet.name === 'Kulhad'
                                 ? 'Kulhad campus food outlet with black storefront and menu boards'
@@ -138,7 +140,9 @@ export default function SearchBar({ placeholder = "Search for food (pizza, shake
                                 : outlet.name
                             }
                             className={`w-10 h-10 rounded-lg object-cover ${
-                              outlet.id === 'canteen' || outlet.id === 'college-canteen'
+                              outlet.id === 'tuckshop'
+                                ? 'object-[center_15%]'
+                                : outlet.id === 'canteen' || outlet.id === 'college-canteen'
                                 ? 'object-[center_20%]'
                                 : outlet.id === 'kulhad'
                                 ? 'object-[center_30%]'

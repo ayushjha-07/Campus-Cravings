@@ -114,10 +114,10 @@ export const OUTLETS = [
     prepTime: '2-5 mins',
     priceForTwo: '₹80',
     cuisine: ['Printing & Xerox', 'Stationery', 'Notebooks', 'Computer Accessories', 'Gifts', 'Daily Essentials'],
-    isVegOnly: true,
+    isVegOnly: false,
     isOpen: true,
     timing: '8:30 AM - 7:30 PM',
-    image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=800&auto=format&fit=crop&q=80',
+    image: '/images/outlets/tuckshop.png',
     logoType: 'tuckshop',
     brandColor: '#1E3A8A',
     menu: TUCKSHOP_MENU
