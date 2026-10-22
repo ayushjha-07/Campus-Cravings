@@ -45,6 +45,8 @@ export const SEED_STUDENTS = [
     hostel: 'Boys Hostel 3, Room 214',
     campus: 'CGC University, Mohali',
     passwordHash: DEMO_PASSWORD_HASH,
+    emailVerified: true,
+    phoneVerified: true,
     createdAt: '2026-01-15T09:00:00Z'
   },
   {
@@ -58,6 +60,8 @@ export const SEED_STUDENTS = [
     hostel: 'Girls Hostel 1, Room 108',
     campus: 'CGC University, Mohali',
     passwordHash: DEMO_PASSWORD_HASH,
+    emailVerified: true,
+    phoneVerified: true,
     createdAt: '2026-02-10T11:30:00Z'
   }
 ];
@@ -132,6 +136,35 @@ export function validatePhone(phone) {
   // Match 10 digits (optionally with +91 or leading 0)
   const cleaned = phone.replace(/\D/g, '');
   return cleaned.length === 10 || (cleaned.length === 12 && cleaned.startsWith('91'));
+}
+
+/**
+ * Validate strictly for Indian mobile numbers:
+ * Must be 10 digits starting with 6, 7, 8, or 9 (with optional +91 or 0 prefix)
+ */
+export function validateIndianMobile(phone) {
+  if (!phone || typeof phone !== 'string') return false;
+  const digits = phone.replace(/\D/g, '');
+  if (digits.length === 10 && /^[6-9]\d{9}$/.test(digits)) return true;
+  if (digits.length === 11 && digits.startsWith('0') && /^[6-9]\d{9}$/.test(digits.slice(1))) return true;
+  if (digits.length === 12 && digits.startsWith('91') && /^[6-9]\d{9}$/.test(digits.slice(2))) return true;
+  return false;
+}
+
+export function cleanIndianMobile(phone) {
+  if (!phone) return '';
+  const digits = phone.replace(/\D/g, '');
+  if (digits.length === 12 && digits.startsWith('91')) return digits.slice(2);
+  if (digits.length === 11 && digits.startsWith('0')) return digits.slice(1);
+  return digits.slice(-10);
+}
+
+export function formatIndianMobile(phone) {
+  const clean = cleanIndianMobile(phone);
+  if (clean.length === 10) {
+    return `+91 ${clean.slice(0, 5)} ${clean.slice(5)}`;
+  }
+  return phone;
 }
 
 export function validateStudentId(id) {

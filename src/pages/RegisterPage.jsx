@@ -15,11 +15,13 @@ import {
   Clock, 
   ArrowRight,
   AlertCircle, 
-  CheckCircle2, 
-  UtensilsCrossed, 
-  CreditCard
+  CreditCard,
+  ShieldCheck,
+  Check
 } from 'lucide-react';
 import ThemeToggle from '../components/ThemeToggle';
+import OtpVerificationModal from '../components/OtpVerificationModal';
+import { validateEmail, validateIndianMobile, cleanIndianMobile } from '../utils/authUtils';
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -35,6 +37,21 @@ export default function RegisterPage() {
     termsAccepted: false
   });
 
+  // Verification state & tokens
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [emailVerificationToken, setEmailVerificationToken] = useState(null);
+
+  const [isPhoneVerified, setIsPhoneVerified] = useState(false);
+  const [phoneVerificationToken, setPhoneVerificationToken] = useState(null);
+
+  // OTP Modal state
+  const [modalState, setModalState] = useState({
+    isOpen: false,
+    type: 'email', // 'email' | 'phone'
+    target: '',
+    purpose: 'register'
+  });
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -45,25 +62,92 @@ export default function RegisterPage() {
     if (errorMessage) setErrorMessage(null);
   };
 
+  const handleEmailChange = (value) => {
+    setFormData(prev => ({ ...prev, email: value }));
+    if (isEmailVerified) {
+      setIsEmailVerified(false);
+      setEmailVerificationToken(null);
+    }
+    if (errorMessage) setErrorMessage(null);
+  };
+
+  const handlePhoneChange = (value) => {
+    setFormData(prev => ({ ...prev, phone: value }));
+    if (isPhoneVerified) {
+      setIsPhoneVerified(false);
+      setPhoneVerificationToken(null);
+    }
+    if (errorMessage) setErrorMessage(null);
+  };
+
+  const handleStartEmailVerification = () => {
+    setErrorMessage(null);
+    if (!formData.email.trim() || !validateEmail(formData.email)) {
+      setErrorMessage('Please enter a valid college email address (e.g. name@cgc.ac.in) before verifying.');
+      return;
+    }
+
+    setModalState({
+      isOpen: true,
+      type: 'email',
+      target: formData.email.trim().toLowerCase(),
+      purpose: 'register'
+    });
+  };
+
+  const handleStartPhoneVerification = () => {
+    setErrorMessage(null);
+    if (!formData.phone.trim() || !validateIndianMobile(formData.phone)) {
+      setErrorMessage('Please enter a valid 10-digit Indian mobile number (e.g. 9876543210) starting with 6, 7, 8, or 9.');
+      return;
+    }
+
+    const cleanPhone = cleanIndianMobile(formData.phone);
+    setModalState({
+      isOpen: true,
+      type: 'phone',
+      target: cleanPhone,
+      purpose: 'register'
+    });
+  };
+
+  const handleVerificationSuccess = ({ type, verificationToken }) => {
+    if (type === 'email') {
+      setIsEmailVerified(true);
+      setEmailVerificationToken(verificationToken);
+    } else {
+      setIsPhoneVerified(true);
+      setPhoneVerificationToken(verificationToken);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage(null);
 
-    // Form Validations matching requirements
+    // Form Validations
     if (!formData.name.trim()) {
-      setErrorMessage('Please enter your full name.');
+      setErrorMessage('Please enter your full student name.');
       return;
     }
-    if (!formData.email.trim() || !formData.email.includes('@')) {
+    if (!formData.email.trim() || !validateEmail(formData.email)) {
       setErrorMessage('Please enter a valid college email address (e.g. name@cgc.ac.in).');
+      return;
+    }
+    if (!isEmailVerified || !emailVerificationToken) {
+      setErrorMessage('Please verify your college email address with OTP before creating an account.');
       return;
     }
     if (!formData.studentId.trim() || formData.studentId.trim().length < 4) {
       setErrorMessage('Student ID must be at least 4 characters (e.g. CGC2024CSE101).');
       return;
     }
-    if (!formData.phone.trim() || formData.phone.replace(/\D/g, '').length < 10) {
-      setErrorMessage('Please enter a valid 10-digit mobile contact number.');
+    if (!formData.phone.trim() || !validateIndianMobile(formData.phone)) {
+      setErrorMessage('Please enter a valid 10-digit Indian mobile number.');
+      return;
+    }
+    if (!isPhoneVerified || !phoneVerificationToken) {
+      setErrorMessage('Please verify your mobile number with SMS OTP before creating an account.');
       return;
     }
     if (!formData.password || formData.password.length < 6) {
@@ -82,6 +166,8 @@ export default function RegisterPage() {
     setIsSubmitting(true);
     const result = await register({
       ...formData,
+      emailVerificationToken,
+      phoneVerificationToken,
       department: 'Computer Science & Engineering',
       hostel: 'Campus Day Scholar'
     });
@@ -149,7 +235,7 @@ export default function RegisterPage() {
               <span className="text-[#F97316]">tastier campus.</span>
             </h1>
             <p className="text-amber-100/90 text-sm xl:text-base leading-relaxed">
-              Create your account and start ordering from CGC University food outlets.
+              Create your account with secure email and mobile OTP verification to start ordering from CGC University food outlets.
             </p>
           </div>
 
@@ -179,9 +265,9 @@ export default function RegisterPage() {
 
             <div className="flex items-center gap-2.5 text-xs font-bold text-white">
               <div className="w-6 h-6 rounded-full bg-[#F97316]/20 border border-[#F97316]/60 flex items-center justify-center shrink-0">
-                <Clock className="w-3.5 h-3.5 text-[#F97316]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#F97316]" />
               </div>
-              <span>Faster Pickup</span>
+              <span>Verified Accounts</span>
             </div>
 
           </div>
@@ -223,7 +309,7 @@ export default function RegisterPage() {
         </div>
 
         {/* Content Card */}
-        <div className="w-full max-w-md space-y-5">
+        <div className="w-full max-w-md space-y-4">
           
           {/* Header Texts */}
           <div className="text-center lg:text-left space-y-1">
@@ -231,7 +317,7 @@ export default function RegisterPage() {
               Create Your Account
             </h2>
             <p className="text-xs sm:text-sm text-stone-500">
-              Join Campus Cravings today.
+              Verify your college email & mobile number to register.
             </p>
           </div>
 
@@ -263,8 +349,39 @@ export default function RegisterPage() {
               </div>
             </div>
 
-            {/* College Email */}
+            {/* College Email + Verify Trigger */}
             <div>
+              <div className="flex items-center justify-between mb-1 px-1">
+                <label htmlFor="register-email" className="text-[11px] font-bold text-stone-700 uppercase tracking-wider">
+                  College Email
+                </label>
+                {isEmailVerified ? (
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-100/90 px-2 py-0.5 rounded-full">
+                    <Check className="w-3 h-3 text-emerald-600" />
+                    Verified
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsEmailVerified(false);
+                        setEmailVerificationToken(null);
+                      }}
+                      className="ml-1 text-[10px] text-stone-500 hover:text-stone-800 underline cursor-pointer"
+                    >
+                      Change
+                    </button>
+                  </span>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleStartEmailVerification}
+                    className="text-[11px] font-bold text-[#F97316] hover:text-[#EA580C] hover:underline cursor-pointer flex items-center gap-1"
+                  >
+                    <ShieldCheck className="w-3 h-3" />
+                    Verify Email
+                  </button>
+                )}
+              </div>
+
               <div className="relative">
                 <Mail className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
@@ -272,11 +389,25 @@ export default function RegisterPage() {
                   name="email"
                   id="register-email"
                   required
+                  disabled={isEmailVerified}
                   value={formData.email}
-                  onChange={(e) => handleChange('email', e.target.value)}
-                  placeholder="College Email (e.g. name@cgc.ac.in)"
-                  className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-2xl bg-white border border-stone-200 text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-2 focus:ring-[#064E36]/20 focus:border-[#064E36] transition-all shadow-2xs"
+                  onChange={(e) => handleEmailChange(e.target.value)}
+                  placeholder="name@cgc.ac.in"
+                  className={`w-full pl-10 pr-24 py-2.5 sm:py-3 rounded-2xl bg-white border text-xs sm:text-sm placeholder:text-stone-400 focus:outline-hidden transition-all shadow-2xs ${
+                    isEmailVerified 
+                      ? 'border-emerald-300 bg-emerald-50/30 text-emerald-950 font-medium' 
+                      : 'border-stone-200 text-stone-900 focus:ring-2 focus:ring-[#064E36]/20 focus:border-[#064E36]'
+                  }`}
                 />
+                {!isEmailVerified && (
+                  <button
+                    type="button"
+                    onClick={handleStartEmailVerification}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 px-2.5 py-1.5 rounded-xl bg-[#064E36] hover:bg-[#043B2B] text-white font-bold text-[11px] shadow-xs cursor-pointer transition-colors"
+                  >
+                    Verify
+                  </button>
+                )}
               </div>
             </div>
 
@@ -291,14 +422,45 @@ export default function RegisterPage() {
                   required
                   value={formData.studentId}
                   onChange={(e) => handleChange('studentId', e.target.value)}
-                  placeholder="Student ID"
+                  placeholder="Student ID (e.g. CGC2024CSE101)"
                   className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-2xl bg-white border border-stone-200 text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-2 focus:ring-[#064E36]/20 focus:border-[#064E36] transition-all shadow-2xs"
                 />
               </div>
             </div>
 
-            {/* Phone Number */}
+            {/* Phone Number + Verify Trigger */}
             <div>
+              <div className="flex items-center justify-between mb-1 px-1">
+                <label htmlFor="register-phone" className="text-[11px] font-bold text-stone-700 uppercase tracking-wider">
+                  Mobile Number (India)
+                </label>
+                {isPhoneVerified ? (
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-100/90 px-2 py-0.5 rounded-full">
+                    <Check className="w-3 h-3 text-emerald-600" />
+                    Verified
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsPhoneVerified(false);
+                        setPhoneVerificationToken(null);
+                      }}
+                      className="ml-1 text-[10px] text-stone-500 hover:text-stone-800 underline cursor-pointer"
+                    >
+                      Change
+                    </button>
+                  </span>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleStartPhoneVerification}
+                    className="text-[11px] font-bold text-[#F97316] hover:text-[#EA580C] hover:underline cursor-pointer flex items-center gap-1"
+                  >
+                    <ShieldCheck className="w-3 h-3" />
+                    Verify Mobile
+                  </button>
+                )}
+              </div>
+
               <div className="relative">
                 <Phone className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
@@ -306,11 +468,25 @@ export default function RegisterPage() {
                   name="phone"
                   id="register-phone"
                   required
+                  disabled={isPhoneVerified}
                   value={formData.phone}
-                  onChange={(e) => handleChange('phone', e.target.value)}
-                  placeholder="Phone Number"
-                  className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-2xl bg-white border border-stone-200 text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-2 focus:ring-[#064E36]/20 focus:border-[#064E36] transition-all shadow-2xs"
+                  onChange={(e) => handlePhoneChange(e.target.value)}
+                  placeholder="10-digit Mobile Number (e.g. 9876543210)"
+                  className={`w-full pl-10 pr-24 py-2.5 sm:py-3 rounded-2xl bg-white border text-xs sm:text-sm placeholder:text-stone-400 focus:outline-hidden transition-all shadow-2xs ${
+                    isPhoneVerified 
+                      ? 'border-emerald-300 bg-emerald-50/30 text-emerald-950 font-medium' 
+                      : 'border-stone-200 text-stone-900 focus:ring-2 focus:ring-[#064E36]/20 focus:border-[#064E36]'
+                  }`}
                 />
+                {!isPhoneVerified && (
+                  <button
+                    type="button"
+                    onClick={handleStartPhoneVerification}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 px-2.5 py-1.5 rounded-xl bg-[#064E36] hover:bg-[#043B2B] text-white font-bold text-[11px] shadow-xs cursor-pointer transition-colors"
+                  >
+                    Verify
+                  </button>
+                )}
               </div>
             </div>
 
@@ -325,7 +501,7 @@ export default function RegisterPage() {
                   required
                   value={formData.password}
                   onChange={(e) => handleChange('password', e.target.value)}
-                  placeholder="Password"
+                  placeholder="Password (minimum 6 characters)"
                   className="w-full pl-10 pr-11 py-2.5 sm:py-3 rounded-2xl bg-white border border-stone-200 text-xs sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-2 focus:ring-[#064E36]/20 focus:border-[#064E36] transition-all shadow-2xs"
                 />
                 <button
@@ -366,8 +542,27 @@ export default function RegisterPage() {
               </div>
             </div>
 
+            {/* Verification Status Notification Pill */}
+            {(!isEmailVerified || !isPhoneVerified) && (
+              <div className="p-3 rounded-2xl bg-amber-50/90 border border-amber-200/90 text-amber-950 text-xs flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0" />
+                  <span className="font-medium text-[11px]">OTP Verification Required:</span>
+                </div>
+                <div className="flex items-center gap-2 text-[11px] font-bold">
+                  <span className={isEmailVerified ? 'text-emerald-700' : 'text-stone-500'}>
+                    Email {isEmailVerified ? '✓' : '✗'}
+                  </span>
+                  <span className="text-stone-300">•</span>
+                  <span className={isPhoneVerified ? 'text-emerald-700' : 'text-stone-500'}>
+                    Mobile {isPhoneVerified ? '✓' : '✗'}
+                  </span>
+                </div>
+              </div>
+            )}
+
             {/* Terms and Conditions Checkbox */}
-            <div className="pt-1">
+            <div className="pt-0.5">
               <label className="flex items-center gap-2 cursor-pointer text-xs text-stone-600 font-medium">
                 <input
                   type="checkbox"
@@ -385,8 +580,8 @@ export default function RegisterPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full py-3.5 rounded-2xl bg-[#064E36] hover:bg-[#043B2B] text-white font-black text-xs sm:text-sm shadow-md shadow-emerald-950/15 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+              disabled={isSubmitting || !isEmailVerified || !isPhoneVerified}
+              className="w-full py-3.5 rounded-2xl bg-[#064E36] hover:bg-[#043B2B] text-white font-black text-xs sm:text-sm shadow-md shadow-emerald-950/15 hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span>{isSubmitting ? 'Creating Account...' : 'Create Account'}</span>
               <ArrowRight className="w-4 h-4 text-[#EAA044]" />
@@ -410,6 +605,16 @@ export default function RegisterPage() {
         </div>
 
       </div>
+
+      {/* OTP Verification Modal */}
+      <OtpVerificationModal
+        isOpen={modalState.isOpen}
+        onClose={() => setModalState(prev => ({ ...prev, isOpen: false }))}
+        type={modalState.type}
+        target={modalState.target}
+        purpose={modalState.purpose}
+        onSuccess={handleVerificationSuccess}
+      />
 
     </div>
   );

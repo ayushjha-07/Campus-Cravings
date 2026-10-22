@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cgc_user_1",
+    "name": "Aarav Sharma",
+    "studentId": "CGC2023CSE042",
+    "rollNo": "CGC2023CSE042",
+    "email": "aarav.cgc@cgc.edu.in",
+    "phone": "9876543210",
+    "department": "Computer Science & Engineering",
+    "hostel": "Boys Hostel 3, Room 214",
+    "campus": "CGC University, Mohali",
+    "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+    "emailVerified": true,
+    "phoneVerified": true,
+    "createdAt": "2026-01-15T09:00:00Z"
+  },
+  {
+    "id": "cgc_user_2",
+    "name": "Simran Kaur",
+    "studentId": "CGC2023ECE019",
+    "rollNo": "CGC2023ECE019",
+    "email": "simran.cgc@cgc.edu.in",
+    "phone": "9812345678",
+    "department": "Electronics & Communication",
+    "hostel": "Girls Hostel 1, Room 108",
+    "campus": "CGC University, Mohali",
+    "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+    "emailVerified": true,
+    "phoneVerified": true,
+    "createdAt": "2026-02-10T11:30:00Z"
+  }
+]

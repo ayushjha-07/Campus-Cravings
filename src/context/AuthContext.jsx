@@ -8,6 +8,7 @@ import {
   SEED_STUDENTS,
   validateEmail,
   validatePhone,
+  validateIndianMobile,
   validateStudentId,
   validatePassword
 } from '../utils/authUtils';
@@ -119,9 +120,21 @@ export const AuthProvider = ({ children }) => {
     return { success: true, user: authenticatedUser };
   };
 
-  // Registration handler
+  // Registration handler with secure backend OTP verification enforcement
   const register = async (formData) => {
-    const { name, email, studentId, phone, password, confirmPassword, termsAccepted, department, hostel } = formData;
+    const { 
+      name, 
+      email, 
+      studentId, 
+      phone, 
+      password, 
+      confirmPassword, 
+      termsAccepted, 
+      department, 
+      hostel,
+      emailVerificationToken,
+      phoneVerificationToken 
+    } = formData;
 
     // Validation checks
     if (!name || name.trim().length < 2) {
@@ -129,15 +142,15 @@ export const AuthProvider = ({ children }) => {
     }
 
     if (!validateEmail(email)) {
-      return { success: false, error: 'Please enter a valid email address (e.g. name@cgc.edu.in).' };
+      return { success: false, error: 'Please enter a valid college email address (e.g. name@cgc.ac.in).' };
     }
 
     if (!validateStudentId(studentId)) {
       return { success: false, error: 'Student ID / Roll No must be at least 4 characters (e.g. CGC2024CSE101).' };
     }
 
-    if (!validatePhone(phone)) {
-      return { success: false, error: 'Please enter a valid 10-digit mobile number.' };
+    if (!validateIndianMobile(phone)) {
+      return { success: false, error: 'Please enter a valid 10-digit Indian mobile number.' };
     }
 
     if (!validatePassword(password)) {
@@ -152,48 +165,47 @@ export const AuthProvider = ({ children }) => {
       return { success: false, error: 'Please accept the CGC University Food Ordering Terms & Conditions.' };
     }
 
-    // Check duplicate student registration
-    const registered = getRegisteredUsers();
-    const cleanEmail = email.trim().toLowerCase();
-    const cleanId = studentId.trim().toUpperCase();
-
-    const isDuplicateEmail = registered.some(u => u.email.toLowerCase() === cleanEmail);
-    if (isDuplicateEmail) {
-      return { success: false, error: `The email ${email} is already registered. Please sign in instead.` };
+    if (!emailVerificationToken) {
+      return { success: false, error: 'Email verification is required. Please verify your email with OTP.' };
     }
 
-    const isDuplicateId = registered.some(u => u.studentId.toUpperCase() === cleanId);
-    if (isDuplicateId) {
-      return { success: false, error: `Student ID "${studentId}" is already registered. Please sign in instead.` };
+    if (!phoneVerificationToken) {
+      return { success: false, error: 'Mobile number verification is required. Please verify your phone number with SMS OTP.' };
     }
 
-    // Hash password before saving to ensure security requirements
-    const passwordHash = await hashPassword(password);
+    try {
+      // Call backend to enforce verification tokens and persist account
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim().toLowerCase(),
+          studentId: studentId.trim().toUpperCase(),
+          phone: phone.trim(),
+          password,
+          termsAccepted: true,
+          emailVerificationToken,
+          phoneVerificationToken,
+          department: department?.trim() || 'Computer Science & Engineering',
+          hostel: hostel?.trim() || 'Campus Day Scholar'
+        })
+      });
 
-    const newUser = {
-      id: `cgc_user_${Date.now()}`,
-      name: name.trim(),
-      studentId: cleanId,
-      rollNo: cleanId,
-      email: cleanEmail,
-      phone: phone.trim(),
-      department: department?.trim() || 'Computer Science & Engineering',
-      hostel: hostel?.trim() || 'Campus Day Scholar',
-      campus: 'CGC University, Mohali',
-      passwordHash,
-      createdAt: new Date().toISOString()
-    };
+      const data = await response.json();
 
-    saveRegisteredUser(newUser);
+      if (!response.ok || !data.success) {
+        return { success: false, error: data.error || 'Registration failed.' };
+      }
 
-    // Auto log in after registration
-    const authenticatedUser = {
-      ...newUser,
-      isLoggedIn: true
-    };
-    setUser(authenticatedUser);
+      const registeredUser = data.user;
+      saveRegisteredUser(registeredUser);
+      setUser(registeredUser);
 
-    return { success: true, user: authenticatedUser };
+      return { success: true, user: registeredUser };
+    } catch (err) {
+      return { success: false, error: `Registration error: ${err.message}` };
+    }
   };
 
   // Profile update handler
@@ -235,8 +247,8 @@ export const AuthProvider = ({ children }) => {
     setUser(guestUser);
   };
 
-  // Demo Password Reset Request Simulator
-  const requestPasswordReset = (identifier) => {
+  // Password Reset Request via Email OTP
+  const requestPasswordReset = async (identifier) => {
     if (!identifier || !identifier.trim()) {
       return { success: false, error: 'Please enter your registered Student ID or College Email.' };
     }
@@ -254,11 +266,63 @@ export const AuthProvider = ({ children }) => {
       };
     }
 
-    return {
-      success: true,
-      email: matched.email,
-      message: `A password recovery notification was sent to ${matched.email}.`
-    };
+    try {
+      const response = await fetch('/api/otp/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: matched.email,
+          purpose: 'password_reset',
+          name: matched.name
+        })
+      });
+
+      const data = await response.json();
+      if (!response.ok || !data.success) {
+        return { 
+          success: false, 
+          error: data.error || 'Failed to dispatch password recovery email.',
+          code: data.code,
+          email: matched.email
+        };
+      }
+
+      return {
+        success: true,
+        email: matched.email,
+        message: data.message || `A password recovery OTP was sent to ${matched.email}.`
+      };
+    } catch (e) {
+      return {
+        success: false,
+        error: `Network error: ${e.message}`,
+        email: matched.email
+      };
+    }
+  };
+
+  // Complete password reset using verified token
+  const resetPasswordWithToken = async ({ email, verificationToken, newPassword }) => {
+    try {
+      const response = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, verificationToken, newPassword })
+      });
+
+      const data = await response.json();
+      if (!response.ok || !data.success) {
+        return { success: false, error: data.error || 'Failed to update password.' };
+      }
+
+      // Sync local storage as well
+      const passwordHash = await hashPassword(newPassword);
+      updateRegisteredUser(email, { passwordHash });
+
+      return { success: true, message: data.message };
+    } catch (e) {
+      return { success: false, error: `Network error: ${e.message}` };
+    }
   };
 
   // Google SSO authentication handler (matches registered student by college email)
@@ -290,7 +354,8 @@ export const AuthProvider = ({ children }) => {
         register,
         logout,
         updateProfile,
-        requestPasswordReset
+        requestPasswordReset,
+        resetPasswordWithToken
       }}
     >
       {children}
