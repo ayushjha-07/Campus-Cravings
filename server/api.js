@@ -168,6 +168,7 @@ export async function apiHandler(req, res, next) {
           type: 'email',
           purpose
         });
+        console.log(`[Campus Cravings OTP] Email code for ${cleanEmail}: ${otpRecord.otp}`);
       } catch (err) {
         return sendJson(res, 429, {
           success: false,
@@ -275,6 +276,7 @@ export async function apiHandler(req, res, next) {
           type: 'sms',
           purpose
         });
+        console.log(`[Campus Cravings OTP] SMS code for +91 ${phone10}: ${otpRecord.otp}`);
       } catch (err) {
         return sendJson(res, 429, {
           success: false,
