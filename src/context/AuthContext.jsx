@@ -12,6 +12,7 @@ import {
   validateStudentId,
   validatePassword
 } from '../utils/authUtils';
+import { apiRequest } from '../utils/apiClient';
 
 const AuthContext = createContext();
 
@@ -175,10 +176,9 @@ export const AuthProvider = ({ children }) => {
 
     try {
       // Call backend to enforce verification tokens and persist account
-      const response = await fetch('/api/auth/register', {
+      const res = await apiRequest('/api/auth/register', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+        body: {
           name: name.trim(),
           email: email.trim().toLowerCase(),
           studentId: studentId.trim().toUpperCase(),
@@ -189,16 +189,14 @@ export const AuthProvider = ({ children }) => {
           phoneVerificationToken,
           department: department?.trim() || 'Computer Science & Engineering',
           hostel: hostel?.trim() || 'Campus Day Scholar'
-        })
+        }
       });
 
-      const data = await response.json();
-
-      if (!response.ok || !data.success) {
-        return { success: false, error: data.error || 'Registration failed.' };
+      if (!res.ok || !res.data?.success) {
+        return { success: false, error: res.error || res.data?.error || 'Registration failed.' };
       }
 
-      const registeredUser = data.user;
+      const registeredUser = res.data.user;
       saveRegisteredUser(registeredUser);
       setUser(registeredUser);
 
@@ -267,22 +265,20 @@ export const AuthProvider = ({ children }) => {
     }
 
     try {
-      const response = await fetch('/api/otp/send-email', {
+      const res = await apiRequest('/api/otp/send-email', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+        body: {
           email: matched.email,
           purpose: 'password_reset',
           name: matched.name
-        })
+        }
       });
 
-      const data = await response.json();
-      if (!response.ok || !data.success) {
+      if (!res.ok || !res.data?.success) {
         return { 
           success: false, 
-          error: data.error || 'Failed to dispatch password recovery email.',
-          code: data.code,
+          error: res.error || res.data?.error || 'Failed to dispatch password recovery email.',
+          code: res.data?.code,
           email: matched.email
         };
       }
@@ -290,7 +286,7 @@ export const AuthProvider = ({ children }) => {
       return {
         success: true,
         email: matched.email,
-        message: data.message || `A password recovery OTP was sent to ${matched.email}.`
+        message: res.data.message || `A password recovery OTP was sent to ${matched.email}.`
       };
     } catch (e) {
       return {
@@ -304,22 +300,20 @@ export const AuthProvider = ({ children }) => {
   // Complete password reset using verified token
   const resetPasswordWithToken = async ({ email, verificationToken, newPassword }) => {
     try {
-      const response = await fetch('/api/auth/reset-password', {
+      const res = await apiRequest('/api/auth/reset-password', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, verificationToken, newPassword })
+        body: { email, verificationToken, newPassword }
       });
 
-      const data = await response.json();
-      if (!response.ok || !data.success) {
-        return { success: false, error: data.error || 'Failed to update password.' };
+      if (!res.ok || !res.data?.success) {
+        return { success: false, error: res.error || res.data?.error || 'Failed to update password.' };
       }
 
       // Sync local storage as well
       const passwordHash = await hashPassword(newPassword);
       updateRegisteredUser(email, { passwordHash });
 
-      return { success: true, message: data.message };
+      return { success: true, message: res.data.message };
     } catch (e) {
       return { success: false, error: `Network error: ${e.message}` };
     }

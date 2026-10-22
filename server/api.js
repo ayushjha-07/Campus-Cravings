@@ -5,8 +5,7 @@ import {
   findUserByPhone,
   findUserByStudentId,
   createUser,
-  updateUserPassword,
-  getAllUsers
+  updateUserPassword
 } from './db.js';
 import { createOtp, verifyOtp, consumeVerificationToken } from './otpManager.js';
 import { sendEmailOtp } from './services/emailService.js';
@@ -18,38 +17,40 @@ function hashPassword(plainText) {
 }
 
 /**
- * Helper to parse JSON body from incoming Node.js request
+ * Robust JSON body parser that never leaves requests hanging
  */
 async function parseBody(req) {
   if (req.body && typeof req.body === 'object') return req.body;
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     let data = '';
     req.on('data', chunk => {
       data += chunk;
       if (data.length > 1e6) {
         req.destroy();
-        reject(new Error('Payload too large'));
       }
     });
     req.on('end', () => {
-      if (!data) return resolve({});
+      if (!data || !data.trim()) return resolve({});
       try {
         resolve(JSON.parse(data));
-      } catch (e) {
-        reject(new Error('Invalid JSON'));
+      } catch {
+        resolve({});
       }
     });
-    req.on('error', reject);
+    req.on('error', () => resolve({}));
   });
 }
 
 /**
- * Send JSON response helper
+ * Reliable JSON response sender that guarantees valid Content-Type and Content-Length
  */
 function sendJson(res, statusCode, payload) {
+  if (res.headersSent) return;
+  const jsonString = JSON.stringify(payload);
   res.statusCode = statusCode;
-  res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify(payload));
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  res.setHeader('Content-Length', Buffer.byteLength(jsonString));
+  res.end(jsonString);
 }
 
 /**
@@ -57,25 +58,25 @@ function sendJson(res, statusCode, payload) {
  */
 export async function apiHandler(req, res, next) {
   const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
-  const pathname = url.pathname;
+  // Strip any trailing slashes to prevent 404 mismatches (e.g. /api/otp/send-sms/ -> /api/otp/send-sms)
+  const pathname = url.pathname.replace(/\/+$/, '') || '/';
 
   // Only handle /api/* routes
-  if (!pathname.startsWith('/api/')) {
+  if (!pathname.startsWith('/api')) {
     if (typeof next === 'function') return next();
     res.statusCode = 404;
-    res.end('Not found');
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.end(JSON.stringify({ success: false, error: 'Not found' }));
     return;
   }
 
-  // Set CORS headers
+  // Set CORS headers so API works when accessed from any origin
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Accept');
 
   if (req.method === 'OPTIONS') {
-    res.statusCode = 204;
-    res.end();
-    return;
+    return sendJson(res, 200, { success: true, ok: true });
   }
 
   try {
@@ -90,6 +91,7 @@ export async function apiHandler(req, res, next) {
       );
       return sendJson(res, 200, {
         status: 'ok',
+        success: true,
         timestamp: new Date().toISOString(),
         providers: {
           email: {
@@ -117,6 +119,7 @@ export async function apiHandler(req, res, next) {
       const studentIdTaken = studentId ? Boolean(findUserByStudentId(studentId)) : false;
 
       return sendJson(res, 200, {
+        success: true,
         available: !emailTaken && !phoneTaken && !studentIdTaken,
         emailTaken,
         phoneTaken,
@@ -168,7 +171,12 @@ export async function apiHandler(req, res, next) {
           type: 'email',
           purpose
         });
-        console.log(`[Campus Cravings OTP] Email code for ${cleanEmail}: ${otpRecord.otp}`);
+
+        if (CONFIG.NODE_ENV !== 'production') {
+          console.log(`[Campus Cravings Dev] Email OTP for ${cleanEmail}: ${otpRecord.otp}`);
+        } else {
+          console.log(`[Campus Cravings Production] Email OTP generated for user`);
+        }
       } catch (err) {
         return sendJson(res, 429, {
           success: false,
@@ -194,7 +202,7 @@ export async function apiHandler(req, res, next) {
           cooldownSeconds: otpRecord.cooldownSeconds
         });
       } catch (sendErr) {
-        console.error('Email dispatch error:', sendErr);
+        console.error('Email dispatch error:', sendErr.message);
         if (sendErr.code === 'EMAIL_PROVIDER_NOT_CONFIGURED') {
           return sendJson(res, 503, {
             success: false,
@@ -252,7 +260,7 @@ export async function apiHandler(req, res, next) {
       if (!phone10) {
         return sendJson(res, 400, {
           success: false,
-          error: 'Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).'
+          error: 'Please enter a valid 10-digit Indian mobile number (e.g. 9876543210) starting with 6, 7, 8, or 9.'
         });
       }
 
@@ -276,7 +284,12 @@ export async function apiHandler(req, res, next) {
           type: 'sms',
           purpose
         });
-        console.log(`[Campus Cravings OTP] SMS code for +91 ${phone10}: ${otpRecord.otp}`);
+
+        if (CONFIG.NODE_ENV !== 'production') {
+          console.log(`[Campus Cravings Dev] SMS OTP for +91 ${phone10}: ${otpRecord.otp}`);
+        } else {
+          console.log(`[Campus Cravings Production] SMS OTP generated for mobile ending in ...${phone10.slice(-4)}`);
+        }
       } catch (err) {
         return sendJson(res, 429, {
           success: false,
@@ -301,7 +314,7 @@ export async function apiHandler(req, res, next) {
           cooldownSeconds: otpRecord.cooldownSeconds
         });
       } catch (sendErr) {
-        console.error('SMS dispatch error:', sendErr);
+        console.error('SMS dispatch error:', sendErr.message);
         if (sendErr.code === 'SMS_PROVIDER_NOT_CONFIGURED') {
           return sendJson(res, 503, {
             success: false,
@@ -403,8 +416,7 @@ export async function apiHandler(req, res, next) {
         return sendJson(res, 409, { success: false, error: 'Student ID is already registered.' });
       }
 
-      // ENFORCE VERIFICATION TOKENS:
-      // The server validates that single-use tokens exist for both email and mobile
+      // ENFORCE VERIFICATION TOKENS
       const emailCheck = consumeVerificationToken({
         token: emailVerificationToken,
         identifier: cleanEmail,
@@ -514,7 +526,7 @@ export async function apiHandler(req, res, next) {
     }
 
     // Unmatched API route
-    return sendJson(res, 404, { success: false, error: 'Endpoint not found' });
+    return sendJson(res, 404, { success: false, error: `Endpoint not found: ${pathname}` });
 
   } catch (err) {
     console.error('Unhandled API exception:', err);

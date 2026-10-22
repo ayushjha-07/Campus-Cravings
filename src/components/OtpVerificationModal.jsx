@@ -12,6 +12,7 @@ import {
   Info
 } from 'lucide-react';
 import { formatIndianMobile } from '../utils/authUtils';
+import { apiRequest } from '../utils/apiClient';
 
 export default function OtpVerificationModal({
   isOpen,
@@ -98,25 +99,24 @@ export default function OtpVerificationModal({
       : { phone: target, purpose };
 
     try {
-      const res = await fetch(endpoint, {
+      const res = await apiRequest(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: payload
       });
-      const data = await res.json();
 
-      if (res.ok && data.success) {
-        setStatusMessage(data.message || `Verification code sent.`);
-        setCooldown(data.cooldownSeconds || 60);
+      if (res.ok && res.data?.success) {
+        setStatusMessage(res.data.message || 'Verification code sent.');
+        setCooldown(res.data.cooldownSeconds || 60);
         setExpiresIn(300); // 5 min
       } else {
-        if (data.code === 'PROVIDER_NOT_CONFIGURED') {
-          setProviderNotice(data.error);
+        const errorData = res.data || {};
+        if (errorData.code === 'PROVIDER_NOT_CONFIGURED') {
+          setProviderNotice(errorData.error || res.error);
         } else {
-          setErrorMessage(data.error || 'Failed to send verification code.');
+          setErrorMessage(res.error || errorData.error || 'Failed to send verification code.');
         }
-        if (data.waitSeconds) {
-          setCooldown(data.waitSeconds);
+        if (errorData.waitSeconds) {
+          setCooldown(errorData.waitSeconds);
         }
       }
     } catch (err) {
@@ -191,26 +191,25 @@ export default function OtpVerificationModal({
       : { phone: target, otp, purpose };
 
     try {
-      const res = await fetch(endpoint, {
+      const res = await apiRequest(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: payload
       });
-      const data = await res.json();
 
-      if (res.ok && data.success) {
+      if (res.ok && res.data?.success) {
         setIsVerified(true);
-        setStatusMessage(data.message || 'Verification successful!');
+        setStatusMessage(res.data.message || 'Verification successful!');
         setTimeout(() => {
           onSuccess({
             type,
             target,
-            verificationToken: data.verificationToken
+            verificationToken: res.data.verificationToken
           });
           onClose();
         }, 1000);
       } else {
-        setErrorMessage(data.error || 'Verification failed. Please check the code.');
+        const errorData = res.data || {};
+        setErrorMessage(res.error || errorData.error || 'Verification failed. Please check the code.');
       }
     } catch (err) {
       setErrorMessage(`Verification connection error: ${err.message}`);
