@@ -31,6 +31,7 @@ import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 
 // Outlet Staff Dashboard Pages
+import StaffProtectedRoute from './components/staff/StaffProtectedRoute';
 import StaffDashboardPage from './pages/staff/StaffDashboardPage';
 import StaffOrdersPage from './pages/staff/StaffOrdersPage';
 import StaffMenuPage from './pages/staff/StaffMenuPage';
@@ -114,9 +115,30 @@ function AppContent() {
 
           {/* Outlet Staff Dashboard */}
           <Route path="/staff" element={<Navigate to="/staff/kulhad" replace />} />
-          <Route path="/staff/:outletId" element={<StaffDashboardPage />} />
-          <Route path="/staff/:outletId/orders" element={<StaffOrdersPage />} />
-          <Route path="/staff/:outletId/menu" element={<StaffMenuPage />} />
+          <Route 
+            path="/staff/:outletId" 
+            element={
+              <StaffProtectedRoute>
+                <StaffDashboardPage />
+              </StaffProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/staff/:outletId/orders" 
+            element={
+              <StaffProtectedRoute>
+                <StaffOrdersPage />
+              </StaffProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/staff/:outletId/menu" 
+            element={
+              <StaffProtectedRoute>
+                <StaffMenuPage />
+              </StaffProtectedRoute>
+            } 
+          />
 
           {/* University Admin Dashboard */}
           <Route 

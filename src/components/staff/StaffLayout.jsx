@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { OUTLETS } from '../../data/outlets';
 import { useCart } from '../../context/CartContext';
+import { useAdmin } from '../../context/AdminContext';
 import { getOutletOrders } from '../../utils/orderUtils';
 import { 
   Store, 
   LayoutDashboard, 
-  ReceiptText, 
+  ReceiptText,
+  LogOut, 
   UtensilsCrossed, 
   ExternalLink, 
   ChevronDown, 
@@ -27,7 +29,25 @@ export default function StaffLayout({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
   const { orders } = useCart();
+  const { staffLogout } = useAdmin();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const [currentStaffUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('campus_cravings_staff_session');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const handleStaffLogout = () => {
+    if (staffLogout) staffLogout();
+    try {
+      localStorage.removeItem('campus_cravings_staff_session');
+    } catch {}
+    navigate('/login', { replace: true });
+  };
 
   // Active outlet details
   const currentOutlet = OUTLETS.find(o => o.id === outletId) || OUTLETS[0];
@@ -133,11 +153,11 @@ export default function StaffLayout({ children }) {
             {/* Staff Profile Pill */}
             <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/10 text-xs border border-white/10">
               <span className="w-6 h-6 rounded-lg bg-[#EAA044] text-[#0D3828] flex items-center justify-center font-bold text-[11px]">
-                RK
+                {currentStaffUser?.name ? currentStaffUser.name.split(' ').map(n=>n[0]).join('').slice(0,2) : 'ST'}
               </span>
               <div className="text-left leading-none">
-                <div className="font-bold text-white text-[11px]">Rajesh Kumar</div>
-                <div className="text-[9px] text-emerald-200">Counter Operator</div>
+                <div className="font-bold text-white text-[11px]">{currentStaffUser?.name || 'Counter Operator'}</div>
+                <div className="text-[9px] text-emerald-200">{currentStaffUser?.role || 'Staff Operator'}</div>
               </div>
             </div>
 
@@ -153,6 +173,17 @@ export default function StaffLayout({ children }) {
               <ExternalLink className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Student View</span>
             </Link>
+
+            {/* Staff Logout Button */}
+            <button
+              type="button"
+              onClick={handleStaffLogout}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-rose-900/40 text-white hover:text-rose-200 text-xs font-semibold transition-colors border border-white/10 cursor-pointer"
+              title="Log out of Staff Terminal"
+            >
+              <LogOut className="w-3.5 h-3.5 text-rose-300" />
+              <span className="hidden sm:inline">Logout</span>
+            </button>
 
             {/* Mobile Menu Toggle */}
             <button

@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }) => {
     if (matched.passwordHash !== hashedAttempt) {
       return { 
         success: false, 
-        error: 'Incorrect password. (Tip: for demo accounts, the password is "password123")' 
+        error: 'Incorrect password. Please try again.' 
       };
     }
 
@@ -117,18 +117,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     return { success: true, user: authenticatedUser };
-  };
-
-  // Quick Demo Login (for easy examiner evaluation)
-  const quickDemoLogin = (targetStudentId = 'CGC2023CSE042') => {
-    const registered = getRegisteredUsers();
-    const matched = registered.find(u => u.studentId.toUpperCase() === targetStudentId.toUpperCase()) || registered[0];
-    const authenticatedUser = {
-      ...matched,
-      isLoggedIn: true
-    };
-    setUser(authenticatedUser);
-    return authenticatedUser;
   };
 
   // Registration handler
@@ -269,8 +257,27 @@ export const AuthProvider = ({ children }) => {
     return {
       success: true,
       email: matched.email,
-      message: `A demo password recovery notification was sent to ${matched.email}. (In this prototype, password is reset to "password123").`
+      message: `A password recovery notification was sent to ${matched.email}.`
     };
+  };
+
+  // Google SSO authentication handler (matches registered student by college email)
+  const googleLogin = (email) => {
+    if (!email || !email.trim()) {
+      return { success: false, error: 'Please enter your registered college email.' };
+    }
+    const cleanEmail = email.trim().toLowerCase();
+    const registered = getRegisteredUsers();
+    const matched = registered.find(u => u.email.toLowerCase() === cleanEmail);
+    if (!matched) {
+      return { success: false, error: `No student account found for "${cleanEmail}". Please register first.` };
+    }
+    const authenticatedUser = {
+      ...matched,
+      isLoggedIn: true
+    };
+    setUser(authenticatedUser);
+    return { success: true, user: authenticatedUser };
   };
 
   return (
@@ -279,10 +286,10 @@ export const AuthProvider = ({ children }) => {
         user,
         isAuthenticated: Boolean(user?.isLoggedIn),
         login,
+        googleLogin,
         register,
         logout,
         updateProfile,
-        quickDemoLogin,
         requestPasswordReset
       }}
     >

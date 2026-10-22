@@ -294,7 +294,7 @@ export default function ProfilePage() {
             {/* University Verification Notice */}
             <div className="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200/80 flex items-center gap-2.5 text-xs text-emerald-900">
               <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Verified CGC University Mohali Student Identity (Demo Session)</span>
+              <span>Verified CGC University Mohali Student Identity</span>
             </div>
 
           </div>

@@ -572,18 +572,80 @@ export const AdminProvider = ({ children }) => {
 
   // Auth Actions
   const adminLogin = (email, password) => {
-    // Demo login simulator: accepts admin email or quick demo unlock
-    if (email && email.toLowerCase().includes('admin') || email.toLowerCase().includes('dean')) {
-      setIsAdminLoggedIn(true);
-      return { success: true };
+    if (!email || !email.trim()) {
+      return { success: false, error: 'Please enter your Administrator Email or Username.' };
     }
-    // Allow any demo sign-in with clear feedback
+    if (!password) {
+      return { success: false, error: 'Please enter your password.' };
+    }
+
+    const cleanEmail = email.trim().toLowerCase();
+    
+    // Check if the email/ID matches an administrator account
+    const isAdminAccount = 
+      cleanEmail === 'dean.welfare@cgc.edu.in' ||
+      cleanEmail === 'cgc-adm-001' ||
+      cleanEmail === 'admin@cgc.edu.in' ||
+      (staffList || []).some(s => 
+        s.role === 'University Admin' && 
+        (s.email?.toLowerCase() === cleanEmail || s.staffId?.toLowerCase() === cleanEmail)
+      );
+
+    if (!isAdminAccount) {
+      return { success: false, error: 'Administrator account not found. Please check your credentials.' };
+    }
+
+    // Verify administrator password
+    if (password !== 'admin123') {
+      return { success: false, error: 'Incorrect administrator password. Please try again.' };
+    }
+
     setIsAdminLoggedIn(true);
     return { success: true };
   };
 
   const adminLogout = () => {
     setIsAdminLoggedIn(false);
+  };
+
+  const staffLogin = (identifier, password) => {
+    if (!identifier || !identifier.trim()) {
+      return { success: false, error: 'Please enter your Staff Email or Staff ID.' };
+    }
+    if (!password) {
+      return { success: false, error: 'Please enter your password.' };
+    }
+
+    const cleanId = identifier.trim().toLowerCase();
+    const matchedStaff = (staffList || []).find(s => 
+      s.email?.toLowerCase() === cleanId || 
+      s.staffId?.toLowerCase() === cleanId ||
+      s.name?.toLowerCase() === cleanId
+    );
+
+    if (!matchedStaff) {
+      return { success: false, error: 'No staff account found with this ID or Email. Please check your credentials.' };
+    }
+
+    if (password !== 'password123') {
+      return { success: false, error: 'Incorrect staff password. Please try again.' };
+    }
+
+    try {
+      localStorage.setItem('campus_cravings_staff_session', JSON.stringify(matchedStaff));
+    } catch {
+      // ignore
+    }
+
+    return { success: true, staff: matchedStaff };
+  };
+
+  const staffLogout = () => {
+    try {
+      localStorage.removeItem('campus_cravings_staff_session');
+    } catch {
+      // ignore
+    }
   };
 
   // Audit Logger Helper
@@ -765,6 +827,8 @@ export const AdminProvider = ({ children }) => {
         adminUser,
         adminLogin,
         adminLogout,
+        staffLogin,
+        staffLogout,
         staffList,
         addStaff,
         updateStaff,

@@ -398,8 +398,9 @@ export const CartProvider = ({ children }) => {
   };
 
   const loginUser = (userData) => {
-    if (auth?.quickDemoLogin) {
-      auth.quickDemoLogin(userData.rollNo || userData.studentId || 'CGC2023CSE042');
+    // Kept for backward compatibility if invoked
+    if (userData && auth?.login && userData.password) {
+      auth.login(userData.rollNo || userData.studentId || userData.email, userData.password);
     }
   };
 

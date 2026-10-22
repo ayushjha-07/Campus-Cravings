@@ -196,15 +196,15 @@ export default function ForgotPasswordPage() {
                 </button>
               </form>
 
-              {/* Demo Feature Info Callout Card */}
-              <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-200/80 text-blue-950 text-xs space-y-1.5 flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-[11px]">
+              {/* Account Recovery Notice */}
+              <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-stone-700 text-xs space-y-1.5 flex items-start gap-3">
+                <div className="w-5 h-5 rounded-full bg-stone-200 text-stone-700 flex items-center justify-center shrink-0 mt-0.5 font-bold text-[11px]">
                   i
                 </div>
                 <div>
-                  <div className="font-bold text-blue-900">This is a demo feature.</div>
-                  <p className="text-[11px] text-blue-800/90 leading-relaxed">
-                    In a live system, a password reset link will be sent to your email. (For testing, demo account passwords remain <code className="font-mono font-bold bg-white px-1 py-0.5 rounded">password123</code>).
+                  <div className="font-bold text-stone-900">Account Recovery Notice</div>
+                  <p className="text-[11px] text-stone-600 leading-relaxed">
+                    Password recovery instructions will be sent to your registered CGC student or staff email address.
                   </p>
                 </div>
               </div>
@@ -239,15 +239,15 @@ export default function ForgotPasswordPage() {
                 </p>
               </div>
 
-              {/* Green Demo Callout Card */}
+              {/* Confirmation Notice */}
               <div className="p-4 rounded-2xl bg-emerald-50/80 border border-emerald-200 text-emerald-950 text-xs text-left flex items-start gap-3">
                 <div className="w-5 h-5 rounded-full bg-emerald-200 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5 font-bold text-[11px]">
                   ✓
                 </div>
                 <div>
-                  <div className="font-bold text-emerald-900">This is a demo feature.</div>
+                  <div className="font-bold text-emerald-900">Check Your Email</div>
                   <p className="text-[11px] text-emerald-800/90 leading-relaxed">
-                    In a live system, a password reset email will be sent to your inbox. You can continue testing by logging in with default demo credentials.
+                    Please check your student email inbox and spam folder. Follow the link inside to set a new password.
                   </p>
                 </div>
               </div>

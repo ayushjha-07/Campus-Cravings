@@ -15,25 +15,26 @@ import {
   Utensils,
   ShoppingCart,
   ShoppingBag,
-  Sparkles,
-  CheckCircle2,
+  CheckCircle2, 
   AlertCircle
 } from 'lucide-react';
-import { STORAGE_KEYS, SEED_STUDENTS } from '../utils/authUtils';
+import { STORAGE_KEYS, getRegisteredUsers } from '../utils/authUtils';
 import ThemeToggle from '../components/ThemeToggle';
 
 export default function LoginPage() {
-  const { login, quickDemoLogin, isAuthenticated, user } = useAuth();
-  const { adminLogin, staffList } = useAdmin();
+  const { login, googleLogin, isAuthenticated, user } = useAuth();
+  const { adminLogin, staffLogin, staffList } = useAdmin();
   const navigate = useNavigate();
   const location = useLocation();
 
   // Selected login role: 'student' | 'staff' | 'admin'
-  const [selectedRole, setSelectedRole] = useState('student');
+  const [selectedRole, setSelectedRole] = useState(() => {
+    return location.state?.role || location.state?.defaultRole || 'student';
+  });
 
-  // Input fields
-  const [identifier, setIdentifier] = useState('CGC2023CSE042');
-  const [password, setPassword] = useState('password123');
+  // Input fields (clean initial state, no pre-filled demo accounts)
+  const [identifier, setIdentifier] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -46,56 +47,65 @@ export default function LoginPage() {
   const handleRoleChange = (role) => {
     setSelectedRole(role);
     setErrorMessage(null);
-
-    // Pre-populate sensible demo credentials per role for seamless testing
-    if (role === 'student') {
-      try {
-        const saved = localStorage.getItem(STORAGE_KEYS.REMEMBER_ME);
-        setIdentifier(saved || 'CGC2023CSE042');
-      } catch {
-        setIdentifier('CGC2023CSE042');
-      }
-      setPassword('password123');
-    } else if (role === 'staff') {
-      setIdentifier('rajesh.kulhad@cgc.edu.in');
-      setPassword('password123');
-    } else if (role === 'admin') {
-      setIdentifier('dean.welfare@cgc.edu.in');
-      setPassword('admin123');
-    }
+    setIdentifier('');
+    setPassword('');
   };
 
-  // Pre-populate remember me on initial mount
+  // Pre-populate saved remember-me identifier on initial mount
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.REMEMBER_ME);
       if (saved) {
         setIdentifier(saved);
-        setPassword('password123');
       }
     } catch {
       // ignore
     }
   }, []);
 
-  // Quick Demo fill buttons
-  const handleQuickFill = (role, demoId, demoPass) => {
-    setSelectedRole(role);
-    setIdentifier(demoId);
-    setPassword(demoPass);
-    setErrorMessage(null);
-  };
-
-  // Google SSO demo simulator
+  // Google SSO authentication handler (matches registered user by college email)
   const handleGoogleLogin = () => {
+    setErrorMessage(null);
+    const cleanId = (identifier || '').trim().toLowerCase();
+
+    if (!cleanId || !cleanId.includes('@')) {
+      setErrorMessage('Please enter your registered college email (e.g. name@cgc.edu.in) above to continue with Google.');
+      return;
+    }
+
     if (selectedRole === 'student') {
-      quickDemoLogin('CGC2023CSE042');
-      navigate(from, { replace: true });
-    } else if (selectedRole === 'staff') {
-      navigate('/staff/kulhad', { replace: true });
-    } else {
-      adminLogin('dean.welfare@cgc.edu.in', 'admin123');
-      navigate('/admin', { replace: true });
+      const result = googleLogin(cleanId);
+      if (result.success) {
+        navigate(from, { replace: true });
+      } else {
+        setErrorMessage(result.error || `No student account found for "${cleanId}". Please register first.`);
+      }
+      return;
+    }
+
+    if (selectedRole === 'staff') {
+      const matchedStaff = (staffList || []).find(s => s.email?.toLowerCase() === cleanId);
+      if (matchedStaff) {
+        try {
+          localStorage.setItem('campus_cravings_staff_session', JSON.stringify(matchedStaff));
+        } catch {
+          // ignore
+        }
+        const targetOutlet = matchedStaff.assignedOutletId || 'kulhad';
+        navigate(`/staff/${targetOutlet}`, { replace: true });
+      } else {
+        setErrorMessage(`No staff account found for "${cleanId}". Please check your email.`);
+      }
+      return;
+    }
+
+    if (selectedRole === 'admin') {
+      const result = adminLogin(cleanId, password);
+      if (result.success) {
+        navigate('/admin', { replace: true });
+      } else {
+        setErrorMessage(result.error || `Invalid Administrator credentials for "${cleanId}".`);
+      }
     }
   };
 
@@ -106,6 +116,7 @@ export default function LoginPage() {
     setIsSubmitting(true);
 
     const cleanId = (identifier || '').trim().toLowerCase();
+    const registered = getRegisteredUsers();
 
     // 1. STUDENT LOGIN FLOW
     if (selectedRole === 'student') {
@@ -140,8 +151,8 @@ export default function LoginPage() {
     // 2. STAFF LOGIN FLOW
     if (selectedRole === 'staff') {
       // Cross-role guard: check if user entered student ID
-      const isStudentMatch = SEED_STUDENTS.some(
-        s => s.studentId.toLowerCase() === cleanId || s.email.toLowerCase() === cleanId
+      const isStudentMatch = registered.some(
+        s => s.studentId?.toLowerCase() === cleanId || s.email?.toLowerCase() === cleanId
       );
       if (isStudentMatch) {
         setIsSubmitting(false);
@@ -156,28 +167,22 @@ export default function LoginPage() {
         return;
       }
 
-      // Match staff member in staffList
-      const matchedStaff = (staffList || []).find(s => 
-        s.email?.toLowerCase() === cleanId || 
-        s.staffId?.toLowerCase() === cleanId ||
-        s.name?.toLowerCase() === cleanId
-      );
-
+      const result = staffLogin(identifier, password);
       setIsSubmitting(false);
 
-      if (matchedStaff) {
-        const targetOutlet = matchedStaff.assignedOutletId || 'kulhad';
+      if (result.success) {
+        const targetOutlet = result.staff?.assignedOutletId || 'kulhad';
         navigate(`/staff/${targetOutlet}`, { replace: true });
       } else {
-        setErrorMessage('No staff account found with this ID or Email. (Demo hint: rajesh.kulhad@cgc.edu.in)');
+        setErrorMessage(result.error || 'Invalid Staff credentials. Please check your ID and password.');
       }
       return;
     }
 
     // 3. ADMIN LOGIN FLOW
     if (selectedRole === 'admin') {
-      const isStudentMatch = SEED_STUDENTS.some(
-        s => s.studentId.toLowerCase() === cleanId || s.email.toLowerCase() === cleanId
+      const isStudentMatch = registered.some(
+        s => s.studentId?.toLowerCase() === cleanId || s.email?.toLowerCase() === cleanId
       );
       if (isStudentMatch) {
         setIsSubmitting(false);
@@ -186,7 +191,7 @@ export default function LoginPage() {
       }
 
       const isStaffMatch = (staffList || []).some(
-        s => s.email?.toLowerCase() === cleanId || s.staffId?.toLowerCase() === cleanId
+        s => s.role !== 'University Admin' && (s.email?.toLowerCase() === cleanId || s.staffId?.toLowerCase() === cleanId)
       );
       if (isStaffMatch) {
         setIsSubmitting(false);
@@ -194,18 +199,13 @@ export default function LoginPage() {
         return;
       }
 
-      if (
-        cleanId.includes('admin') || 
-        cleanId.includes('dean') || 
-        cleanId === 'cgc-adm-001' || 
-        cleanId === 'dean.welfare@cgc.edu.in'
-      ) {
-        adminLogin(identifier, password);
-        setIsSubmitting(false);
+      const result = adminLogin(identifier, password);
+      setIsSubmitting(false);
+
+      if (result.success) {
         navigate('/admin', { replace: true });
       } else {
-        setIsSubmitting(false);
-        setErrorMessage('Invalid Administrator credentials. (Demo hint: dean.welfare@cgc.edu.in)');
+        setErrorMessage(result.error || 'Invalid Administrator credentials. Please check your email and password.');
       }
     }
   };
@@ -616,43 +616,6 @@ export default function LoginPage() {
                   alt="Delicious burger, golden fries and chilled coffee"
                   className="w-full h-full object-cover"
                 />
-              </div>
-            </div>
-
-            {/* Discreet Demo Quick Fill Bar for Examiners */}
-            <div className="mt-3.5 pt-2.5 border-t border-stone-100 dark:border-stone-800">
-              <div className="flex items-center justify-between text-[10px] text-stone-500 dark:text-stone-400 mb-1">
-                <div className="flex items-center gap-1 font-bold text-stone-600 dark:text-stone-300">
-                  <Sparkles className="w-3 h-3 text-amber-500" />
-                  <span>Demo Quick-Fill:</span>
-                </div>
-                <span className="text-[9px] text-stone-400">1-click test</span>
-              </div>
-              <div className="grid grid-cols-3 gap-1">
-                <button
-                  type="button"
-                  onClick={() => handleQuickFill('student', 'CGC2023CSE042', 'password123')}
-                  className="py-1 px-1 rounded-lg bg-stone-50 dark:bg-stone-800 hover:bg-stone-100 dark:hover:bg-stone-700 border border-stone-200 dark:border-stone-700 text-[10px] font-semibold text-stone-700 dark:text-stone-200 truncate cursor-pointer"
-                  title="Aarav Sharma (Student)"
-                >
-                  Student (Aarav)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleQuickFill('staff', 'rajesh.kulhad@cgc.edu.in', 'password123')}
-                  className="py-1 px-1 rounded-lg bg-stone-50 dark:bg-stone-800 hover:bg-stone-100 dark:hover:bg-stone-700 border border-stone-200 dark:border-stone-700 text-[10px] font-semibold text-stone-700 dark:text-stone-200 truncate cursor-pointer"
-                  title="Rajesh Kumar (Kulhad Staff)"
-                >
-                  Staff (Rajesh)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleQuickFill('admin', 'dean.welfare@cgc.edu.in', 'admin123')}
-                  className="py-1 px-1 rounded-lg bg-stone-50 dark:bg-stone-800 hover:bg-stone-100 dark:hover:bg-stone-700 border border-stone-200 dark:border-stone-700 text-[10px] font-semibold text-stone-700 dark:text-stone-200 truncate cursor-pointer"
-                  title="Dr. Harpreet Singh (Dean/Admin)"
-                >
-                  Admin (Dean)
-                </button>
               </div>
             </div>
 
