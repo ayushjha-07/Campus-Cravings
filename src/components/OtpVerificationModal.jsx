@@ -29,6 +29,7 @@ export default function OtpVerificationModal({
   const [statusMessage, setStatusMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [providerNotice, setProviderNotice] = useState(null);
+  const [devCode, setDevCode] = useState(null);
   const [cooldown, setCooldown] = useState(60);
   const [expiresIn, setExpiresIn] = useState(300); // 5 minutes = 300 seconds
   const [isVerified, setIsVerified] = useState(false);
@@ -107,12 +108,17 @@ export default function OtpVerificationModal({
       if (res.ok && res.data?.success) {
         setStatusMessage(res.data.message || 'Verification code sent.');
         if (res.data.devMode && res.data.devCode) {
-          setProviderNotice(`[Testing Notice] Gateway credentials pending. Your 6-digit verification code is: ${res.data.devCode}`);
+          setDevCode(res.data.devCode);
+          setProviderNotice(`[Testing Notice] Gateway credentials are not yet set in environment. Use verification code: ${res.data.devCode}`);
+        } else {
+          setDevCode(null);
+          setProviderNotice(null);
         }
         setCooldown(res.data.cooldownSeconds || 60);
         setExpiresIn(300); // 5 min
       } else {
         const errorData = res.data || {};
+        setDevCode(null);
         if (errorData.code === 'PROVIDER_NOT_CONFIGURED') {
           setProviderNotice(errorData.error || res.error);
         } else {
@@ -277,11 +283,27 @@ export default function OtpVerificationModal({
 
           {/* Provider Notice (if credentials are being configured) */}
           {providerNotice && (
-            <div className="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-2.5 animate-in fade-in">
-              <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-              <div className="leading-relaxed font-medium">
-                {providerNotice}
+            <div className="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex flex-col gap-2.5 animate-in fade-in">
+              <div className="flex items-start gap-2.5">
+                <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                <div className="leading-relaxed font-medium">
+                  {providerNotice}
+                </div>
               </div>
+              {devCode && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const arr = devCode.split('');
+                    setDigits(arr);
+                    inputRefs.current[5]?.focus();
+                  }}
+                  className="self-start text-[11px] font-bold text-amber-950 bg-amber-200/90 hover:bg-amber-300 px-3 py-1.5 rounded-xl cursor-pointer transition-colors shadow-2xs flex items-center gap-1.5"
+                >
+                  <span>⚡ Auto-fill Code:</span>
+                  <span className="font-mono font-black">{devCode}</span>
+                </button>
+              )}
             </div>
           )}
 

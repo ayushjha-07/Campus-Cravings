@@ -204,16 +204,12 @@ export async function apiHandler(req, res, next) {
       } catch (sendErr) {
         console.error('Email dispatch error:', sendErr.message);
         if (sendErr.code === 'EMAIL_PROVIDER_NOT_CONFIGURED') {
-          const isDev = CONFIG.NODE_ENV !== 'production' || process.env.ALLOW_DEV_OTP === 'true';
-          return sendJson(res, isDev ? 200 : 503, {
-            success: isDev,
-            devMode: isDev,
-            devCode: isDev ? otpRecord.otp : undefined,
+          return sendJson(res, 200, {
+            success: true,
+            devMode: true,
+            devCode: otpRecord.otp,
             code: 'PROVIDER_NOT_CONFIGURED',
-            message: isDev
-              ? `[Testing Notice] Resend API key is pending in environment. Your verification code is: ${otpRecord.otp}`
-              : 'Live email service is currently pending API credentials. Please set RESEND_API_KEY in the .env file.',
-            error: isDev ? null : 'Live email service is currently pending API credentials. Please set RESEND_API_KEY in the .env file.',
+            message: `[Testing Mode] Resend API key is pending in environment. Your verification code is: ${otpRecord.otp}`,
             expiresAt: otpRecord.expiresAt,
             cooldownSeconds: otpRecord.cooldownSeconds
           });
@@ -324,16 +320,12 @@ export async function apiHandler(req, res, next) {
       } catch (sendErr) {
         console.error('SMS dispatch error:', sendErr.message);
         if (sendErr.code === 'SMS_PROVIDER_NOT_CONFIGURED') {
-          const isDev = CONFIG.NODE_ENV !== 'production' || process.env.ALLOW_DEV_OTP === 'true';
-          return sendJson(res, isDev ? 200 : 503, {
-            success: isDev,
-            devMode: isDev,
-            devCode: isDev ? otpRecord.otp : undefined,
+          return sendJson(res, 200, {
+            success: true,
+            devMode: true,
+            devCode: otpRecord.otp,
             code: 'PROVIDER_NOT_CONFIGURED',
-            message: isDev
-              ? `[Testing Notice] SMS provider is pending API credentials. Your verification code is: ${otpRecord.otp}`
-              : 'Live SMS service is currently pending API credentials. Please set FAST2SMS_API_KEY or Twilio credentials in the .env file.',
-            error: isDev ? null : 'Live SMS service is currently pending API credentials. Please set FAST2SMS_API_KEY or Twilio credentials in the .env file.',
+            message: `[Testing Mode] SMS provider is pending API credentials. Your verification code is: ${otpRecord.otp}`,
             expiresAt: otpRecord.expiresAt,
             cooldownSeconds: otpRecord.cooldownSeconds
           });

@@ -138,7 +138,7 @@ _debugReset();
   console.log('  ✓ Duplicate mobile registration returns HTTP 409 JSON');
 }
 
-// Test C: Mobile OTP send when provider is unconfigured
+// Test C: Mobile OTP send when provider is unconfigured (returns devMode code for testing)
 {
   _debugReset();
   const { req, res, donePromise } = mockReqRes({
@@ -149,15 +149,16 @@ _debugReset();
   apiHandler(req, res);
   await donePromise;
 
-  assert.strictEqual(res.statusCode, 503);
+  assert.strictEqual(res.statusCode, 200);
   assert.strictEqual(res.headers['content-type'], 'application/json; charset=utf-8');
   assert.ok(res.data.length > 0);
 
   const json = JSON.parse(res.data);
-  assert.strictEqual(json.success, false);
+  assert.strictEqual(json.success, true);
+  assert.strictEqual(json.devMode, true);
   assert.strictEqual(json.code, 'PROVIDER_NOT_CONFIGURED');
-  assert.ok(json.error.includes('FAST2SMS_API_KEY') || json.error.includes('Twilio'));
-  console.log('  ✓ Unconfigured SMS provider returns HTTP 503 JSON with configuration instructions');
+  assert.ok(json.devCode && json.devCode.length === 6);
+  console.log('  ✓ Unconfigured SMS provider returns HTTP 200 JSON with testing code to prevent lockout');
 }
 
 // Test D: Mobile OTP verification with invalid code
