@@ -106,6 +106,9 @@ export default function OtpVerificationModal({
 
       if (res.ok && res.data?.success) {
         setStatusMessage(res.data.message || 'Verification code sent.');
+        if (res.data.devMode && res.data.devCode) {
+          setProviderNotice(`[Testing Notice] Gateway credentials pending. Your 6-digit verification code is: ${res.data.devCode}`);
+        }
         setCooldown(res.data.cooldownSeconds || 60);
         setExpiresIn(300); // 5 min
       } else {
